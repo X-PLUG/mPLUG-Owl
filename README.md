@@ -4,7 +4,7 @@
 spotlights 最后能力有没有扩展
  -->
 [![](assets/Demo-ModelScope-brightgreen.svg)](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
-[![](assets/Paper-Arxiv-orange.svg)]()
+[![](assets/Paper-Arxiv-orange.svg)](https://github.com/X-PLUG/mPLUG-Owl)
 <hr>
 <img src="assets/sample.gif"  width="60%">
 
