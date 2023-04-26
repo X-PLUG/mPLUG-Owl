@@ -1,6 +1,8 @@
 # mPLUG-Owl🦉: Modularization Empowers Large Language Models with Multimodality
 Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang
 
+**DAMO Academy, Alibaba Group**
+
 *Equal Contribution; † Corresponding Author
 <!-- 
 spotlights 最后能力有没有扩展
