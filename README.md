@@ -112,3 +112,12 @@ The comparison results of 50 single-turn responses (left) and 52 multi-turn resp
 * [LLaVA](https://github.com/haotian-liu/LLaVA). A visual instruction tuned vision language model which achieves GPT4 level capabilities.
 * [mPLUG-1](https://github.com/alibaba/AliceMind/tree/main/mPLUG). A vision-language foundation model for both cross-modal understanding and generation.
 * [mPLUG-2](https://github.com/alibaba/AliceMind). A multimodal model with a modular design, which inspired our project.
+
+## Citation
+If you found this work useful, consider giving this repository a star and citing our paper as followed:
+@article{ye2023mplugowl,
+  title={mPLUG-Owl: Modularization Empowers Large Language Models with Multimodality},
+  author={Qinghao Ye, Haiyang Xu, Guohai Xu, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang},
+  <!-- journal={arXiv preprint arXiv:2301.12597}, -->
+  year={2023}
+}
