@@ -6,8 +6,8 @@ spotlights 最后能力有没有扩展
 [![](assets/Demo-ModelScope-brightgreen.svg)](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
 [![](assets/Paper-Arxiv-orange.svg)]()
 <hr>
+<img src="assets/sample.gif"  width="60%">
 
-![](assets/sample.gif)
 
 ## Examples
 ![Training paradigm and model overview](assets/case_1.png "Training paradigm and model overview")
