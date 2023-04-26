@@ -116,9 +116,10 @@ The comparison results of 50 single-turn responses (left) and 52 multi-turn resp
 
 ## Citation
 If you found this work useful, consider giving this repository a star and citing our paper as followed:
+```
 @article{ye2023mplugowl,
   title={mPLUG-Owl: Modularization Empowers Large Language Models with Multimodality},
   author={Qinghao Ye, Haiyang Xu, Guohai Xu, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang},
-  <!-- journal={arXiv preprint arXiv:2301.12597}, -->
   year={2023}
 }
+```
