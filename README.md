@@ -4,7 +4,9 @@
 spotlights 最后能力有没有扩展
  -->
 [![](assets/Demo-ModelScope-brightgreen.svg)](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
+[![](assets/LICENSE-Apache%20License-blue.svg)](https://github.com/X-PLUG/mPLUG-Owl/blob/main/LICENSE)
 [![](assets/Paper-Arxiv-orange.svg)](https://github.com/X-PLUG/mPLUG-Owl)
+
 <hr>
 <img src="assets/sample.gif"  width="60%">
 
@@ -15,7 +17,7 @@ spotlights 最后能力有没有扩展
 
 ## News
 
-* We provide an online demo on modelscope for the public to experience.
+* We provide an [online demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary) on modelscope for the public to experience.
 * We released code of mPLUG-Owl🦉 with its pre-trained and instruction tuning checkpoints.
 
 ## Spotlights
