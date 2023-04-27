@@ -26,9 +26,9 @@ spotlights 最后能力有没有扩展
 
 ## Spotlights
 * A new training paradigm with a modularized design for large multi-modal language models.
-* Learns visual knowledge with the help of large language model.
-* Support multi-turn conversation consisting of different modalities.
-* Impressive unimodal and multimodal abilities.
+* Learns visual knowledge while support multi-turn conversation consisting of different modalities.
+* Observed abilities such as multi-image correlation and scene text understanding, vision-based document comprehension.
+* Release a visually-related instruction evaluation set **OwlEval**.
 
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
