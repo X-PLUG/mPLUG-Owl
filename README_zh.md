@@ -35,6 +35,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 ## 在线Demo
 [ModelScope平台上的在线Demo](https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary)
 
+![](assets/modelscope.png)
 ## 预训练参数
 |Model|Phase|Download link|
 |-|-|-|

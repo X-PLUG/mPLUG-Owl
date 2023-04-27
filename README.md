@@ -36,11 +36,7 @@ English | [简体中文](README_zh.md)
 ## Online Demo
 [Demo of mPLUG-Owl on Modelscope](https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary)
 
-
-
-
-
-
+![](assets/modelscope.png)
 
 ## Checkpoints
 |Model|Phase|Download link|
