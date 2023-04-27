@@ -9,7 +9,7 @@ spotlights 最后能力有没有扩展
  -->
 [![](assets/Demo-ModelScope-brightgreen.svg)](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
 [![](assets/LICENSE-Apache%20License-blue.svg)](https://github.com/X-PLUG/mPLUG-Owl/blob/main/LICENSE)
-[![](assets/Paper-Arxiv-orange.svg)](https://github.com/X-PLUG/mPLUG-Owl)
+[![](assets/Paper-Arxiv-orange.svg)](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/mPLUG_Owl_paper.pdf)
 
 <hr>
 <img src="assets/sample.gif"  width="60%">
