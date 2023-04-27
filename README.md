@@ -104,7 +104,8 @@ The comparison results of 50 single-turn responses (left) and 52 multi-turn resp
 ## Coming Soon
 
 - [ ] Instruction tuning code.
-- [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)        
+- [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)
+- [ ] A visually-related evaluation set **OwlEval** to comprehensively evaluate various models.
 
 ## Releated Projects
 
@@ -113,7 +114,7 @@ The comparison results of 50 single-turn responses (left) and 52 multi-turn resp
 * [Alpaca](https://github.com/tatsu-lab/stanford_alpaca). A fine-tuned model trained from a 7B LLaMA model on 52K instruction-following data.
 * [LoRA](https://github.com/microsoft/LoRA). A plug-and-play module that can greatly reduce the number of trainable parameters for downstream tasks.
 * [LLaVA](https://github.com/haotian-liu/LLaVA). A visual instruction tuned vision language model which achieves GPT4 level capabilities.
-* [mPLUG-1](https://github.com/alibaba/AliceMind/tree/main/mPLUG). A vision-language foundation model for both cross-modal understanding and generation.
+* [mPLUG](https://github.com/alibaba/AliceMind/tree/main/mPLUG). A vision-language foundation model for both cross-modal understanding and generation.
 * [mPLUG-2](https://github.com/alibaba/AliceMind). A multimodal model with a modular design, which inspired our project.
 
 ## Citation
@@ -121,7 +122,7 @@ If you found this work useful, consider giving this repository a star and citing
 ```
 @article{ye2023mplugowl,
   title={mPLUG-Owl: Modularization Empowers Large Language Models with Multimodality},
-  author={Qinghao Ye, Haiyang Xu, Guohai Xu, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang},
+  author={Qinghao Ye, Haiyang Xu, Guohai Xu, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang, Fei Huang},
   year={2023}
 }
 ```
