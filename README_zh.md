@@ -60,6 +60,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 
 你也可以根据我们导出的```env.yaml```来准备你的环境。
 
+Apex需要手动从其源码进行编译，因为mPLUG-Owl依赖它的cpp extension (MixedFusedLayerNorm)。
 ### 本地部署Demo
 我们提供了一个易扩展的脚本来一键部署本地Demo，你可以根据自己的需求进行修改。
 ```Bash
@@ -125,6 +126,7 @@ sentence = do_generate(prompts, image_list, model, tokenizer,
 * [Baize](https://github.com/project-baize/baize-chatbot). 使用LoRA在10万个通过让ChatGPT自聊生成的对话上进行训练的开源聊天模型。
 * [Alpaca](https://github.com/tatsu-lab/stanford_alpaca). 从7B LLaMA模型上进行微调训练的，用于52K个指令数据的模型。
 * [LoRA](https://github.com/microsoft/LoRA). 即插即用的模块，可以极大地减少下游任务的可训练参数数量。
+* [MiniGPT-4](https://github.com/Vision-CAIR/MiniGPT-4). 仅使用一个线性映射层，将冻结的语言模型和视觉编码器结合的多模态语言模型。
 * [LLaVA](https://github.com/haotian-liu/LLaVA). 经过视觉指令调整的视觉语言模型，可以实现GPT4级别的能力。
 * [mPLUG](https://github.com/alibaba/AliceMind/tree/main/mPLUG). 视觉语言基础模型，可以用于跨模态理解和生成。
 * [mPLUG-2](https://github.com/alibaba/AliceMind). 具有模块化设计的多模态模型，启发了我们的项目。
@@ -132,9 +134,12 @@ sentence = do_generate(prompts, image_list, model, tokenizer,
 ## 引用
 如果我们的工作对你有帮助，可以考虑给我们的仓库点个star & 引用我们的论文。
 ```
-@article{ye2023mplugowl,
-  title={mPLUG-Owl: Modularization Empowers Large Language Models with Multimodality},
-  author={Qinghao Ye, Haiyang Xu, Guohai Xu, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang, Fei Huang},
-  year={2023}
+@misc{ye2023mplugowl,
+      title={mPLUG-Owl: Modularization Empowers Large Language Models with Multimodality}, 
+      author={Qinghao Ye and Haiyang Xu and Guohai Xu and Jiabo Ye and Ming Yan and Yiyang Zhou and Junyang Wang and Anwen Hu and Pengcheng Shi and Yaya Shi and Chenliang Li and Yuanhong Xu and Hehong Chen and Junfeng Tian and Qian Qi and Ji Zhang and Fei Huang},
+      year={2023},
+      eprint={2304.14178},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 ```
