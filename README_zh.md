@@ -88,6 +88,19 @@ AI: ''']
 # We support urls, local file paths and base64 string. You can custom the pre-process of images by modifying the mplug_owl.modeling_mplug_owl.ImageProcessor
 image_list = ['https://xxx.com/image.jpg',]
 ```
+
+对于多张图片，由于这是模型涌现的能力（训练数据并不包含多图的样本），我们并不知道何种格式对模型而言是最佳的。下面是我们在实验中所使用的格式。大家也可以自行探索能让模型更好理解多图关系的格式或者prompt。
+```Python
+prompts = [
+'''The following is a conversation between a curious human and AI assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
+Human: <image>
+Human: <image>
+Human: Do the shirts worn by the individuals in the first and second pictures vary in color? If so, what is the specific color of each shirt?
+AI: ''']
+
+image_list = ['https://xxx.com/image_1.jpg', 'https://xxx.com/image_2.jpg']
+```
+
 获取模型回复
 ```Python
 # generate kwargs (the same in transformers) can be passed in the do_generate()
