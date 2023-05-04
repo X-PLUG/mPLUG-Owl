@@ -27,10 +27,19 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 * 我们开放了mPLUG-Owl🦉，以及推理代码和二阶段微调参数。
 
 ## 亮点特色
-* 一种面向多模态语言模型的模块化的训练范式。
-* 能学习与语言空间相适应的视觉知识，并支持在多模态场景下进行多轮对话。
-* 涌现多图关系理解，场景文本理解和基于视觉的文档理解等能力。
+* 一种面向多模态语言模型的**模块化**的训练范式。
+* 能学习与语言空间相适应的视觉知识，并支持在多模态场景下进行**多轮对话**。
+* 涌现**多图关系理解**，**场景文本理解**和**基于视觉的文档理解**等能力。
 * 提出了针对视觉相关指令的测评集**OwlEval**，用以评估多模态语言模型的对带有视觉信息上下文的理解能力。
+* 我们在模块化上的一些探索:
+  * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 和 [mPLUG-2](https://arxiv.org/abs/2302.00402), 分别被ACL 2021, EMNLP 2022 and ICML 2023接收。
+  * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 首次在VQA上超越人类。
+* 即将发布
+  - [ ] Huggingface 在线Demo
+  - [ ] 指令微调代码。
+  - [ ] 多语言支持（中文、日文等）。
+  - [ ] 视觉相关指令的测评集**OwlEval**
+  - [ ] 在多图片/视频数据上训练的模型
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
 
@@ -114,12 +123,6 @@ sentence = do_generate(prompts, image_list, model, tokenizer,
 我们展示了50个单轮对话（左）和52个多轮对话（右）在人工评估指标下，mPLUG-Owl和基线方法的比较结果。A/B/C/D表示评分人员对每个回复的评级。
 
 ![Comparison Results](assets/mPLUG_Owl_compare_result_s&mturn.png)
-
-## 即将发布的内容
-
-- [ ] 指令微调代码。
-- [ ] 多语言支持
-- [ ] 视觉相关指令的测评集**OwlEval**
 
 ## 相关项目
 

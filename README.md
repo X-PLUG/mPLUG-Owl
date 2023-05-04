@@ -27,11 +27,20 @@ English | [简体中文](README_zh.md)
 * We released code of mPLUG-Owl🦉 with its pre-trained and instruction tuning checkpoints.
 
 ## Spotlights
-* A new training paradigm with a modularized design for large multi-modal language models.
-* Learns visual knowledge while support multi-turn conversation consisting of different modalities.
-* Observed abilities such as multi-image correlation and scene text understanding, vision-based document comprehension.
+* A new training paradigm with a **modularized design** for large multi-modal language models.
+* Learns visual knowledge while support **multi-turn conversation** consisting of different modalities.
+* Observed abilities such as **multi-image correlation** and **scene text understanding**, **vision-based document comprehension**.
 * Release a visually-related instruction evaluation set **OwlEval**.
-
+* Our outstanding works on modularization:
+  * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) and [mPLUG-2](https://arxiv.org/abs/2302.00402), were respectively accepted by ACL 2021, EMNLP 2022 and ICML 2023.
+  * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) is the first to achieve the human parity on VQA Challenge.
+* comming soon
+  - [ ] Huggingface space demo.
+  - [ ] Instruction tuning code and pre-training code.
+  - [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)
+  - [ ] A visually-related evaluation set **OwlEval** to comprehensively evaluate various models.
+  - [ ] Instruction tuning on interleaved data (multiple images and videos).
+  
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
 
@@ -114,11 +123,6 @@ sentence = do_generate(prompts, image_list, model, tokenizer,
 The comparison results of 50 single-turn responses (left) and 52 multi-turn responses (right) between mPLUG-Owl and baselines with manual evaluation metrics. A/B/C/D denote the rate of each response.
 ![Comparison Results](assets/mPLUG_Owl_compare_result_s&mturn.png)
 
-## Coming Soon
-
-- [ ] Instruction tuning code.
-- [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)
-- [ ] A visually-related evaluation set **OwlEval** to comprehensively evaluate various models.
 
 ## Related Projects
 
