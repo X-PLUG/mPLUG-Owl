@@ -148,24 +148,7 @@ def load_demo_refresh_model_list(request: gr.Request):
             gr.Accordion.update(visible=True))
 
 def vote_last_response(state, vote_type, model_selector, request: gr.Request):
-    global io
-
-    now = datetime.datetime.now()
-    today = now.strftime('%Y-%m-%d')
-    dst_path = os.path.join("oss://mm-chatgpt/mplug_owl_demo/log/feedback", today)
-    try:
-        io.makedirs(dst_path)
-    except:
-        pass
-
-    with io.open(os.path.join(dst_path, "feedback.json"), "a") as fout:
-        data = {
-            "tstamp": round(time.time(), 4),
-            "type": vote_type,
-            "state": state.dict(),
-            # "ip": request.client.host,
-        }
-        fout.write(json.dumps(data) + "\n")
+    pass
 
 def upvote_last_response(state, model_selector, request: gr.Request):
     vote_last_response(state, "upvote", model_selector, request)
