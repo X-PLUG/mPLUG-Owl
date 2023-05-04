@@ -5,6 +5,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 
 *Equal Contribution; † Corresponding Author
 
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)
 [![](assets/Demo-ModelScope-brightgreen.svg)](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
 [![](assets/LICENSE-Apache%20License-blue.svg)](https://github.com/X-PLUG/mPLUG-Owl/blob/main/LICENSE)
 [![](assets/Paper-PDF-orange.svg)](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/mPLUG_Owl_paper.pdf)
@@ -23,6 +24,10 @@ English | [简体中文](README_zh.md)
 
 ## News
 
+* We released code and dataset for instruction tuning.
+* Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) is available. Thank Huggingface for providing us with free computing resources!
+* Online demo on HuggingFace now supports recieve video! Demo on ModelScope will support soon.
+* We upload our visually-related evaluation set **OwlEval**.
 * We provide an [online demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary) on modelscope for the public to experience.
 * We released code of mPLUG-Owl🦉 with its pre-trained and instruction tuning checkpoints.
 
@@ -35,19 +40,26 @@ English | [简体中文](README_zh.md)
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) and [mPLUG-2](https://arxiv.org/abs/2302.00402), were respectively accepted by ACL 2021, EMNLP 2022 and ICML 2023.
   * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) is the first to achieve the human parity on VQA Challenge.
 * comming soon
-  - [ ] Huggingface space demo.
-  - [ ] Instruction tuning code and pre-training code.
+  - [ ] Publish on Huggingface Hub
   - [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)
-  - [ ] A visually-related evaluation set **OwlEval** to comprehensively evaluate various models.
   - [ ] Instruction tuning on interleaved data (multiple images and videos).
+  - [x] Huggingface space demo.
+  - [x] Instruction tuning code and pre-training code.
+  - [x] A visually-related evaluation set **OwlEval** to comprehensively evaluate various models.
   
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
 
 ## Online Demo
-[Demo of mPLUG-Owl on Modelscope](https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary)
+### ModelScope
+<a href="https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary"><img src="https://modelscope.oss-cn-beijing.aliyuncs.com/modelscope.gif" width="250"/></a>
 
-![](assets/modelscope.png)
+### Hugging Face
+<!-- [![Demo of mPLUG-Owl on Modelscope](assets/modelscopeIcon.svg)](https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary) -->
+
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-xl-dark.svg)](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)
+
+<!-- ![](assets/modelscope.png) -->
 
 ## Checkpoints
 |Model|Phase|Download link|
@@ -55,10 +67,14 @@ English | [简体中文](README_zh.md)
 |mPLUG-Owl 7B|Pre-training|[Download link](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/pretrained.pth)|
 |mPLUG-Owl 7B|Instruction tuning|[Download link](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/instruction_tuned.pth)|
 |Tokenizer model|N/A|[Download link](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/tokenizer.model)|
+
+## OwlEval
+The evaluation dataset OwlEval can be found in ```./OwlEval```.
+
 ## Usage
 ### Install Requirements
 Core library dependency:
-* PyTorch=1.12.1
+* PyTorch=1.13.1 (1.13.1 is required by the peft)
 * transformers=4.28.1
 * [Apex](https://github.com/NVIDIA/apex)
 * einops
@@ -69,10 +85,25 @@ Core library dependency:
 * fastapi
 * markdown2
 * gradio
+* sconf
+* tensorboardX
+* tensorboard
+* h5py
+* sentencepiece
+* peft
 
 You can also refer to the exported Conda environment configuration file ```env.yaml``` to prepare your environments.
 
 Apex needs to be manually compiled from source code, because mPLUG-Owl rely on the its cpp extension (MixedFusedLayerNorm).
+
+Considering that the code in the apex repository changes frequently, we have included a fixed copy of the apex in our repository, which can be installed using the following command:
+```shell
+cd apex_22.01_pp
+TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+```
+
+We will remove the dependency on apex in the next version.
+
 ### Local Demo
 We provide a script to deploy a simple demo in your local machine.
 ```Bash
@@ -118,6 +149,22 @@ Get response.
 from interface import do_generate
 sentence = do_generate(prompts, image_list, model, tokenizer,
                                img_processor, max_length=512, top_k=5, do_sample=True)
+```
+### Instruction Tuning
+The training samples are stored in ```xxx.jsonl``` and orgnized in the following format:
+```json
+{"text": "The following is a conversation between a curious human and AI assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.\nHuman: Construct a sentence using the given verb in the past tense\nshudder\nAI: She shuddered at the thought of being alone in the dark.", "task_type": "gpt4instruct_sft"}
+{"image": ["xxx.jpg"], "text": "The following is a conversation between a curious human and AI assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.\nHuman: <image>\nHuman: Where is the man located in the image?\nAI: The man is located in a small restaurant, sitting and enjoying his meal.\nHuman: What type of food is the man eating in the image?\nAI: The man is eating a burrito in the image.\nHuman: What can be seen next to the man in the restaurant?\nAI: Next to the man in the restaurant, there is a fridge filled with cans of soda.\nHuman: How does the man feel as he is about to eat his meal?\nAI: The man looks happy and is smiling as he is about to take a bite of his meal.\nHuman: What unique aspect of the photo makes the scene appear distorted or unusual?\nAI: The unique aspect of this photo is that it was taken using a fish-eye lens, which creates a distorted, wide-angle view of the scene, making it appear different from a standard perspective.", "task_type": "llava_sft"}
+```
+The ```task_type``` can be in one of ```{'quora_chat_sft', 'sharegpt_chat_sft', 'llava_sft', 'gpt4instruct_sft'}```.
+
+Prepare your own train.jsonl and dev.jsonl and modify ```data_files``` in ```configs/instruction_tuning/v0.yaml```.
+
+Put downloaded ```pretrained.pth``` in the root folder.
+
+Execute the training script.
+```
+bash train_it.sh
 ```
 ## Performance Comparison
 The comparison results of 50 single-turn responses (left) and 52 multi-turn responses (right) between mPLUG-Owl and baselines with manual evaluation metrics. A/B/C/D denote the rate of each response.

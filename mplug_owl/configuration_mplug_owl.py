@@ -86,6 +86,10 @@ class mPLUG_OwlVisualAbstractorConfig(PretrainedConfig):
         return cls.from_dict(config_dict, **kwargs)
 
 
+    def to_dict(self):
+        output = copy.deepcopy(self.__dict__)
+        return output
+
 class mPLUG_OwlConfig(PretrainedConfig):
 
     model_type = "mplug_owl"
@@ -139,7 +143,7 @@ class mPLUG_OwlConfig(PretrainedConfig):
         """
         output = copy.deepcopy(self.__dict__)
         output["vision_config"] = self.vision_config.to_dict()
-        output["abstractor_config"] = self.visual_abstractor_config.to_dict()
+        output["visual_abstractor_config"] = self.visual_abstractor_config.to_dict()
         output["text_config"] = self.text_config.to_dict()
         output["model_type"] = self.__class__.model_type
         return output

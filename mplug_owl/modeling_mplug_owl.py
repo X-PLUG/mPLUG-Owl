@@ -48,7 +48,7 @@ from transformers.utils import (ModelOutput, add_start_docstrings,
                                 replace_return_docstrings)
 
 from clip.modeling_clip import CLIPVisionTransformer
-
+from icecream import ic
 from .configuration_mplug_owl import (mPLUG_OwlConfig,
                                       mPLUG_OwlVisualAbstractorConfig)
 
@@ -989,7 +989,7 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
         self.vit_eval = self.config.vit_eval if hasattr(self.config,'vit_eval') else False
         # Initialize weights and apply final processing
         self.post_init()
-
+        self.main_input_name = 'input_ids'
     def get_input_embeddings(self):
         return self.language_model.get_input_embeddings()
 
@@ -1037,6 +1037,7 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
         self,
         pixel_values: torch.FloatTensor,
         input_ids: torch.FloatTensor,
+        num_images,
         non_padding_mask: Optional[torch.LongTensor] = None,
         non_media_mask: Optional[torch.LongTensor] = None,
         prompt_mask: Optional[torch.LongTensor] = None,
@@ -1048,6 +1049,7 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
         labels: Optional[torch.LongTensor] = None,
         return_dict: Optional[bool] = None,
     ) -> Union[Tuple, mPLUG_OwlForConditionalGenerationModelOutput]:
+  
         # get text embedding
         text_tokens_ = input_ids
         batch_size = input_ids.shape[0]
@@ -1081,7 +1083,7 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
             )[:-1], dtype=torch.long).to(query_features.device)
             img_seq_length = query_features.shape[1]
 
-        num_images_per_sample = [len(x) for x in media_token_indices]
+        num_images_per_sample = num_images.long().cpu().tolist()
   
 
         text_chunk_embeds = []
@@ -1103,7 +1105,18 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
 
         # Actual Input Embeddings
         input_embeds = torch.stack(text_chunk_embeds, dim=0)
-   
+
+        if pixel_values is None and self.language_model.is_gradient_checkpointing:
+            # Hack here when gradient checkpoint is enable.
+            # Keep the compute graph static
+            image_embeds = self.vision_model(torch.zeros(1,3,224,224,device=input_embeds.device,dtype=input_embeds.dtype), return_dict=True).last_hidden_state
+            query_tokens = self.query_tokens.expand(
+                image_embeds.shape[0], -1, -1)
+            query_features = self.abstractor(query_embeds=query_tokens,
+            encoder_hidden_states=image_embeds,)['last_hidden_state']
+
+            input_embeds = input_embeds + query_features.mean()*0
+
         # Create causal mask and position ids
         _, loss_mask, position_ids = \
             get_ltor_masks_and_position_ids_from_embeddings(input_embeds)
@@ -1111,22 +1124,23 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
         # Calculate the loss_mask
         non_padding_mask = non_padding_mask.long()
         non_media_mask = non_media_mask.long()
-        prompt_mask = prompt_mask.long()
+        prompt_mask = prompt_mask.long() # TODO How to deal with prompt mask
         # from icecream import ic
         # non_padding_mask = non_padding_mask[:,:-1]
         # non_media_mask = non_media_mask[:,:-1]
         # prompt_mask = prompt_mask[:,:-1]
         # attention_mask = attention_mask[:,:-1]
-        
-        loss_mask = loss_mask * non_padding_mask * non_media_mask * prompt_mask
         loss_mask=loss_mask[:,:-1]
+
+        loss_mask = loss_mask * non_padding_mask * non_media_mask * prompt_mask
+        
         # Forward into GPT
         outputs = self.language_model(
             inputs_embeds=input_embeds,
             attention_mask=attention_mask,
             labels=labels,
         )
-        outputs.loss = (outputs.loss * loss_mask).mean()
+        outputs.loss = (outputs.loss * loss_mask.view(-1)).sum()/loss_mask.sum()
         return outputs
 
     @torch.no_grad()

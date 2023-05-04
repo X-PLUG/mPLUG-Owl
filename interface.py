@@ -1,9 +1,11 @@
-def get_model(checkpoint_path=None, tokenizer_path=None):
+def get_model(checkpoint_path=None, tokenizer_path=None, peft_config=None):
     import torch
     from transformers.models.llama.configuration_llama import LlamaConfig
 
     from mplug_owl.configuration_mplug_owl import mPLUG_OwlConfig
     from mplug_owl.modeling_mplug_owl import mPLUG_OwlForConditionalGeneration
+    from peft import get_peft_config, get_peft_model, LoraConfig, TaskType
+
     config = mPLUG_OwlConfig()
     model = mPLUG_OwlForConditionalGeneration(config=config).to(torch.bfloat16)
     model.eval()
@@ -11,6 +13,9 @@ def get_model(checkpoint_path=None, tokenizer_path=None):
     if checkpoint_path is not None:
         tmp_ckpt = torch.load(
             checkpoint_path, map_location='cpu')
+        if peft_config is not None:
+            print('convert to LoRA model')
+            model = get_peft_model(model, peft_config=peft_config)
         msg = model.load_state_dict(tmp_ckpt, strict=False)
         print(msg)
 
@@ -21,9 +26,33 @@ def get_model(checkpoint_path=None, tokenizer_path=None):
     assert tokenizer_path is not None
     tokenizer = LlamaTokenizer(
         tokenizer_path, pad_token='<unk>', add_bos_token=False)
+    tokenizer.eod_id = tokenizer.eos_token_id
     img_processor = ImageProcessor()
     return model, tokenizer, img_processor
 
+def get_model_toy(checkpoint_path=None, tokenizer_path=None):
+    import torch
+    from transformers.models.llama.configuration_llama import LlamaConfig
+
+    from transformers.models.bert.modeling_bert import BertModel
+    model = BertModel.from_pretrained('bert-base-uncased')
+    model.eval()
+
+    # if checkpoint_path is not None:
+    #     tmp_ckpt = torch.load(
+    #         checkpoint_path, map_location='cpu')
+    #     msg = model.load_state_dict(tmp_ckpt, strict=False)
+    #     print(msg)
+
+    import torch
+    from transformers.models.llama.tokenization_llama import LlamaTokenizer
+
+    from mplug_owl.modeling_mplug_owl import ImageProcessor
+    assert tokenizer_path is not None
+    tokenizer = LlamaTokenizer(
+        tokenizer_path, pad_token='<unk>', add_bos_token=False)
+    img_processor = ImageProcessor()
+    return model, tokenizer, img_processor
 
 def do_generate(prompts, image_list, model, tokenizer, img_processor, **generate_kwargs):
     import requests

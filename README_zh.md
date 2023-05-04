@@ -5,6 +5,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 
 *Equal Contribution; † Corresponding Author
 
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)
 [![](assets/Demo-ModelScope-brightgreen.svg)](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
 [![](assets/LICENSE-Apache%20License-blue.svg)](https://github.com/X-PLUG/mPLUG-Owl/blob/main/LICENSE)
 [![](assets/Paper-PDF-orange.svg)](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/mPLUG_Owl_paper.pdf)
@@ -23,6 +24,10 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 
 ## 最新更新
 
+* 我们发布了指令微调的代码。
+* 我们在[HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)上也搭建了Demo。感谢HuggingFace提供的免费算力！
+* HuggingFace上的Demo现在已经支持视频输入！ModelScope上的Demo也即将支持。
+* 我们公开了视觉相关指令的测评集**OwlEval**
 * 我们在Modelscope上提供了一个[在线Demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)供大家体验。
 * 我们开放了mPLUG-Owl🦉，以及推理代码和二阶段微调参数。
 
@@ -35,17 +40,23 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 和 [mPLUG-2](https://arxiv.org/abs/2302.00402), 分别被ACL 2021, EMNLP 2022 and ICML 2023接收。
   * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 首次在VQA上超越人类。
 * 即将发布
-  - [ ] Huggingface 在线Demo
-  - [ ] 指令微调代码。
+  - [ ] 在HuggingFace Hub上发布。
   - [ ] 多语言支持（中文、日文等）。
-  - [ ] 视觉相关指令的测评集**OwlEval**
   - [ ] 在多图片/视频数据上训练的模型
+  - [x] Huggingface 在线Demo
+  - [x] 指令微调代码。
+  - [x] 视觉相关指令的测评集**OwlEval**
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
 
 ## 在线Demo
-[ModelScope平台上的在线Demo](https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary)
+### ModelScope
+<a href="https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary"><img src="https://modelscope.oss-cn-beijing.aliyuncs.com/modelscope.gif" width="250"/></a>
 
+### Hugging Face
+<!-- [![Demo of mPLUG-Owl on Modelscope](assets/modelscopeIcon.svg)](https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary) -->
+
+[![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-xl-dark.svg)](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)
 ![](assets/modelscope.png)
 ## 预训练参数
 |Model|Phase|Download link|
@@ -53,10 +64,14 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 |mPLUG-Owl 7B|Pre-training|[下载链接](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/pretrained.pth)|
 |mPLUG-Owl 7B|Instruction tuning|[下载链接](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/instruction_tuned.pth)|
 |Tokenizer model|N/A|[下载链接](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/tokenizer.model)|
+
+## OwlEval
+我们所使用的评测集放在 ```./OwlEval``` 中。
+
 ## 使用
 ### 安装依赖
 核心组件:
-* PyTorch=1.12.1
+* PyTorch=1.13.1
 * transformers=4.28.1
 * [Apex](https://github.com/NVIDIA/apex)
 * einops
@@ -67,10 +82,23 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 * fastapi
 * markdown2
 * gradio
+* sconf
+* h5py
+* sentencepiece
+* peft
 
 你也可以根据我们导出的```env.yaml```来准备你的环境。
 
 Apex需要手动从其源码进行编译，因为mPLUG-Owl依赖它的cpp extension (MixedFusedLayerNorm)。
+
+考虑到apex仓库的代码会频繁变动，我们在本仓库中内嵌了一个固定的apex源码（验证过了），你可以通过下面的命令进行安装：
+```shell
+cd apex_22.01_pp
+TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+```
+
+下个版本，我们会移除掉对apex的依赖。
+
 ### 本地部署Demo
 我们提供了一个易扩展的脚本来一键部署本地Demo，你可以根据自己的需求进行修改。
 ```Bash
@@ -118,6 +146,20 @@ image_list = ['https://xxx.com/image_1.jpg', 'https://xxx.com/image_2.jpg']
 from interface import do_generate
 sentence = do_generate(prompts, image_list, model, tokenizer,
                                img_processor, max_length=512, top_k=5, do_sample=True)
+```
+### 指令微调
+训练样本存放在```xxx.jsonl``` 中，格式如下:
+```json
+{"text": "The following is a conversation between a curious human and AI assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.\nHuman: Construct a sentence using the given verb in the past tense\nshudder\nAI: She shuddered at the thought of being alone in the dark.", "task_type": "gpt4instruct_sft"}
+{"image": ["xxx.jpg"], "text": "The following is a conversation between a curious human and AI assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.\nHuman: <image>\nHuman: Where is the man located in the image?\nAI: The man is located in a small restaurant, sitting and enjoying his meal.\nHuman: What type of food is the man eating in the image?\nAI: The man is eating a burrito in the image.\nHuman: What can be seen next to the man in the restaurant?\nAI: Next to the man in the restaurant, there is a fridge filled with cans of soda.\nHuman: How does the man feel as he is about to eat his meal?\nAI: The man looks happy and is smiling as he is about to take a bite of his meal.\nHuman: What unique aspect of the photo makes the scene appear distorted or unusual?\nAI: The unique aspect of this photo is that it was taken using a fish-eye lens, which creates a distorted, wide-angle view of the scene, making it appear different from a standard perspective.", "task_type": "llava_sft"}
+```
+其中 ```task_type``` 可以为 ```{'quora_chat_sft', 'sharegpt_chat_sft', 'llava_sft', 'gpt4instruct_sft'}```。
+
+准备好 train.jsonl 和 dev.jsonl 并修改 ```configs/instruction_tuning/v0.yaml``` 中的 ```data_files```.
+
+执行训练脚本。
+```
+bash train_it.sh
 ```
 ## 性能比较
 我们展示了50个单轮对话（左）和52个多轮对话（右）在人工评估指标下，mPLUG-Owl和基线方法的比较结果。A/B/C/D表示评分人员对每个回复的评级。
