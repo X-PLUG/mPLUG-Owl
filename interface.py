@@ -30,29 +30,6 @@ def get_model(checkpoint_path=None, tokenizer_path=None, peft_config=None):
     img_processor = ImageProcessor()
     return model, tokenizer, img_processor
 
-def get_model_toy(checkpoint_path=None, tokenizer_path=None):
-    import torch
-    from transformers.models.llama.configuration_llama import LlamaConfig
-
-    from transformers.models.bert.modeling_bert import BertModel
-    model = BertModel.from_pretrained('bert-base-uncased')
-    model.eval()
-
-    # if checkpoint_path is not None:
-    #     tmp_ckpt = torch.load(
-    #         checkpoint_path, map_location='cpu')
-    #     msg = model.load_state_dict(tmp_ckpt, strict=False)
-    #     print(msg)
-
-    import torch
-    from transformers.models.llama.tokenization_llama import LlamaTokenizer
-
-    from mplug_owl.modeling_mplug_owl import ImageProcessor
-    assert tokenizer_path is not None
-    tokenizer = LlamaTokenizer(
-        tokenizer_path, pad_token='<unk>', add_bos_token=False)
-    img_processor = ImageProcessor()
-    return model, tokenizer, img_processor
 
 def do_generate(prompts, image_list, model, tokenizer, img_processor, **generate_kwargs):
     import requests
