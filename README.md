@@ -3,11 +3,15 @@
 </div>
 
 # mPLUG-Owl🦉: Modularization Empowers Large Language Models with Multimodality
+<div align="center">
 Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chaoya Jiang, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang, Fei Huang
-
+</div>
+<div align="center">
 **DAMO Academy, Alibaba Group**
-
+</div>
+<div align="center">
 *Equal Contribution; † Corresponding Author
+</div>
 
 [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)
 [![](assets/Demo-ModelScope-brightgreen.svg)](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)
