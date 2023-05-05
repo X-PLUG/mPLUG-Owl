@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/mPLUG_new.png" width="80%">
+<img src="assets/mPLUG_new1.png" width="80%">
 </div>
 
 # mPLUG-Owl🦉: Modularization Empowers Large Language Models with Multimodality
