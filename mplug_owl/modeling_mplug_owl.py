@@ -1187,6 +1187,7 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
         if pixel_values is not None:
             pixel_values = pixel_values.to(input_ids.device)
             with torch.no_grad():
+                print(pixel_values.shape)
                 image_embeds = self.vision_model(
                     pixel_values, return_dict=True).last_hidden_state
                 image_attention_mask = torch.ones(
@@ -1220,7 +1221,7 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
                         result_attn.append(attention_mask[b, start:pos])
                     result.append(image_embeds[img_idx+i])
                     result_attn.append(torch.ones(
-                        image_embeds[img_idx+i].shape[0]))
+                        image_embeds[img_idx+i].shape[0], device=inputs_embeds.device))
                     start = pos + img_seq_length
                 if start < inputs_embeds.shape[1]:
                     result.append(inputs_embeds[b, start:])

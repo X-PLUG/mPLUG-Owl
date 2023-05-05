@@ -75,11 +75,13 @@ options=" \
 	--num-workers 32 \
 	--init-method-std 0.01 \
     --flash-attn \
-    --use-lora \
+	--use-lora \
 	--bf16"
 
 multimodal_options=" \
 	--mm-config configs/instruction_tuning/v0.yaml \
+	--use-learnable-tokens \
+	--num-learnable-tokens 64 \
     "
 
 python -m torch.distributed.launch $DISTRIBUTED_ARGS ./train.py $@ ${options} ${multimodal_options} 2>&1 | tee ${SAVE_PATH}/train.log 

@@ -1,0 +1,82 @@
+{"image": "1.jpg", "question_id": 1, "question": "What is funny about this image? Describe it panel by panel."}
+{"image": "2.jpg", "question_id": 2, "question": "Why would a person find this image funny?"}
+{"image": "3.jpg", "question_id": 3, "question": "What is unusual about this image"}
+{"image": "4.jpg", "question_id": 4, "question": "Is there text in the image? If so, can you read it and explain it to me?"}
+{"image": "4.jpg", "question_id": 5, "question": "What is funny about it?"}
+{"image": "5.jpg", "question_id": 6, "question": "Where is the frisbee in the image?"}
+{"image": "5.jpg", "question_id": 7, "question": "Where is the man in the image?"}
+{"image": "5.jpg", "question_id": 8, "question": "What is the spatial relation between the frisbee and the man?"}
+{"image": "6.jpg", "question_id": 9, "question": "What should I do after kneading the dough, before dividing it into pieces?"}
+{"image": "6.jpg", "question_id": 10, "question": "How long should I put in warm places?"}
+{"image": "7.jpg", "question_id": 11, "question": "What is the total amount?"}
+{"image": "8.jpg", "question_id": 12, "question": "Excluding the regular cab, what is the average total fueling cost?"}
+{"image": "9.jpg", "question_id": 13, "question": "Excluding Ford F150 Lightning, what is the average total charging cost?"}
+{"image": "9.jpg", "question_id": 14, "question": "Now how much cheaper is the average charging cost over the electric cars (including Ford F150 Lightning) than the average fueling cost over the gasoline cars (including Ford F150(Regular Cab))?Let's think step-by-step."}
+{"image": "10.jpg", "question_id": 15, "question": "How many bedrooms are there in this floor plan?"}
+{"image": "10.jpg", "question_id": 16, "question": "What is the dimension of Master Bedroom"}
+{"image": "10.jpg", "question_id": 17, "question": "Is there a bathroom in master bedroom?"}
+{"image": "10.jpg", "question_id": 18, "question": "What is the dimension of Second Bedroom?"}
+{"image": "10.jpg", "question_id": 19, "question": "Is the terrace bigger than the kitchen?"}
+{"image": "10.jpg", "question_id": 20, "question": "What are the appliances in the kitchen in this floorplan"}
+{"image": "10.jpg", "question_id": 21, "question": "What will you see when you enter through the entrance? and what is the dimension of it?"}
+{"image": "10.jpg", "question_id": 22, "question": "Can you summarize this floorplan based on the aspects I was interested in, in a few sentences?"}
+{"image": "11.jpg", "question_id": 23, "question": "Can you read the text in this flowchart and explain the process in detail?"}
+{"image": "11.jpg", "question_id": 24, "question": "Which step in the flowchart is drawn with a diamond shape?"}
+{"image": "12.jpg", "question_id": 25, "question": "Can you read the text in this flowchart and explain it to me?"}
+{"image": "12.jpg", "question_id": 26, "question": "Can you transform this flowchart into a simple program in python?"}
+{"image": "13.jpg", "question_id": 27, "question": "How much is Wilkins earning?"}
+{"image": "13.jpg", "question_id": 28, "question": "Which department is the person who has the highest salary from?"}
+{"image": "13.jpg", "question_id": 29, "question": "This table is reporting monthly salary,can you calculate the yearly salary for each employee, and summarize it into a table and group them by department?"}
+{"image": "13.jpg", "question_id": 30, "question": "Given the yearly bonus is 10%,12% and 15%for Administration,Finance,Marketing, respectively. Please provide me with the bonus for Emily, Max and Gloria."}
+{"image": "14.jpg", "question_id": 31, "question": "Answer question I.1.a. Think step-by-step."}
+{"image": "15.jpg", "question_id": 32, "question": "Can you write a template for this website in HTML? Replace the joke and punchline with a real one."}
+{"image": "16.jpg", "question_id": 33, "question": "How many championship rings did the player on the left win in his career?"}
+{"image": "17.jpg", "question_id": 34, "question": "Describe this image."}
+{"image": "17.jpg", "question_id": 35, "question": "Explain why this image is funny."}
+{"image": "18.jpg", "question_id": 36, "question": "Describe this image as detailed as possible."}
+{"image": "19.jpg", "question_id": 37, "question": "Describe this image as detailed as possible."}
+{"image": "20.jpg", "question_id": 38, "question": "Explain why this meme is funny."}
+{"image": "21.jpg", "question_id": 39, "question": "Describe the image."}
+{"image": "21.jpg", "question_id": 40, "question": "Can this happen in real world?"}
+{"image": "22.jpg", "question_id": 41, "question": "Describe the image."}
+{"image": "22.jpg", "question_id": 42, "question": "Is this image common in real world?"}
+{"image": "23.jpg", "question_id": 43, "question": "Write brief HTML/JS to turn this mock-up into a colorful website, where the jokes are replaced by a real joke."}
+{"image": "24.jpg", "question_id": 44, "question": "What is the issue with my plant? What should I do now?"}
+{"image": "25.jpg", "question_id": 45, "question": "Why this happens and how to fix it?"}
+{"image": "26.jpg", "question_id": 46, "question": "Can you write me a beautiful poem about this image?"}
+{"image": "27.jpg", "question_id": 47, "question": "Can you write me a master rap song that rhymes very well based on this image?"}
+{"image": "28.jpg", "question_id": 48, "question": "Can you write a story around this image for my child?"}
+{"image": "29.jpg", "question_id": 49, "question": "I designed a character for my game as shown in the image. Can you write me a background story for him?"}
+{"image": "30.jpg", "question_id": 50, "question": "We design new mugs shown in the image. Can you help us write an advertisement?"}
+{"image": "31.jpg", "question_id": 51, "question": "Help me write an advertisement for this."}
+{"image": "32.jpg", "question_id": 52, "question": "Who is the person in the image?"}
+{"image": "33.jpg", "question_id": 53, "question": "Describe this image."}
+{"image": "33.jpg", "question_id": 54, "question": "What do you think about the person's behavior?"}
+{"image": "34.jpg", "question_id": 55, "question": "Describe about the image."}
+{"image": "34.jpg", "question_id": 56, "question": "Do you have anything to say to the young boy in the image?"}
+{"image": "35.jpg", "question_id": 57, "question": "Can you give me a short introduction to this movie?"}
+{"image": "36.jpg", "question_id": 58, "question": "Can you give me a detailed introduction to this painting, and also the artist?"}
+{"image": "37.jpg", "question_id": 59, "question": "How should I do to cook this?"}
+{"image": "38.jpg", "question_id": 60, "question": "Explain the advantages of this product."}
+{"image": "39.jpg", "question_id": 61, "question": "Tell me something about the history of this place."}
+{"image": "40.jpg", "question_id": 62, "question": "Is this photo unusual?"}
+{"image": "40.jpg", "question_id": 63, "question": "How could someone get out of the house? "}
+{"image": "41.jpg", "question_id": 64, "question": "What are shown in the photo?"}
+{"image": "41.jpg", "question_id": 65, "question": "What does the man feel and why? "}
+{"image": "42.jpg", "question_id": 66, "question": "What are the ingredients I need to make this?"}
+{"image": "42.jpg", "question_id": 67, "question": "What is the first step?"}
+{"image": "43.jpg", "question_id": 68, "question": "Which city is this?"}
+{"image": "43.jpg", "question_id": 69, "question": "Why do you think so?"}
+{"image": "44.jpg", "question_id": 70, "question": "What happened at the end of this movie?"}
+{"image": "44.jpg", "question_id": 71, "question": "Did Leonardo Dicaprio's character survive?"}
+{"image": "45.jpg", "question_id": 72, "question": "What is in the photo?"}
+{"image": "45.jpg", "question_id": 73, "question": "What is the nose made of?"}
+{"image": "46.jpg", "question_id": 74, "question": "Write a conversation between the two animals."}
+{"image": "47.jpg", "question_id": 75, "question": "Who is the man on the right?"}
+{"image": "47.jpg", "question_id": 76, "question": "Who is the man on the left?"}
+{"image": "47.jpg", "question_id": 77, "question": "Who is the taller man?"}
+{"image": "47.jpg", "question_id": 78, "question": "Who is wearing red?"}
+{"image": "47.jpg", "question_id": 79, "question": "Who is the man with the water bottle in his hand?"}
+{"image": "48.jpg", "question_id": 80, "question": "Introduce the movie character in this picture."}
+{"image": "49.jpg", "question_id": 81, "question": "Analyze the tactical characteristics and lineups of both sides and predict who will win."}
+{"image": "50.jpg", "question_id": 82, "question": "Tell me about this work of art."}

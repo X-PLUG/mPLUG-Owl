@@ -156,6 +156,7 @@ def apply_rotary_pos_emb(q, k, cos, sin, position_ids):
     position_ids = position_ids.to(q.device)
     gather_indices = position_ids[:, None, :, None]  # [bs, 1, seq_len, 1]
     gather_indices = gather_indices.repeat(1, cos.shape[1], 1, cos.shape[3])
+
     cos = torch.gather(cos.repeat(gather_indices.shape[0], 1, 1, 1), 2, gather_indices)
     sin = torch.gather(sin.repeat(gather_indices.shape[0], 1, 1, 1), 2, gather_indices)
     q_embed = (q * cos) + (rotate_half(q) * sin)
@@ -269,6 +270,7 @@ class LlamaAttention(nn.Module):
         past_key_value = (key_states, value_states) if use_cache else None
         # q: bsz, self.num_heads, q_len, self.head_dim
         # k: bsz, self.num_heads, self.head_dim, q_len
+   
         attn_weights = torch.matmul(query_states, key_states.transpose(2, 3)) / math.sqrt(self.head_dim)
 
         if attn_weights.size() != (bsz, self.num_heads, q_len, kv_seq_len):
@@ -624,7 +626,6 @@ class LlamaModel(LlamaPreTrainedModel):
                         return module(*inputs, output_attentions, None)
 
                     return custom_forward
-
                 layer_outputs = torch.utils.checkpoint.checkpoint(
                     create_custom_forward(decoder_layer),
                     hidden_states,
@@ -799,7 +800,6 @@ class LlamaForCausalLM(LlamaPreTrainedModel):
             position_ids.masked_fill_(attention_mask == 0, 1)
             if past_key_values:
                 position_ids = position_ids[:, -1].unsqueeze(-1)
-
         # if `inputs_embeds` are passed, we only want to use them in the 1st generation step
         if inputs_embeds is not None and past_key_values is None:
             model_inputs = {"inputs_embeds": inputs_embeds}

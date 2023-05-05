@@ -106,7 +106,7 @@ if __name__ == '__main__':
     from interface import get_model
 
     model, tokenizer, img_processor = get_model(
-        checkpoint_path='pretrained.pth', tokenizer_path=args.vocab_file)
+        checkpoint_path='pretrained.pth', tokenizer_path=args.vocab_file, device='cpu')
 
     if args.use_lora:
         for param in model.parameters():

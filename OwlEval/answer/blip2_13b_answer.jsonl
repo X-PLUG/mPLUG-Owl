@@ -1,0 +1,82 @@
+{"image": "1.png", "question_id": 1, "question": "What is funny about this image? Describe it panel by panel.", "answer": "the phone is plugged into a charger", "model_id": "BLIP2"}
+{"image": "2.png", "question_id": 2, "question": "Why would a person find this image funny?", "answer": "a squirrel is holding a camera", "model_id": "BLIP2"}
+{"image": "3.png", "question_id": 3, "question": "What is unusual about this image?", "answer": "A man is riding on the back of a car", "model_id": "BLIP2"}
+{"image": "4.png", "question_id": 4, "question": "Is there text in the image? If so, can you read it and explain it to me? ", "answer": " i'm pregnant\n", "model_id": "BLIP2"}
+{"image": "4.png", "question_id": 5, "question": "What is funny about it?", "answer": "i'm pregnant", "model_id": "BLIP2"}
+{"image": "5.png", "question_id": 6, "question": "Where is the frisbee in the image? ", "answer": " in the air\n", "model_id": "BLIP2"}
+{"image": "5.png", "question_id": 7, "question": "Where is the man in the image?", "answer": " in the air\n", "model_id": "BLIP2"}
+{"image": "5.png", "question_id": 8, "question": "What is the spatial relation between the frisbee and the man?", "answer": " above", "model_id": "BLIP2"}
+{"image": "6.png", "question_id": 9, "question": "What should I do after kneading the dough, before dividing it into pieces?", "answer": " knead the dough for 10 minutes\n", "model_id": "BLIP2"}
+{"image": "6.png", "question_id": 10, "question": "How long should I put in warm places?", "answer": " for 1 hour", "model_id": "BLIP2"}
+{"image": "7.png", "question_id": 11, "question": "What is the total amount?", "answer": "3838 do", "model_id": "BLIP2"}
+{"image": "8.png", "question_id": 12, "question": "Excluding the regular cab, what is the average total fueling cost?", "answer": "无法回溯", "model_id": "BLIP2"}
+{"image": "9.png", "question_id": 13, "question": "Excluding Ford F150 Lightning, what is the average total charging cost? Now how much cheaper is the average charging cost over the electric cars cluding Ford F150 Lightning) than the average fueling cost over the gasoline cars cluding Ford F150", "answer": " 0 \n", "model_id": "BLIP2"}
+{"image": "9.png", "question_id": 14, "question": "gular Cab))?Let's think step-by-step.", "answer": " The average total fueling cost over the gasoline cars is 0", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 15, "question": "How many bedrooms are there in this floor plan?", "answer": " 2\n", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 16, "question": "What is the dimension of Master Bedroom？", "answer": ") 450 sq ft\n", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 17, "question": "Is there a bathroom in master bedroom?", "answer": " yes\n", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 18, "question": "What is the dimension of Second Bedroom？", "answer": " 450 sq ft\n", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 19, "question": "Is the terrace bigger than the kitchen?", "answer": " no\n", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 20, "question": "What are the appliances in the kitchen in this floorplan？", "answer": " stainless steel appliances\n", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 21, "question": "What will you see when you enter through the entrance? and what is the dimension of it？", "answer": " a foyer with a coat closet and a mudroom\n", "model_id": "BLIP2"}
+{"image": "10.png", "question_id": 22, "question": "Can you summarize this floorplan based on the aspects I was interested in, in a few sentences？", "answer": " The floor plan has 2 bedrooms, 2 bathrooms, a foyer with a coat closet", "model_id": "BLIP2"}
+{"image": "11.png", "question_id": 23, "question": "Can you read the text in this flowchart and explain the process in detail?", "answer": " a c program is a computer program that is used to perform a specific task\n", "model_id": "BLIP2"}
+{"image": "11.png", "question_id": 24, "question": "Which step in the flowchart is drawn with a diamond shape?", "answer": " if the input is false", "model_id": "BLIP2"}
+{"image": "12.png", "question_id": 25, "question": "Can you read the text in this flowchart and explain it to me?", "answer": " a process flow chart for a coffee machine\n", "model_id": "BLIP2"}
+{"image": "12.png", "question_id": 26, "question": "Can you transform this flowchart into a simple program in python?", "answer": " a coffee machine is a machine that brews coffee", "model_id": "BLIP2"}
+{"image": "13.png", "question_id": 27, "question": "How much is Wilkins earning?", "answer": " a salary of $ 30,000\n", "model_id": "BLIP2"}
+{"image": "13.png", "question_id": 28, "question": "Which department is the person who has the highest salary from?", "answer": " the finance department\n", "model_id": "BLIP2"}
+{"image": "13.png", "question_id": 29, "question": "This table is reporting monthly salary,can you calculate the yearly salary for each employee, and summarize it into a table and group them by department?", "answer": " yes\n", "model_id": "BLIP2"}
+{"image": "13.png", "question_id": 30, "question": "Given the yearly bonus is 10%,12% and 15%for Administration,Finance,Marketing, respectively. Please provide me with the bonus for Emily, Max and Gloria.", "answer": " Emily: 10%, Max: 12%, Gloria: 15%", "model_id": "BLIP2"}
+{"image": "14.png", "question_id": 31, "question": " Answer question I.1.a. Think step-by-step.", "answer": "The inverse square law is a law that states that for every action.", "model_id": "BLIP2"}
+{"image": "15.png", "question_id": 32, "question": " Can you write a template for this website in HTML? Replace the joke and punchline with a real one.", "answer": "无法回溯", "model_id": "BLIP2"}
+{"image": "16.png", "question_id": 33, "question": "How many championship rings did the player on the left win in his career?", "answer": "five", "model_id": "BLIP2"}
+{"image": "17.png", "question_id": 34, "question": "Describe this image. ", "answer": " another wild saturday night\n", "model_id": "BLIP2"}
+{"image": "17.png", "question_id": 35, "question": "Explain why this image is funny.", "answer": " a cat in a blue suit eating cookies", "model_id": "BLIP2"}
+{"image": "18.png", "question_id": 36, "question": "Describe this image as detailed aspossible.", "answer": "a city street with people walking and riding motorcycles", "model_id": "BLIP2"}
+{"image": "19.png", "question_id": 37, "question": "Describe this image as detailed aspossible.", "answer": "a concert with a large crowd of people", "model_id": "BLIP2"}
+{"image": "20.png", "question_id": 38, "question": "Explain why this meme is funny.", "answer": "a dog laying down on a wooden floor with the caption monday just monday", "model_id": "BLIP2"}
+{"image": "21.png", "question_id": 39, "question": "Describe the image ", "answer": " a wolf and a lamb\n", "model_id": "BLIP2"}
+{"image": "21.png", "question_id": 40, "question": "Can this happen in real world?", "answer": " yes", "model_id": "BLIP2"}
+{"image": "22.png", "question_id": 41, "question": "Describe the image ", "answer": " a cactus in a frozen lake\n", "model_id": "BLIP2"}
+{"image": "22.png", "question_id": 42, "question": "Is this image common in real world?", "answer": " no", "model_id": "BLIP2"}
+{"image": "23.png", "question_id": 43, "question": "Write brief HTML/JS to turn thismock-up into a colorful website,where the jokes are replaced by areal joke", "answer": "a joke website contents of date 1 punchline 1", "model_id": "BLIP2"}
+{"image": "24.png", "question_id": 44, "question": "What is the issue with my plant? Whatshould I do now?", "answer": "aphids are the most common pests on coffee plants", "model_id": "BLIP2"}
+{"image": "25.png", "question_id": 45, "question": "Why this happens and how to fix it?", "answer": "a faulty washing machine can cause a lot of water to leak out", "model_id": "BLIP2"}
+{"image": "26.png", "question_id": 46, "question": "Can you write me a beautiful poemabout this image?", "answer": "i love my dog he's my best friend", "model_id": "BLIP2"}
+{"image": "27.png", "question_id": 47, "question": "Can you write me a master rap songthat rhymes very well based on thisimage?", "answer": "i'm a rapping grandma", "model_id": "BLIP2"}
+{"image": "28.png", "question_id": 48, "question": "Can you write a story around thisimage for my child?", "answer": "a bear, a cat and a rabbit are having tea in the woods", "model_id": "BLIP2"}
+{"image": "29.png", "question_id": 49, "question": "I designed a character for my game asshown in the image. Can you write mea background story for him?", "answer": "he is a monk who has a brain that is a replica of his", "model_id": "BLIP2"}
+{"image": "30.png", "question_id": 50, "question": "We design new mugs shown in theimage. Can you help us write anadvertisement?", "answer": "mugs are a great way to show your love for cats", "model_id": "BLIP2"}
+{"image": "31.png", "question_id": 51, "question": "Help me write an advertisement forthis.", "answer": "a gold toucan table lamp", "model_id": "BLIP2"}
+{"image": "32.png", "question_id": 52, "question": "Who is the person in the image?", "answer": "elon musk", "model_id": "BLIP2"}
+{"image": "33.png", "question_id": 53, "question": "Describe this image. ", "answer": " a man is crossing the street in front of a bus\n", "model_id": "BLIP2"}
+{"image": "33.png", "question_id": 54, "question": "What do you think about the person'sbehavior?", "answer": " he is crossing the street in front of a bus", "model_id": "BLIP2"}
+{"image": "34.png", "question_id": 55, "question": "Describe about the image ", "answer": " a young boy stands on a ledge looking out over a city\n", "model_id": "BLIP2"}
+{"image": "34.png", "question_id": 56, "question": "Do you have anything to say to theyoung boy in the image?", "answer": " i would say that he should be careful", "model_id": "BLIP2"}
+{"image": "35.png", "question_id": 57, "question": "Can you give me a short introductionto this movie?", "answer": "the godfather is a gangster film directed by martin scorsese and", "model_id": "BLIP2"}
+{"image": "36.png", "question_id": 58, "question": "Can you give me a detailedintroduction to this painting, andalso the artist?", "answer": "the persistence of memory by salvador dali", "model_id": "BLIP2"}
+{"image": "37.png", "question_id": 59, "question": "How should I do to cook this?", "answer": "Add the pork, carrots, and onions to a large pot and cook over medium heat", "model_id": "BLIP2"}
+{"image": "38.png", "question_id": 60, "question": "Explain the advantages of this product.", "answer": "The audi e-tron quattro concept is a plug-in hybrid electric sports car that has a range of 310 miles and can accelerate from 0 to 60 mph in just 4 seconds.", "model_id": "BLIP2"}
+{"image": "39.png", "question_id": 61, "question": "Tell me something about the history of this place.", "answer": "The great wall of china was built in 221 bc by emperor qin shihuang to protect the emperor's capital from invaders from the north.", "model_id": "BLIP2"}
+{"image": "40.png", "question_id": 62, "question": "Is this photo unusual?", "answer": "Yes, it's a house that looks like it's upside down. ", "model_id": "BLIP2"}
+{"image": "40.png", "question_id": 63, "question": "How could someone get out of the house?", "answer": "It has a slide on the side of the\nhouse.", "model_id": "BLIP2"}
+{"image": "41.png", "question_id": 64, "question": "What are shown in the photo?", "answer": " A man and a chicken. ", "model_id": "BLIP2"}
+{"image": "41.png", "question_id": 65, "question": "What does the man feel and why?", "answer": " He is scared of the chicken because it is flying at him.", "model_id": "BLIP2"}
+{"image": "42.png", "question_id": 66, "question": " What are the ingredients I need to make this? ", "answer": " Pepperoni, mozzarella cheese, pizza\nsauce, olive oil, salt, pepper, basil.\n", "model_id": "BLIP2"}
+{"image": "42.png", "question_id": 67, "question": " What is the first step?", "answer": "Place the pizza dough on a baking\nsheet, brush with olive oil, sprinkle\nwith salt, pepper, and basil.", "model_id": "BLIP2"}
+{"image": "43.png", "question_id": 68, "question": " Which city is this? ", "answer": "Singapore.\n", "model_id": "BLIP2"}
+{"image": "43.png", "question_id": 69, "question": " Why do you think so?", "answer": "The city has a statue of a merlion.", "model_id": "BLIP2"}
+{"image": "44.png", "question_id": 70, "question": " What happened at the end of this movie?", "answer": "The titanic sank.\n", "model_id": "BLIP2"}
+{"image": "44.png", "question_id": 71, "question": " Did Leonardo Dicaprio's character survive?", "answer": "No, he drowned", "model_id": "BLIP2"}
+{"image": "45.png", "question_id": 72, "question": " What is in the photo? ", "answer": "A pizza that looks like a cat.\n", "model_id": "BLIP2"}
+{"image": "45.png", "question_id": 73, "question": " What is the nose made of?", "answer": "A slice of pepperoni.", "model_id": "BLIP2"}
+{"image": "46.png", "question_id": 74, "question": "Write a conversation between the two animals.", "answer": "cat: hey dog, can i ride on your back?\ndog: sure, why not?\ncat: i'm tired of walking in the snow.", "model_id": "BLIP2"}
+{"image": "47.png", "question_id": 75, "question": "Who is the man on the right?", "answer": " li zhiqiang\n", "model_id": "BLIP2"}
+{"image": "47.png", "question_id": 76, "question": "Who is the man on the left?", "answer": " li zhiqiang\n", "model_id": "BLIP2"}
+{"image": "47.png", "question_id": 77, "question": "Who is the taller man?", "answer": " li zhiqiang\n", "model_id": "BLIP2"}
+{"image": "47.png", "question_id": 78, "question": "Who is wearing red?", "answer": " li zhiqiang\n", "model_id": "BLIP2"}
+{"image": "47.png", "question_id": 79, "question": "Who is the man with the water bottle in his hand?", "answer": " li zhiqiang", "model_id": "BLIP2"}
+{"image": "48.png", "question_id": 80, "question": "Introduce the movie character in this picture.", "answer": "person", "model_id": "BLIP2"}
+{"image": "49.png", "question_id": 81, "question": "Analyze the tactical characteristics and lineups of both sides and predict who will win.", "answer": "argentina vs france", "model_id": "BLIP2"}
+{"image": "50.png", "question_id": 82, "question": "Tell me about this work of art", "answer": "the starry night", "model_id": "BLIP2"}
