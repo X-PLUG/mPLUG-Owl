@@ -75,6 +75,7 @@ options=" \
 	--num-workers 32 \
 	--init-method-std 0.01 \
     --flash-attn \
+    --use-lora \
 	--bf16"
 
 multimodal_options=" \
