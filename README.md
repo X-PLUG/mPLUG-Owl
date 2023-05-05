@@ -1,3 +1,7 @@
+<div align="center">
+<img src="assets/mPLUG LOGO.png" width="60%">
+</div>
+
 # mPLUG-Owl🦉: Modularization Empowers Large Language Models with Multimodality
 Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chaoya Jiang, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang, Fei Huang
 
@@ -15,8 +19,9 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 English | [简体中文](README_zh.md)
 <hr>
 
+<div align="center">
 <img src="http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/sample.gif"  width="60%">
-
+</div>
 
 ## Examples
 ![Training paradigm and model overview](assets/case_1.png "Training paradigm and model overview")
