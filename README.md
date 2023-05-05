@@ -7,7 +7,7 @@
 Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyang Wang, Anwen Hu, Pengcheng Shi, Yaya Shi, Chaoya Jiang, Chenliang Li, Yuanhong Xu, Hehong Chen, Junfeng Tian, Qian Qi, Ji Zhang, Fei Huang
 </div>
 <div align="center">
-**DAMO Academy, Alibaba Group**
+<strong>DAMO Academy, Alibaba Group</strong>
 </div>
 <div align="center">
 *Equal Contribution; † Corresponding Author
