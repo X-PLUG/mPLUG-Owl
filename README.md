@@ -30,7 +30,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FX-PLUG%2FmPLUG-Owl&count_bg=%23E97EBA&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
 -->
 <div align="center">
-<a href="#">English</a> | <a href="README_zh.md">简体中文</a>
+<a>English</a> | <a href="README_zh.md">简体中文</a>
 <hr>
 </div>
 
