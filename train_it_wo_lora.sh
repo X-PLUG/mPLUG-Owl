@@ -62,7 +62,7 @@ options=" \
 	--log-interval 1 \
 	--eval-iters ${eval_iter} \
 	--eval-interval ${eval_interval} \
-	--vocab-file /nas-alinlp/qinghao.yqh/ckpt/tokenizer.model \
+	--vocab-file tokenizer.model \
     --save-interval ${save_interval} \
 	--save ${SAVE_PATH} \
 	--tensorboard-dir ${TENSORBOARD_PATH} \

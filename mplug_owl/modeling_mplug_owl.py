@@ -921,9 +921,7 @@ class mPLUG_OwlModel(mPLUG_OwlPreTrainedModel):
         # if config.use_decoder_only_language_model:
         from llama.modeling_llama import LlamaForCausalLM
         language_model = LlamaForCausalLM(config=config.text_config)
-        # language_model = AutoModelForCausalLM.from_pretrained('/nas-alinlp/butyuhao/llama-7b-hf')
-        # else:
-        #     language_model = AutoModelForSeq2SeqLM.from_config(config.text_config)
+ 
         self.language_model = language_model
         self.vit_eval = self.config.vit_eval if hasattr(self.config,'vit_eval') else False
         # Initialize weights and apply final processing
@@ -982,9 +980,7 @@ class mPLUG_OwlForConditionalGeneration(mPLUG_OwlPreTrainedModel):
         # if config.use_decoder_only_language_model:
         from llama.modeling_llama import LlamaForCausalLM
         language_model = LlamaForCausalLM(config=config.text_config)
-        # language_model = AutoModelForCausalLM.from_pretrained('/nas-alinlp/butyuhao/llama-7b-hf')
-        # else:
-        #     language_model = AutoModelForSeq2SeqLM.from_config(config.text_config)
+
         self.language_model = language_model
         self.vit_eval = self.config.vit_eval if hasattr(self.config,'vit_eval') else False
         # Initialize weights and apply final processing
