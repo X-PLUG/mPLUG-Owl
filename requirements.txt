@@ -1,0 +1,16 @@
+transformers==4.28.1
+einops
+icecream
+flask
+ruamel.yaml
+uvicorn
+fastapi
+markdown2
+gradio
+sconf
+tensorboardX
+tensorboard
+h5py
+sentencepiece
+peft
+opencv-python
