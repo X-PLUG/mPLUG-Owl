@@ -109,7 +109,7 @@ conda activate mplug_owl
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
 ```
 
-2. 安装 Apex（在下一个版本中将移除Apex依赖）
+3. 安装 Apex（在下一个版本中将移除Apex依赖）
 
    Apex 需要从源代码手动编译，因为 mPLUG-Owl 依赖于其 cpp 扩展（MixedFusedLayerNorm）。
 
@@ -120,7 +120,7 @@ cd apex_22.01_pp
 TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 ```
 
-3. 安装其它依赖
+4. 安装其它依赖
 ```bash
 pip install -r requirements.txt
 ```
