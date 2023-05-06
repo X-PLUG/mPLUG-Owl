@@ -99,10 +99,17 @@ The evaluation dataset OwlEval can be found in ```./OwlEval```.
 ### Install Requirements
 1. Create conda environment
 ```bash
-conda create -n mplug_owl python==3.10
+conda create -n mplug_owl python=3.10
 conda activate mplug_owl
 ```
-2. Install apex (remove apex dependency in the next release)
+
+2. Install PyTorch
+
+```
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
+```
+
+3. Install apex (remove apex dependency in the next release)
 
    Apex needs to be manually compiled from source code, because mPLUG-Owl rely on its  cpp extension (MixedFusedLayerNorm).
 
@@ -113,7 +120,7 @@ cd apex_22.01_pp
 TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 ```
 
-3. Install other dependencies
+4. Install other dependencies
 ```bash
 pip install -r requirements.txt
 ```

@@ -99,9 +99,16 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 ### 安装依赖
 1. 创建conda环境
 ```bash
-conda create -n mplug_owl python==3.10
+conda create -n mplug_owl python=3.10
 conda activate mplug_owl
 ```
+
+2. 安装PyTorch
+
+```
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
+```
+
 2. 安装 Apex（在下一个版本中将移除Apex依赖）
 
    Apex 需要从源代码手动编译，因为 mPLUG-Owl 依赖于其 cpp 扩展（MixedFusedLayerNorm）。
