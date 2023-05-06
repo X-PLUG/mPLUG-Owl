@@ -20,6 +20,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
     <a href="http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/mPLUG_Owl_paper.pdf"><img src="assets/Paper-PDF-orange.svg"></a>
     <a href="https://arxiv.org/abs/2304.14178"><img src="assets/Paper-Arxiv-orange.svg" ></a>
     <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FX-PLUG%2FmPLUG-Owl&count_bg=%23E97EBA&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false" alt="Hits"></a>
+    <a href="https://twitter.com/xuhaiya2483846/status/1654640739010351106"><img src='assets/-twitter-blue.svg'></a>
 </div>
 <!--
 [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg)](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)
@@ -33,12 +34,10 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 <a>English</a> | <a href="README_zh.md">简体中文</a>
 <hr>
 </div>
-
 <!--
 English | [简体中文](README_zh.md)
 <hr>
 -->
-
 <div align="center">
 <img src="http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/sample.gif"  width="60%">
 </div>
@@ -49,21 +48,21 @@ English | [简体中文](README_zh.md)
 
 ## News
 
-* We released code and dataset for instruction tuning.
-* Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) is available. Thank Huggingface for providing us with free computing resources!
-* Online demo on HuggingFace now supports recieve video! Demo on ModelScope will support soon.
-* We upload our visually-related evaluation set **OwlEval**.
-* We provide an [online demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary) on modelscope for the public to experience.
-* We released code of mPLUG-Owl🦉 with its pre-trained and instruction tuning checkpoints.
+* 🔥 [05.05] We released code and dataset for instruction tuning.
+* 🔥 [05.05] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) is available. Thank Huggingface for providing us with free computing resources!
+* 🔥 [05.05] Online demo on HuggingFace now supports recieve video! Demo on ModelScope will support soon.
+* 🔥 [05.05] We upload our visually-related evaluation set **OwlEval**.
+* [04.26] We provide an [online demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary) on modelscope for the public to experience.
+* [04.26] We released code of mPLUG-Owl🦉 with its pre-trained and instruction tuning checkpoints.
 
 ## Spotlights
 * A new training paradigm with a **modularized design** for large multi-modal language models.
-* Learns visual knowledge while support **multi-turn conversation** consisting of different modalities.
+* Learns visual knowledge while support **multi-turn conversation** consisting of different modalities (images/videos/texts).
 * Observed abilities such as **multi-image correlation** and **scene text understanding**, **vision-based document comprehension**.
 * Release a visually-related instruction evaluation set **OwlEval**.
 * Our outstanding works on modularization:
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) and [mPLUG-2](https://arxiv.org/abs/2302.00402), were respectively accepted by ACL 2021, EMNLP 2022 and ICML 2023.
-  * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) is the first to achieve the human parity on VQA Challenge.
+  * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) is the first to achieve the human parity on [VQA Challenge](https://eval.ai/web/challenges/challenge-page/830/leaderboard/2278).
 * comming soon
   - [ ] Publish on Huggingface Hub
   - [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)
@@ -98,36 +97,26 @@ The evaluation dataset OwlEval can be found in ```./OwlEval```.
 
 ## Usage
 ### Install Requirements
-Core library dependency:
-* PyTorch=1.13.1 (1.13.1 is required by the peft)
-* transformers=4.28.1
-* [Apex](https://github.com/NVIDIA/apex)
-* einops
-* icecream
-* flask
-* ruamel.yaml
-* uvicorn 
-* fastapi
-* markdown2
-* gradio
-* sconf
-* tensorboardX
-* tensorboard
-* h5py
-* sentencepiece
-* peft
+1. Create conda environment
+```bash
+conda create -n mplug_owl python==3.10
+conda activate mplug_owl
+```
+2. Install apex (remove apex dependency in the next release)
 
-You can also refer to the exported Conda environment configuration file ```env.yaml``` to prepare your environments.
+   Apex needs to be manually compiled from source code, because mPLUG-Owl rely on its  cpp extension (MixedFusedLayerNorm).
 
-Apex needs to be manually compiled from source code, because mPLUG-Owl rely on the its cpp extension (MixedFusedLayerNorm).
-
-Considering that the code in the apex repository changes frequently, we have included a fixed copy of the apex in our repository, which can be installed using the following command:
-```shell
+   Considering that the code in the apex repository changes frequently, we have included a fixed copy of the apex in our repository, which can be installed using the following command:
+```bash
 cd apex_22.01_pp
+
 TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 ```
 
-We will remove the dependency on apex in the next version.
+3. Install other dependencies
+```bash
+pip install -r requirements.txt
+```
 
 ### Local Demo
 We provide a script to deploy a simple demo in your local machine.

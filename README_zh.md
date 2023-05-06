@@ -22,6 +22,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
     <a href="http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/mPLUG_Owl_paper.pdf"><img src="assets/Paper-PDF-orange.svg"></a>
     <a href="https://arxiv.org/abs/2304.14178"><img src="assets/Paper-Arxiv-orange.svg" ></a>
     <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FX-PLUG%2FmPLUG-Owl&count_bg=%23E97EBA&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false" alt="Hits"></a>
+    <a href="https://twitter.com/xuhaiya2483846/status/1654640739010351106"><img src='assets/-twitter-blue.svg'></a>
 </div>
 
 <div align="center">
@@ -50,21 +51,21 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 
 ## 最新更新
 
-* 我们发布了指令微调的代码。
-* 我们在[HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)上也搭建了Demo。感谢HuggingFace提供的免费算力！
-* HuggingFace上的Demo现在已经支持视频输入！ModelScope上的Demo也即将支持。
-* 我们公开了视觉相关指令的测评集**OwlEval**
-* 我们在Modelscope上提供了一个[在线Demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)供大家体验。
-* 我们开放了mPLUG-Owl🦉，以及推理代码和二阶段微调参数。
+* 🔥 [05.05] 我们发布了指令微调的代码。
+* 🔥 [05.05] 我们在[HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)上也搭建了Demo。感谢HuggingFace提供的免费算力！
+* 🔥 [05.05] HuggingFace上的Demo现在已经支持视频输入！ModelScope上的Demo也即将支持。
+* 🔥 [05.05] 我们公开了视觉相关指令的测评集**OwlEval**
+* [04.26] 我们在Modelscope上提供了一个[在线Demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)供大家体验。
+* [04.26] 我们开放了mPLUG-Owl🦉，以及推理代码和二阶段微调参数。
 
 ## 亮点特色
 * 一种面向多模态语言模型的**模块化**的训练范式。
-* 能学习与语言空间相适应的视觉知识，并支持在多模态场景下进行**多轮对话**。
+* 能学习与语言空间相适应的视觉知识，并支持在多模态场景(支持图片、视频、文本输入)下进行**多轮对话**。
 * 涌现**多图关系理解**，**场景文本理解**和**基于视觉的文档理解**等能力。
 * 提出了针对视觉相关指令的测评集**OwlEval**，用以评估多模态语言模型的对带有视觉信息上下文的理解能力。
 * 我们在模块化上的一些探索:
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 和 [mPLUG-2](https://arxiv.org/abs/2302.00402), 分别被ACL 2021, EMNLP 2022 and ICML 2023接收。
-  * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 首次在VQA上超越人类。
+  * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 首次在[VQA Challenge](https://eval.ai/web/challenges/challenge-page/830/leaderboard/2278)上超越人类。
 * 即将发布
   - [ ] 在HuggingFace Hub上发布。
   - [ ] 多语言支持（中文、日文等）。
@@ -92,38 +93,30 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 |Tokenizer model|N/A|[下载链接](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/tokenizer.model)|
 
 ## OwlEval
-我们所使用的评测集放在 ```./OwlEval``` 中。
+我们所使用的评测集放在 [```./OwlEval```](OwlEval/OwlEval.md) 中。
 
 ## 使用
 ### 安装依赖
-核心组件:
-* PyTorch=1.13.1
-* transformers=4.28.1
-* [Apex](https://github.com/NVIDIA/apex)
-* einops
-* icecream
-* flask
-* ruamel.yaml
-* uvicorn 
-* fastapi
-* markdown2
-* gradio
-* sconf
-* h5py
-* sentencepiece
-* peft
+1. 创建conda环境
+```bash
+conda create -n mplug_owl python==3.10
+conda activate mplug_owl
+```
+2. 安装 Apex（在下一个版本中将移除Apex依赖）
 
-你也可以根据我们导出的```env.yaml```来准备你的环境。
+   Apex 需要从源代码手动编译，因为 mPLUG-Owl 依赖于其 cpp 扩展（MixedFusedLayerNorm）。
 
-Apex需要手动从其源码进行编译，因为mPLUG-Owl依赖它的cpp extension (MixedFusedLayerNorm)。
-
-考虑到apex仓库的代码会频繁变动，我们在本仓库中内嵌了一个固定的apex源码（验证过了），你可以通过下面的命令进行安装：
-```shell
+   考虑到 Apex 代码经常更改，我们在代码库中包含了 Apex 的固定副本，可以使用以下命令进行安装：
+```bash
 cd apex_22.01_pp
+
 TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
 ```
 
-下个版本，我们会移除掉对apex的依赖。
+3. 安装其它依赖
+```bash
+pip install -r requirements.txt
+```
 
 ### 本地部署Demo
 我们提供了一个易扩展的脚本来一键部署本地Demo，你可以根据自己的需求进行修改。
