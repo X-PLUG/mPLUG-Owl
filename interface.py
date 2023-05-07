@@ -30,8 +30,8 @@ def get_model(checkpoint_path=None, tokenizer_path=None, peft_config=None, devic
     tokenizer.eod_id = tokenizer.eos_token_id
     img_processor = ImageProcessor()
 
-    model = model.to(device)
     model = model.to(dtype)
+    model = model.to(device)
     return model, tokenizer, img_processor
 
 
