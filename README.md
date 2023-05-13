@@ -16,6 +16,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 <div align="center">
     <a href="https://huggingface.co/spaces/MAGAer13/mPLUG-Owl"><img src="https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm-dark.svg" alt="Open in Spaces"></a>
     <a href="https://modelscope.cn/studios/damo/mPLUG-Owl/summary"><img src="assets/Demo-ModelScope-brightgreen.svg" alt="Demo ModelScope"></a>
+    <a href="https://replicate.com/joehoover/mplug-owl"><img src="https://replicate.com/replicate/mplug-owl/badge" alt="Run with Replicate"></a>
     <a href="https://github.com/X-PLUG/mPLUG-Owl/blob/main/LICENSE"><img src="assets/LICENSE-Apache%20License-blue.svg" alt="License"></a>
     <a href="http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/mPLUG_Owl_paper.pdf"><img src="assets/Paper-PDF-orange.svg"></a>
     <a href="https://arxiv.org/abs/2304.14178"><img src="assets/Paper-Arxiv-orange.svg" ></a>
@@ -48,6 +49,7 @@ English | [简体中文](README_zh.md)
 
 ## News
 
+* 🔥 [05.12] Online demo and API available on [Replicate](https://replicate.com/joehoover/mplug-owl)!
 * 🔥 [05.05] We released code and dataset for instruction tuning.
 * 🔥 [05.05] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) is available. Thank Huggingface for providing us with free computing resources!
 * 🔥 [05.05] Online demo on HuggingFace now supports recieve video! Demo on ModelScope will support soon.
@@ -75,6 +77,11 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
 
 ## Online Demo
+
+### Replicate
+
+[![Replicate](https://replicate.com/replicate/mplug-owl/badge)](https://replicate.com/joehoover/mplug-owl)
+
 ### ModelScope
 <a href="https://www.modelscope.cn/studios/damo/mPLUG-Owl/summary"><img src="https://modelscope.oss-cn-beijing.aliyuncs.com/modelscope.gif" width="250"/></a>
 
@@ -187,6 +194,11 @@ Execute the training script.
 ```
 bash train_it.sh
 ```
+
+### Usage with Replicate
+
+You can also now run the model and demo locally with [`cog`](https://github.com/replicate/cog), an open source ML tool maintained by Replicate. To get started, follow the instructions in this `cog` [fork](https://github.com/replicate/cog-mplug-owl) of `mPLUG-Owl`.
+
 ## Performance Comparison
 The comparison results of 50 single-turn responses (left) and 52 multi-turn responses (right) between mPLUG-Owl and baselines with manual evaluation metrics. A/B/C/D denote the rate of each response.
 ![Comparison Results](assets/mPLUG_Owl_compare_result_s&mturn.png)
