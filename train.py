@@ -119,7 +119,7 @@ if __name__ == '__main__':
         model.print_trainable_parameters()
     else:
         for name, param in model.named_parameters():
-            if 'vision_model' not in name:
+            if 'language_model' in name:
                 param.requires_grad = True
             else:
                 param.requires_grad = False
