@@ -48,12 +48,13 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## News
-
+* 🔥 [05.16] Online demo now based on video-text joint training!
+* 🔥 [05.16] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) now supports 8 bits！
 * 🔥 [05.12] Online demo and API available on [Replicate](https://replicate.com/joehoover/mplug-owl)!
-* 🔥 [05.05] We released code and dataset for instruction tuning.
-* 🔥 [05.05] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) is available. Thank Huggingface for providing us with free computing resources!
-* 🔥 [05.05] Online demo on HuggingFace now supports recieve video! Demo on ModelScope will support soon.
-* 🔥 [05.05] We upload our visually-related evaluation set **OwlEval**.
+*  [05.05] We released code and dataset for instruction tuning.
+*  [05.05] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) is available. Thank Huggingface for providing us with free computing resources!
+*  [05.05] Online demo on HuggingFace now supports recieve video! Demo on ModelScope will support soon.
+*  [05.05] We upload our visually-related evaluation set **OwlEval**.
 * [04.26] We provide an [online demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary) on modelscope for the public to experience.
 * [04.26] We released code of mPLUG-Owl🦉 with its pre-trained and instruction tuning checkpoints.
 
