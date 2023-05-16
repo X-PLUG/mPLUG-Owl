@@ -51,10 +51,13 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 
 ## 最新更新
 
-* 🔥 [05.05] 我们发布了指令微调的代码。
-* 🔥 [05.05] 我们在[HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)上也搭建了Demo。感谢HuggingFace提供的免费算力！
-* 🔥 [05.05] HuggingFace上的Demo现在已经支持视频输入！ModelScope上的Demo也即将支持。
-* 🔥 [05.05] 我们公开了视觉相关指令的测评集**OwlEval**
+* 🔥 [05.16] 我们基于视频图文数据联合训练了我们的模型，在线demo已经更新。更新后的checkpoint和代码会很快和大家见面！
+* 🔥 [05.16] [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) 上的在线demo现在支持8bit了！
+* 🔥 [05.12] 在线 demo 和 API 已经开放在[Replicate](https://replicate.com/joehoover/mplug-owl)!
+* [05.05] 我们发布了指令微调的代码。
+* [05.05] 我们在[HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)上也搭建了Demo。感谢HuggingFace提供的免费算力！
+* [05.05] HuggingFace上的Demo现在已经支持视频输入！ModelScope上的Demo也即将支持。
+* [05.05] 我们公开了视觉相关指令的测评集**OwlEval**
 * [04.26] 我们在Modelscope上提供了一个[在线Demo](https://modelscope.cn/studios/damo/mPLUG-Owl/summary)供大家体验。
 * [04.26] 我们开放了mPLUG-Owl🦉，以及推理代码和二阶段微调参数。
 
