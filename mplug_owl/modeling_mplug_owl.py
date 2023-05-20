@@ -663,16 +663,12 @@ class MplugOwlVisualAbstractorMLP(nn.Module):
         super().__init__()
         self.config = config
         in_features = config.hidden_size
-        hidden_features = config.intermediate_size
-        hidden_features = int(2 * hidden_features / 3)
-        multiple_of = 256
-        hidden_features = multiple_of * ((hidden_features + multiple_of - 1) // multiple_of)
         self.act = nn.SiLU()
 
-        self.w1 = nn.Linear(in_features, hidden_features)
-        self.w2 = nn.Linear(hidden_features, in_features)
-        self.w3 = nn.Linear(in_features, hidden_features)
-        self.ffn_ln = LayerNormFp32(hidden_features, eps=config.layer_norm_eps)
+        self.w1 = nn.Linear(in_features, config.intermediate_size)
+        self.w2 = nn.Linear(config.intermediate_size, in_features)
+        self.w3 = nn.Linear(in_features, config.intermediate_size)
+        self.ffn_ln = LayerNormFp32(config.intermediate_size, eps=config.layer_norm_eps)
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
         hidden_states = self.act(self.w1(hidden_states)) * self.w3(hidden_states)
