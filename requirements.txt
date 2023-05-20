@@ -14,3 +14,6 @@ h5py
 sentencepiece
 peft
 opencv-python
+decord
+chardet
+cchardet

@@ -48,7 +48,7 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## News
-
+* 🔥 [05.19] mPLUG-Owl is now *natively support Huggingface* style usage with Huggingface Trainer. Users can train their customized models with only *a single V100 GPU* now! We also refactorize the project code and much easier to use. The offline demo can be inferenced with only *a single 16GB T4 GPU* with *8 bits* support! 
 * 🔥 [05.16] We retrain our model based on video-image-text data. Online demo has been updated and new checkpoints and improved code are coming soon.
 * 🔥 [05.16] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) now supports 8 bits!
 * 🔥 [05.12] Online demo and API available on [Replicate](https://replicate.com/joehoover/mplug-owl)!
@@ -67,14 +67,18 @@ English | [简体中文](README_zh.md)
 * Our outstanding works on modularization:
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) and [mPLUG-2](https://arxiv.org/abs/2302.00402), were respectively accepted by ACL 2021, EMNLP 2022 and ICML 2023.
   * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) is the first to achieve the human parity on [VQA Challenge](https://eval.ai/web/challenges/challenge-page/830/leaderboard/2278).
-* comming soon
-  - [ ] Publish on Huggingface Hub
+* Comming soon
   - [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)
   - [ ] Instruction tuning on interleaved data (multiple images and videos).
+  - [x] Publish on Huggingface Hub / Model Hub
   - [x] Huggingface space demo.
   - [x] Instruction tuning code and pre-training code.
   - [x] A visually-related evaluation set **OwlEval** to comprehensively evaluate various models.
-  
+
+## Compatibility with v0 branch
+
+The code in the current main branch has been refactored in Huggingface style, and several issues with the model have been fixed. We have re-trained the models and released new checnpoints in Huggingface Hub. As a result, the old code and new checkpoints are incompatible. We have moved that code into the v0 branch.
+
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
 
@@ -94,12 +98,12 @@ English | [简体中文](README_zh.md)
 
 <!-- ![](assets/modelscope.png) -->
 
-## Checkpoints
+## Checkpoints on Huggingface Model Hub
 |Model|Phase|Download link|
 |-|-|-|
-|mPLUG-Owl 7B|Pre-training|[Download link](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/pretrained.pth)|
-|mPLUG-Owl 7B|Instruction tuning|[Download link](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/instruction_tuned.pth)|
-|Tokenizer model|N/A|[Download link](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/tokenizer.model)|
+|mPLUG-Owl 7B|Pre-training|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-pt)|
+|mPLUG-Owl 7B|Instruction tuning (LoRA)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b)|
+|mPLUG-Owl 7B|Instruction tuning (FT)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-ft)|
 
 ## OwlEval
 The evaluation dataset OwlEval can be found in ```./OwlEval```.
@@ -118,18 +122,7 @@ conda activate mplug_owl
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
 ```
 
-3. Install apex (remove apex dependency in the next release)
-
-   Apex needs to be manually compiled from source code, because mPLUG-Owl rely on its  cpp extension (MixedFusedLayerNorm).
-
-   Considering that the code in the apex repository changes frequently, we have included a fixed copy of the apex in our repository, which can be installed using the following command:
-```bash
-cd apex_22.01_pp
-
-TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
-```
-
-4. Install other dependencies
+3. Install other dependencies
 ```bash
 pip install -r requirements.txt
 ```
@@ -137,14 +130,13 @@ pip install -r requirements.txt
 ### Local Demo
 We provide a script to deploy a simple demo in your local machine.
 ```Bash
-python -m server_mplug.owl_demo --debug --port 6363 --checkpoint_path 'your checkpoint path' --tokenizer_path 'your tokenizer path'
+python -m serve.web_server --base-model 'your checkpoint directory' --bf16
 ```
 ### Inference
 Build model, toknizer and processor.
 ```Python
-from interface import get_model
-model, tokenizer, img_processor = get_model(
-        checkpoint_path='checkpoint path', tokenizer_path='tokenizer path')
+from pipeline.interface import get_model
+model, tokenizer, processor = get_model(pretrained_ckpt='your checkpoint directory', use_bf16='use bf16 or not')
 ```
 Prepare model inputs.
 ```Python
@@ -176,9 +168,9 @@ image_list = ['https://xxx.com/image_1.jpg', 'https://xxx.com/image_2.jpg']
 Get response.
 ```Python
 # generate kwargs (the same in transformers) can be passed in the do_generate()
-from interface import do_generate
-sentence = do_generate(prompts, image_list, model, tokenizer,
-                               img_processor, max_length=512, top_k=5, do_sample=True)
+from pipeline.interface import do_generate
+sentence = do_generate(prompts, image_list, model, tokenizer, processor, 
+                       use_bf16=True, max_length=512, top_k=5, do_sample=True)
 ```
 ### Instruction Tuning
 The training samples are stored in ```xxx.jsonl``` and orgnized in the following format:
@@ -188,13 +180,11 @@ The training samples are stored in ```xxx.jsonl``` and orgnized in the following
 ```
 The ```task_type``` can be in one of ```{'quora_chat_sft', 'sharegpt_chat_sft', 'llava_sft', 'gpt4instruct_sft'}```.
 
-Prepare your own train.jsonl and dev.jsonl and modify ```data_files``` in ```configs/instruction_tuning/v0.yaml```.
-
-Put downloaded ```pretrained.pth``` in the root folder.
+Prepare your own train.jsonl and dev.jsonl and modify ```data_files``` in ```configs/v0.yaml```.
 
 Execute the training script.
 ```
-bash train_it.sh
+PYTHONPATH=./ bash train_it.sh # If you want to finetune LLM, replace it with train_it_wo_lora.sh
 ```
 
 ### Usage with Replicate

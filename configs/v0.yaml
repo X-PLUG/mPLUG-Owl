@@ -1,0 +1,12 @@
+data_files: [
+    'sft_v0.1_train.jsonl',
+    'sft_v0.1_dev.jsonl'
+]
+
+train_processors: {
+  sft: {type: 'CaptionProcessor', image_size: 224, min_scale: 0.5, randaug: False}
+}
+
+valid_processors: {
+  sft: {type: 'DefaultProcessor', image_size: 224}
+}

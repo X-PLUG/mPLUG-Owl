@@ -50,7 +50,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## 最新更新
-
+* 🔥 [05.19] mPLUG-Owl现在*原生支持 Huggingface*的用法和支持Huggingface Trainer训练，仅需*1张32G的V100*即可开启训练! 我们重构了代码移除了Apex的依赖. 离线Demo支持*8比特*进行推理，仅需要1张*16GB T4*即可部署! 
 * 🔥 [05.16] 我们基于视频图文数据联合训练了我们的模型，在线demo已经更新。更新后的checkpoint和代码会很快和大家见面！
 * 🔥 [05.16] [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) 上的在线demo现在支持8bit了！
 * 🔥 [05.12] 在线 demo 和 API 已经开放在[Replicate](https://replicate.com/joehoover/mplug-owl)!
@@ -70,12 +70,15 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 和 [mPLUG-2](https://arxiv.org/abs/2302.00402), 分别被ACL 2021, EMNLP 2022 and ICML 2023接收。
   * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 首次在[VQA Challenge](https://eval.ai/web/challenges/challenge-page/830/leaderboard/2278)上超越人类。
 * 即将发布
-  - [ ] 在HuggingFace Hub上发布。
   - [ ] 多语言支持（中文、日文等）。
   - [ ] 在多图片/视频数据上训练的模型
+  - [X] 在HuggingFace Hub上发布。
   - [x] Huggingface 在线Demo
   - [x] 指令微调代码。
   - [x] 视觉相关指令的测评集**OwlEval**
+
+## 与v0版本的兼容性
+我们在main分支上将代码用huggingface的使用风格进行了完整重构，同时对模型中的一些错误进行了修复并重新训练，因此新的checkpoint和旧的代码是不兼容的。我们已经将旧的代码移到v0分支，你可以切换到v0分支以使用先前的checkpoints。
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
 
@@ -88,12 +91,12 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 
 [![Open in Spaces](https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-xl-dark.svg)](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)
 ![](assets/modelscope.png)
-## 预训练参数
+## 模型权重 Huggingface Model Hub
 |Model|Phase|Download link|
 |-|-|-|
-|mPLUG-Owl 7B|Pre-training|[下载链接](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/pretrained.pth)|
-|mPLUG-Owl 7B|Instruction tuning|[下载链接](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/instruction_tuned.pth)|
-|Tokenizer model|N/A|[下载链接](http://mm-chatgpt.oss-cn-zhangjiakou.aliyuncs.com/mplug_owl_demo/released_checkpoint/tokenizer.model)|
+|mPLUG-Owl 7B|Pre-training|[下载链接](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-pt)|
+|mPLUG-Owl 7B|Instruction tuning (LoRA)|[下载链接](https://huggingface.co/MAGAer13/mplug-owl-llama-7b)|
+|mPLUG-Owl 7B|Instruction tuning (FT)|[下载链接](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-ft)|
 
 ## OwlEval
 我们所使用的评测集放在 [```./OwlEval```](OwlEval/OwlEval.md) 中。
@@ -112,18 +115,7 @@ conda activate mplug_owl
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.7 -c pytorch -c nvidia
 ```
 
-3. 安装 Apex（在下一个版本中将移除Apex依赖）
-
-   Apex 需要从源代码手动编译，因为 mPLUG-Owl 依赖于其 cpp 扩展（MixedFusedLayerNorm）。
-
-   考虑到 Apex 代码经常更改，我们在代码库中包含了 Apex 的固定副本，可以使用以下命令进行安装：
-```bash
-cd apex_22.01_pp
-
-TORCH_CUDA_ARCH_LIST='5.2 6.0 6.1 7.0 7.5 8.0 8.6' pip install -v --disable-pip-version-check --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
-```
-
-4. 安装其它依赖
+3. 安装其它依赖
 ```bash
 pip install -r requirements.txt
 ```
@@ -131,16 +123,15 @@ pip install -r requirements.txt
 ### 本地部署Demo
 我们提供了一个易扩展的脚本来一键部署本地Demo，你可以根据自己的需求进行修改。
 ```Bash
-python -m server_mplug.owl_demo --debug --port 6363 --checkpoint_path 'your checkpoint path' --tokenizer_path 'your tokenizer path'
+python -m serve.web_server --base-model 'your checkpoint directory' --bf16
 ```
 ### 推理
 如果要实现自定义的推理，可以参考以下步骤。
 
-构建model, tokenizer, img_processor
+构建model, tokenizer, processor
 ```Python
-from interface import get_model
-model, tokenizer, img_processor = get_model(
-        checkpoint_path='checkpoint path', tokenizer_path='tokenizer path')
+from pipeline.interface import get_model
+model, tokenizer, processor = get_model(pretrained_ckpt='your checkpoint directory', use_bf16='use bf16 or not')
 ```
 准备模型输入
 ```Python
@@ -172,9 +163,9 @@ image_list = ['https://xxx.com/image_1.jpg', 'https://xxx.com/image_2.jpg']
 获取模型回复
 ```Python
 # generate kwargs (the same in transformers) can be passed in the do_generate()
-from interface import do_generate
-sentence = do_generate(prompts, image_list, model, tokenizer,
-                               img_processor, max_length=512, top_k=5, do_sample=True)
+from pipeline.interface import do_generate
+sentence = do_generate(prompts, image_list, model, tokenizer, processor, 
+                       use_bf16=True, max_length=512, top_k=5, do_sample=True)
 ```
 ### 指令微调
 训练样本存放在```xxx.jsonl``` 中，格式如下:
@@ -184,11 +175,11 @@ sentence = do_generate(prompts, image_list, model, tokenizer,
 ```
 其中 ```task_type``` 可以为 ```{'quora_chat_sft', 'sharegpt_chat_sft', 'llava_sft', 'gpt4instruct_sft'}```。
 
-准备好 train.jsonl 和 dev.jsonl 并修改 ```configs/instruction_tuning/v0.yaml``` 中的 ```data_files```.
+准备好 train.jsonl 和 dev.jsonl 并修改 ```configs/v0.yaml``` 中的 ```data_files```.
 
 执行训练脚本。
 ```
-bash train_it.sh
+PYTHONPATH=./ bash train_it.sh # 如果你想训练整个LLM，替换为 train_it_wo_lora.sh
 ```
 ## 性能比较
 我们展示了50个单轮对话（左）和52个多轮对话（右）在人工评估指标下，mPLUG-Owl和基线方法的比较结果。A/B/C/D表示评分人员对每个回复的评级。
