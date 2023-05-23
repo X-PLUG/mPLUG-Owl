@@ -21,6 +21,7 @@ class MplugOwlProcessor(ProcessorMixin):
         self.image_processor = image_processor
         self.tokenizer = tokenizer
         self.add_BOS = True
+        self.size = image_processor.size.get('shortest_edge',224)
 
     def __call__(self, text=None, images=None, return_tensors=None, **kwargs):
         if text is None and images is None:
@@ -38,6 +39,7 @@ class MplugOwlProcessor(ProcessorMixin):
             # encoding = self.tokenizer(text, return_tensors=return_tensors, **kwargs)
 
         if images is not None:
+            images = [_.resize((self.size,self.size),3) for _ in images]
             image_features = self.image_processor(images, return_tensors=return_tensors, **kwargs)
 
         if text is not None and images is not None:
