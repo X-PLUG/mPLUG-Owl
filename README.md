@@ -48,6 +48,7 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## News
+* 🔥 [05.27] We provide a **bilingual version** of mPLUG-Owl (supports Chinese and English) on [ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary).
 * 🔥 [05.24] **The Pokémon Arena:** Our model is selected into [Multi-Modal Arena](http://vlarena.opengvlab.com/). This is an interesting Multi-Modal Foundation Models competition arena that let you see different models reaction to the same question.
 * 🔥 [05.19] mPLUG-Owl is now *natively support Huggingface* style usage with Huggingface Trainer. Users can train their customized models with only *a single V100 GPU* now! We also refactorize the project code and much easier to use. The offline demo can be inferenced with only *a single 16GB T4 GPU* with *8 bits* support! 
 * 🔥 [05.16] We retrain our model based on video-image-text data. Online demo has been updated and new checkpoints and improved code are coming soon.
@@ -69,7 +70,7 @@ English | [简体中文](README_zh.md)
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) and [mPLUG-2](https://arxiv.org/abs/2302.00402), were respectively accepted by ACL 2021, EMNLP 2022 and ICML 2023.
   * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) is the first to achieve the human parity on [VQA Challenge](https://eval.ai/web/challenges/challenge-page/830/leaderboard/2278).
 * Comming soon
-  - [ ] Multi-lingustic support (e.g., Chinese, Japanese, Germen, French, etc.)
+  - [x] Multi-lingustic support.
   - [ ] Instruction tuning on interleaved data (multiple images and videos).
   - [x] Publish on Huggingface Hub / Model Hub
   - [x] Huggingface space demo.
