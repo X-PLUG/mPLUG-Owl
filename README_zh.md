@@ -50,6 +50,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## 最新更新
+* 🔥 [05.27] 我们现在在[ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary)上提供了一个多语言版本的mPLUG-Owl（现在支持中英双语）。
 * 🔥 [05.19] mPLUG-Owl现在*原生支持 Huggingface*的用法和支持Huggingface Trainer训练，仅需*1张32G的V100*即可开启训练! 我们重构了代码移除了Apex的依赖. 离线Demo支持*8比特*进行推理，仅需要1张*16GB T4*即可部署! 
 * 🔥 [05.16] 我们基于视频图文数据联合训练了我们的模型，在线demo已经更新。更新后的checkpoint和代码会很快和大家见面！
 * 🔥 [05.16] [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) 上的在线demo现在支持8bit了！
@@ -70,7 +71,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 和 [mPLUG-2](https://arxiv.org/abs/2302.00402), 分别被ACL 2021, EMNLP 2022 and ICML 2023接收。
   * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) 首次在[VQA Challenge](https://eval.ai/web/challenges/challenge-page/830/leaderboard/2278)上超越人类。
 * 即将发布
-  - [ ] 多语言支持（中文、日文等）。
+  - [x] 多语言支持。
   - [ ] 在多图片/视频数据上训练的模型
   - [X] 在HuggingFace Hub上发布。
   - [x] Huggingface 在线Demo
