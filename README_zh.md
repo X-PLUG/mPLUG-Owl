@@ -50,11 +50,12 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## 最新更新
+* 🔥 [05.30] **多语言版本**的权重目前已经发布在[Huggingface Model Hub](https://huggingface.co/MAGAer13/mplug-owl-bloomz-7b-multilingual).
 * 🔥 [05.27] 我们现在在[ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary)上提供了一个多语言版本的mPLUG-Owl，同时也提供了checkpoint。
 * 🔥 [05.19] mPLUG-Owl现在*原生支持 Huggingface*的用法和支持Huggingface Trainer训练，仅需*1张32G的V100*即可开启训练! 我们重构了代码移除了Apex的依赖. 离线Demo支持*8比特*进行推理，仅需要1张*16GB T4*即可部署! 
-* 🔥 [05.16] 我们基于视频图文数据联合训练了我们的模型，在线demo已经更新。更新后的checkpoint和代码会很快和大家见面！
-* 🔥 [05.16] [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) 上的在线demo现在支持8bit了！
-* 🔥 [05.12] 在线 demo 和 API 已经开放在[Replicate](https://replicate.com/joehoover/mplug-owl)!
+* [05.16] 我们基于视频图文数据联合训练了我们的模型，在线demo已经更新。更新后的checkpoint和代码会很快和大家见面！
+* [05.16] [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) 上的在线demo现在支持8bit了！
+* [05.12] 在线 demo 和 API 已经开放在[Replicate](https://replicate.com/joehoover/mplug-owl)!
 * [05.05] 我们发布了指令微调的代码。
 * [05.05] 我们在[HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl)上也搭建了Demo。感谢HuggingFace提供的免费算力！
 * [05.05] HuggingFace上的Demo现在已经支持视频输入！ModelScope上的Demo也即将支持。

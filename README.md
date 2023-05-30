@@ -48,11 +48,12 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## News
-* 🔥 [05.27] We provide a **multilingual version** of mPLUG-Owl (supports Chinese, English, Japanese, French, Korean and German) on [ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary) and corresponding checkpoint!
+* 🔥 [05.30] The **multilingual version** checkpoint is available on [Huggingface Model Hub](https://huggingface.co/MAGAer13/mplug-owl-bloomz-7b-multilingual) now.
+* 🔥 [05.27] We provide a **multilingual version** of mPLUG-Owl (supports Chinese, English, Japanese, French, Korean and German) on [ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary)!
 * 🔥 [05.24] **The Pokémon Arena:** Our model is selected into [Multi-Modal Arena](http://vlarena.opengvlab.com/). This is an interesting Multi-Modal Foundation Models competition arena that let you see different models reaction to the same question.
 * 🔥 [05.19] mPLUG-Owl is now *natively support Huggingface* style usage with Huggingface Trainer. Users can train their customized models with only *a single V100 GPU* now! We also refactorize the project code and much easier to use. The offline demo can be inferenced with only *a single 16GB T4 GPU* with *8 bits* support! 
-* 🔥 [05.16] We retrain our model based on video-image-text data. Online demo has been updated and new checkpoints and improved code are coming soon.
-* 🔥 [05.16] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) now supports 8 bits!
+* [05.16] We retrain our model based on video-image-text data. Online demo has been updated and new checkpoints and improved code are coming soon.
+* [05.16] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) now supports 8 bits!
 * [05.12] Online demo and API available on [Replicate](https://replicate.com/joehoover/mplug-owl)!
 * [05.05] We released code and dataset for instruction tuning.
 * [05.05] Online demo on [HuggingFace](https://huggingface.co/spaces/MAGAer13/mPLUG-Owl) is available. Thank Huggingface for providing us with free computing resources!
