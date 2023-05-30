@@ -20,8 +20,7 @@ import transformers
 from mplug_owl.processing_mplug_owl import MplugOwlProcessor, MplugOwlImageProcessor
 from mplug_owl.modeling_mplug_owl import MplugOwlForConditionalGeneration
 from mplug_owl.configuration_mplug_owl import MplugOwlConfig
-from mplug_owl.tokenization_mplug_owl import MplugOwlTokenizer
-from transformers import GenerationConfig
+from transformers import GenerationConfig, AutoTokenizer
 
 from .model_utils import post_process_output, Stream, Iteratorize
 
@@ -38,8 +37,8 @@ class mPLUG_Owl_Server:
         io=None
     ):
         self.log_dir = log_dir
-        self.image_processor= MplugOwlImageProcessor.from_pretrained(base_model)
-        self.tokenizer= MplugOwlTokenizer.from_pretrained(base_model)
+        self.image_processo = MplugOwlImageProcessor.from_pretrained(base_model)
+        self.tokenizer = AutoTokenizer.from_pretrained(base_model)
         self.processor = MplugOwlProcessor(self.image_processor, self.tokenizer)
         self.model = MplugOwlForConditionalGeneration.from_pretrained(
             base_model,
