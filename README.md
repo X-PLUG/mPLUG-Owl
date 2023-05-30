@@ -48,7 +48,7 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## News
-* 🔥 [05.27] We provide a **multilingual version** of mPLUG-Owl (supports Chinese, English, Japanese, French, Korean and German) on [ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary).
+* 🔥 [05.27] We provide a **multilingual version** of mPLUG-Owl (supports Chinese, English, Japanese, French, Korean and German) on [ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary) and corresponding checkpoint!
 * 🔥 [05.24] **The Pokémon Arena:** Our model is selected into [Multi-Modal Arena](http://vlarena.opengvlab.com/). This is an interesting Multi-Modal Foundation Models competition arena that let you see different models reaction to the same question.
 * 🔥 [05.19] mPLUG-Owl is now *natively support Huggingface* style usage with Huggingface Trainer. Users can train their customized models with only *a single V100 GPU* now! We also refactorize the project code and much easier to use. The offline demo can be inferenced with only *a single 16GB T4 GPU* with *8 bits* support! 
 * 🔥 [05.16] We retrain our model based on video-image-text data. Online demo has been updated and new checkpoints and improved code are coming soon.
@@ -106,6 +106,8 @@ The code in the current main branch has been refactored in Huggingface style, an
 |mPLUG-Owl 7B|Pre-training|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-pt)|
 |mPLUG-Owl 7B|Instruction tuning (LoRA)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b)|
 |mPLUG-Owl 7B|Instruction tuning (FT)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-ft)|
+|mPLUG-Owl 7B (Multilingual)|Instruction tuning (LoRA)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-bloomz-7b-multilingual)|
+
 
 ## OwlEval
 The evaluation dataset OwlEval can be found in ```./OwlEval```.
@@ -144,8 +146,8 @@ python -m serve.web_server --base-model MAGAer13/mplug-owl-llama-7b --bf16
 If you want to load the model (e.g. `MAGAer13/mplug-owl-llama-7b`) from the model hub on Huggingface or on local, you can use the following code snippet.
 ```Python
 # Load via Huggingface Style
+from transformers import AutoTokenizer
 from mplug_owl.modeling_mplug_owl import MplugOwlForConditionalGeneration
-from mplug_owl.tokenization_mplug_owl import MplugOwlTokenizer
 from mplug_owl.processing_mplug_owl import MplugOwlImageProcessor, MplugOwlProcessor
 
 pretrained_ckpt = 'MAGAer13/mplug-owl-llama-7b'
@@ -154,7 +156,7 @@ model = MplugOwlForConditionalGeneration.from_pretrained(
     torch_dtype=torch.bfloat16,
 )
 image_processor = MplugOwlImageProcessor.from_pretrained(pretrained_ckpt)
-tokenizer = MplugOwlTokenizer.from_pretrained(pretrained_ckpt)
+tokenizer = AutoTokenizer.from_pretrained(pretrained_ckpt)
 processor = MplugOwlProcessor(image_processor, tokenizer)
 ```
 

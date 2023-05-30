@@ -3,8 +3,8 @@ import numpy as np
 import requests
 from PIL import Image
 from mplug_owl.modeling_mplug_owl import MplugOwlForConditionalGeneration
-from mplug_owl.tokenization_mplug_owl import MplugOwlTokenizer
 from mplug_owl.processing_mplug_owl import MplugOwlImageProcessor, MplugOwlProcessor
+from transformers import AutoTokenizer
 
 
 def get_model(pretrained_ckpt, use_bf16=False):
@@ -24,7 +24,7 @@ def get_model(pretrained_ckpt, use_bf16=False):
         torch_dtype=torch.bfloat16 if use_bf16 else torch.half,
     )
     image_processor = MplugOwlImageProcessor.from_pretrained(pretrained_ckpt)
-    tokenizer = MplugOwlTokenizer.from_pretrained(pretrained_ckpt)
+    tokenizer = AutoTokenizer.from_pretrained(pretrained_ckpt)
     processor = MplugOwlProcessor(image_processor, tokenizer)
     return model, tokenizer, processor
 
@@ -36,7 +36,7 @@ def do_generate(prompts, image_list, model, tokenizer, processor, use_bf16=False
         prompts (List[str]): The prompt text
         image_list (List[str]): Paths of images
         model (MplugOwlForConditionalGeneration): MplugOwlForConditionalGeneration
-        tokenizer (MplugOwlTokenizer): MplugOwlTokenizer
+        tokenizer (AutoTokenizer): AutoTokenizer
         processor (MplugOwlProcessor): MplugOwlProcessor
         use_bf16 (bool, optional): Whether to use bfloat16. Defaults to False.
 
