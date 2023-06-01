@@ -37,7 +37,7 @@ class mPLUG_Owl_Server:
         io=None
     ):
         self.log_dir = log_dir
-        self.image_processo = MplugOwlImageProcessor.from_pretrained(base_model)
+        self.image_processor = MplugOwlImageProcessor.from_pretrained(base_model)
         self.tokenizer = AutoTokenizer.from_pretrained(base_model)
         self.processor = MplugOwlProcessor(self.image_processor, self.tokenizer)
         self.model = MplugOwlForConditionalGeneration.from_pretrained(
