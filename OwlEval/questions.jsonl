@@ -1,5 +1,5 @@
 {"image": "1.jpg", "question_id": 1, "question": "What is funny about this image? Describe it panel by panel.", "ability": "a,b,e", "category": ["single_turn"]}
-{"image": "2.jpg", "question_id": 2, "question": "Why would a person find this image funny?", "ability": "a,b,e", "category": ["]single_turn"]}
+{"image": "2.jpg", "question_id": 2, "question": "Why would a person find this image funny?", "ability": "a,b,e", "category": ["single_turn"]}
 {"image": "3.jpg", "question_id": 3, "question": "What is unusual about this image?", "ability": "a,b,e", "category": ["single_turn"]}
 {"image": "4.jpg", "question_id": 4, "question": "Is there text in the image? If so, can you read it and explain it to me?", "ability": "a,c", "category": ["single_turn", "multi_turn"]}
 {"image": "4.jpg", "question_id": 5, "question": "What is funny about it?", "ability": "a,b,c,e,f", "category": ["multi_turn"]}
