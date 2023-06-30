@@ -48,6 +48,7 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## News
+* 🔥 [06.30] The **video version** checkpoint is available on [Huggingface Model Hub](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-video) now.
 * 🔥 [05.30] The **multilingual version** checkpoint is available on [Huggingface Model Hub](https://huggingface.co/MAGAer13/mplug-owl-bloomz-7b-multilingual) now.
 * 🔥 [05.27] We provide a **multilingual version** of mPLUG-Owl (supports Chinese, English, Japanese, French, Korean and German) on [ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary)!
 * 🔥 [05.24] **The Pokémon Arena:** Our model is selected into [Multi-Modal Arena](http://vlarena.opengvlab.com/). This is an interesting Multi-Modal Foundation Models competition arena that let you see different models reaction to the same question.
@@ -71,8 +72,8 @@ English | [简体中文](README_zh.md)
   * [E2E-VLP](https://aclanthology.org/2021.acl-long.42/), [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) and [mPLUG-2](https://arxiv.org/abs/2302.00402), were respectively accepted by ACL 2021, EMNLP 2022 and ICML 2023.
   * [mPLUG](https://aclanthology.org/2022.emnlp-main.488/) is the first to achieve the human parity on [VQA Challenge](https://eval.ai/web/challenges/challenge-page/830/leaderboard/2278).
 * Comming soon
+  - [x] Video support. 
   - [x] Multi-lingustic support.
-  - [ ] Instruction tuning on interleaved data (multiple images and videos).
   - [x] Publish on Huggingface Hub / Model Hub
   - [x] Huggingface space demo.
   - [x] Instruction tuning code and pre-training code.
@@ -108,6 +109,7 @@ The code in the current main branch has been refactored in Huggingface style, an
 |mPLUG-Owl 7B|Instruction tuning (LoRA)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b)|
 |mPLUG-Owl 7B|Instruction tuning (FT)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-ft)|
 |mPLUG-Owl 7B (Multilingual)|Instruction tuning (LoRA)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-bloomz-7b-multilingual)|
+|mPLUG-Owl 7B (Video)|Instruction tuning (LoRA)|[Download link](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-video)|
 
 
 ## OwlEval
@@ -240,6 +242,48 @@ from pipeline.interface import do_generate
 sentence = do_generate(prompts, image_list, model, tokenizer, processor, 
                        use_bf16=True, max_length=512, top_k=5, do_sample=True)
 ```
+
+### Video Inference
+To perform video inference you can use the following code:
+```Python
+from mplug_owl_video.modeling_mplug_owl import MplugOwlForConditionalGeneration
+from transformers import AutoTokenizer
+from mplug_owl_video.processing_mplug_owl import MplugOwlImageProcessor, MplugOwlProcessor
+
+pretrained_ckpt = 'MAGAer13/mplug-owl-llama-7b-video'
+model = MplugOwlForConditionalGeneration.from_pretrained(
+    pretrained_ckpt,
+    torch_dtype=torch.bfloat16,
+)
+image_processor = MplugOwlImageProcessor.from_pretrained(pretrained_ckpt)
+tokenizer = AutoTokenizer.from_pretrained(pretrained_ckpt)
+processor = MplugOwlProcessor(image_processor, tokenizer)
+
+# We use a human/AI template to organize the context as a multi-turn conversation.
+# <|video|> denotes an video placehold.
+prompts = [
+'''The following is a conversation between a curious human and AI assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
+Human: <|video|>
+Human: What is the woman doing in the video?
+AI: ''']
+
+video_list = ['yoga.mp4']
+
+# generate kwargs (the same in transformers) can be passed in the do_generate()
+generate_kwargs = {
+    'do_sample': True,
+    'top_k': 5,
+    'max_length': 512
+}
+inputs = processor(text=prompts, videos=video_list, num_frames=4, return_tensors='pt')
+inputs = {k: v.bfloat16() if v.dtype == torch.float else v for k, v in inputs.items()}
+inputs = {k: v.to(model.device) for k, v in inputs.items()}
+with torch.no_grad():
+    res = model.generate(**inputs, **generate_kwargs)
+sentence = tokenizer.decode(res.tolist()[0], skip_special_tokens=True)
+print(sentence)
+```
+
 ### Instruction Tuning
 The training samples are stored in ```xxx.jsonl``` and orgnized in the following format:
 ```json
