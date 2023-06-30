@@ -259,6 +259,15 @@ PYTHONPATH=./ bash train_it.sh # If you want to finetune LLM, replace it with tr
 
 You can also now run the model and demo locally with [`cog`](https://github.com/replicate/cog), an open source ML tool maintained by Replicate. To get started, follow the instructions in this `cog` [fork](https://github.com/replicate/cog-mplug-owl) of `mPLUG-Owl`.
 
+## Deal with NaN issue
+We notice that some users are suffering from loss of NaN issue.
+
+There is a high possibility that the issue is caused by the prompt being too long and the part complement being cut off during preprocessing. As a result, the ```label_mask``` is all -100 and ```CrossEntropy``` will return a loss of NaN. There are three potential solutions to this issue:
+
+1. Prevent feeding input_ids that do not include any complement.
+2. Set the ```reduction='none'``` in the CrossEntropyLoss of Llama and reduce the loss with an epsilon value like ```outputs.loss = (outputs.loss * loss_mask.view(-1)).sum()/(loss_mask.sum()+1e-5)```.
+3. Simply set ```output.loss=output.loss*0``` if you get a loss of NaN.
+
 ## Performance Comparison
 The comparison results of 50 single-turn responses (left) and 52 multi-turn responses (right) between mPLUG-Owl and baselines with manual evaluation metrics. A/B/C/D denote the rate of each response.
 ![Comparison Results](assets/mPLUG_Owl_compare_result_s&mturn.png)
