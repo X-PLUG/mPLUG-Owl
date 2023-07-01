@@ -50,6 +50,7 @@ Qinghao Ye*, Haiyang Xu*, Guohai Xu*, Jiabo Ye, Ming Yan†, Yiyang Zhou, Junyan
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## 最新更新
+* 🔥 [06.30] 视频版的代码和权重已发布。Huggingface Model Hub近期将上传。
 * 🔥 [05.30] **多语言版本**的权重目前已经发布在[Huggingface Model Hub](https://huggingface.co/MAGAer13/mplug-owl-bloomz-7b-multilingual).
 * 🔥 [05.27] 我们现在在[ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary)上提供了一个多语言版本的mPLUG-Owl，同时也提供了checkpoint。
 * 🔥 [05.19] mPLUG-Owl现在*原生支持 Huggingface*的用法和支持Huggingface Trainer训练，仅需*1张32G的V100*即可开启训练! 我们重构了代码移除了Apex的依赖. 离线Demo支持*8比特*进行推理，仅需要1张*16GB T4*即可部署! 
