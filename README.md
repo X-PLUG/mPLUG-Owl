@@ -48,7 +48,7 @@ English | [简体中文](README_zh.md)
 ![Training paradigm and model overview](assets/case_2.png "Training paradigm and model overview")
 
 ## News
-* 🔥 [07.19] The **LLaMA-2** version of mPLUG-Owl will be *releasing soon*, which achieves new state-of-the-art performance on various benchmarks compared previous version. Please stay tuned!
+* 🔥 [07.19] The [**LLaMA-2**](https://ai.meta.com/llama/) version of mPLUG-Owl will be *releasing soon*, which achieves new state-of-the-art performance on various benchmarks compared previous version. Please stay tuned!
 * 🔥 [06.30] The **video version** code and checkpoint are released. The checkpoint will also be available on [Huggingface Model Hub](https://huggingface.co/MAGAer13/mplug-owl-llama-7b-video) soon.
 * 🔥 [05.30] The **multilingual version** checkpoint is available on [Huggingface Model Hub](https://huggingface.co/MAGAer13/mplug-owl-bloomz-7b-multilingual) now.
 * 🔥 [05.27] We provide a **multilingual version** of mPLUG-Owl (supports Chinese, English, Japanese, French, Korean and German) on [ModelScope](https://www.modelscope.cn/studios/damo/mPLUG-Owl-Bilingual/summary)!
