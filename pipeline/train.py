@@ -1,13 +1,11 @@
 import argparse
-from functools import partial
-
+import sys
 import torch
 import torch.distributed as dist
 from torch.utils.data import DataLoader, Dataset
 from torch.utils.data.distributed import DistributedSampler
 
 from sconf import Config
-from icecream import ic
 from peft import LoraConfig, get_peft_config, get_peft_model
 from transformers import Trainer
 from transformers.training_args import TrainingArguments
@@ -17,103 +15,106 @@ from pipeline.data_utils import train_valid_test_datasets_provider
 from pipeline.utils import batchify, set_args
 
 
-parser = argparse.ArgumentParser()
-# Model
-parser.add_argument('--pretrained-ckpt', type=str, default='MAGAer13/mplug-owl-llama-7b-pt',
-                    help='Path to the pretrained checkpoint.')
-parser.add_argument('--inference_mode', type=bool, default=False,
-                    help='The inference mode.')
-parser.add_argument('--seq-length', type=int, default=1024,
-                    help='Maximum sequence length to process.')
-parser.add_argument('--use-lora', action='store_true', help='LORA.')
-parser.add_argument('--lora-r', type=int, default=8,
-                    help='curvature.')
-parser.add_argument('--lora-alpha', type=int, default=32,
-                    help='The initialization coefficient of lora-alpha.')  
-parser.add_argument('--lora-dropout', type=int, default=0.05,
-                    help='The initialization coefficient of lora_dropout.')
-parser.add_argument('--bf16', action='store_true', default=True,
-                    help='Run model in bfloat16 mode.')
+def parse_arguments():
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser()
+    # Model
+    parser.add_argument('--pretrained-ckpt', type=str, default='MAGAer13/mplug-owl-llama-7b-pt',
+                        help='Path to the pretrained checkpoint.')
+    parser.add_argument('--inference_mode', type=bool, default=False,
+                        help='The inference mode.')
+    parser.add_argument('--seq-length', type=int, default=1024,
+                        help='Maximum sequence length to process.')
+    parser.add_argument('--use-lora', action='store_true', help='LORA.')
+    parser.add_argument('--lora-r', type=int, default=8,
+                        help='curvature.')
+    parser.add_argument('--lora-alpha', type=int, default=32,
+                        help='The initialization coefficient of lora-alpha.')
+    parser.add_argument('--lora-dropout', type=float, default=0.05,
+                        help='The initialization coefficient of lora_dropout.')
+    parser.add_argument('--bf16', action='store_true', default=True,
+                        help='Run model in bfloat16 mode.')
 
-# Data
-parser.add_argument('--mm-config', type=str, default=None, help='Multimodal Config.')
-parser.add_argument('--num-workers', type=int, default=8,
-                    help="Dataloader number of workers.")  
+    # Data
+    parser.add_argument('--mm-config', type=str, default=None, help='Multimodal Config.')
+    parser.add_argument('--num-workers', type=int, default=8,
+                        help="Dataloader number of workers.")
 
-# Training HyperParameters
-parser.add_argument('--train-epochs', type=int, default=3,
-                    help='Total number of epochs to train over all '
-                    'training runs.')
-parser.add_argument('--micro-batch-size', type=int, default=None,
-                    help='Batch size per model instance (local batch size). '
-                    'Global batch size is local batch size times data '
-                    'parallel size times number of micro batches.')
-parser.add_argument('--lr', type=float, default=None,
-                    help='Initial learning rate. Depending on decay style '
-                    'and initial warmup, the learing rate at each '
-                    'iteration would be different.')
-parser.add_argument('--min-lr', type=float, default=1e-6,
-                    help='Minumum value for learning rate. The scheduler'
-                    'clip values below this threshold.')
-parser.add_argument('--weight-decay', type=float, default=0.01,
-                    help='Weight decay coefficient for L2 regularization.')
-parser.add_argument('--gradient-accumulation-steps', type=int, default=8,
-                    help='The gradient accumulation steps.')
-parser.add_argument('--clip-grad', type=float, default=1.0,
-                    help='Gradient clipping based on global L2 norm.')
-parser.add_argument('--adam-beta1', type=float, default=0.9,
-                    help='First coefficient for computing running averages '
-                    'of gradient and its square')
-parser.add_argument('--adam-beta2', type=float, default=0.999,
-                    help='Second coefficient for computing running averages '
-                    'of gradient and its square')
-parser.add_argument('--adam-eps', type=float, default=1e-08,
-                    help='Term added to the denominator to improve'
-                    'numerical stability')
+    # Training HyperParameters
+    parser.add_argument('--train-epochs', type=int, default=3,
+                        help='Total number of epochs to train over all training runs.')
+    parser.add_argument('--micro-batch-size', type=int, default=None,
+                        help='Batch size per model instance (local batch size). '
+                             'Global batch size is local batch size times data '
+                             'parallel size times number of micro batches.')
+    parser.add_argument('--lr', type=float, default=None,
+                        help='Initial learning rate. Depending on decay style '
+                             'and initial warmup, the learning rate at each '
+                             'iteration would be different.')
+    parser.add_argument('--min-lr', type=float, default=1e-6,
+                        help='Minumum value for learning rate. The scheduler'
+                             'clip values below this threshold.')
+    parser.add_argument('--weight-decay', type=float, default=0.01,
+                        help='Weight decay coefficient for L2 regularization.')
+    parser.add_argument('--gradient-accumulation-steps', type=int, default=8,
+                        help='The gradient accumulation steps.')
+    parser.add_argument('--clip-grad', type=float, default=1.0,
+                        help='Gradient clipping based on global L2 norm.')
+    parser.add_argument('--adam-beta1', type=float, default=0.9,
+                        help='First coefficient for computing running averages '
+                             'of gradient and its square')
+    parser.add_argument('--adam-beta2', type=float, default=0.999,
+                        help='Second coefficient for computing running averages '
+                             'of gradient and its square')
+    parser.add_argument('--adam-eps', type=float, default=1e-08,
+                        help='Term added to the denominator to improve'
+                             'numerical stability')
 
-parser.add_argument('--num-warmup-steps', type=int, default=50,
-                    help='The number of warmup steps.')
-parser.add_argument('--num-training-steps', type=int, default=4236,
-                    help='The number of total training steps for lr scheduler.')
+    parser.add_argument('--num-warmup-steps', type=int, default=50,
+                        help='The number of warmup steps.')
+    parser.add_argument('--num-training-steps', type=int, default=4236,
+                        help='The number of total training steps for lr scheduler.')
 
-# Evaluation & Save
-parser.add_argument('--save-path', type=str, default=None,
-                    help='Output directory to save checkpoints to.')
-parser.add_argument('--save-interval', type=int, default=None,
-                    help='Number of iterations between checkpoint saves.')
-parser.add_argument('--eval-iters', type=int, default=100,
-                    help='Number of iterations to run for evaluation'
-                    'validation/test for.')
+    # Evaluation & Save
+    parser.add_argument('--save-path', type=str, default=None,
+                        help='Output directory to save checkpoints to.')
+    parser.add_argument('--save-interval', type=int, default=None,
+                        help='Number of iterations between checkpoint saves.')
+    parser.add_argument('--eval-iters', type=int, default=100,
+                        help='Number of iterations to run for evaluation validation/test for.')
 
-# Other
-parser.add_argument('--gradient-checkpointing', action='store_true',
-                    help='The gradient checkpointing.')
-parser.add_argument('--logging-nan-inf-filter', action='store_true',
-                    help='The logging nan inf filter.')
-parser.add_argument('--ddp-find-unused-parameters', action='store_true',
-                    help='unused parameters finding.')
-parser.add_argument('--do-train', action='store_true', default=True,
-                    help='Whether to do training.')  
-parser.add_argument('--local_rank', type=int, default=-1,
-                    help='Local rank')
+    # Other
+    parser.add_argument('--gradient-checkpointing', action='store_true',
+                        help='The gradient checkpointing.')
+    parser.add_argument('--logging-nan-inf-filter', action='store_true',
+                        help='The logging nan inf filter.')
+    parser.add_argument('--ddp-find-unused-parameters', action='store_true',
+                        help='unused parameters finding.')
+    parser.add_argument('--do-train', action='store_true', default=True,
+                        help='Whether to do training.')
+    parser.add_argument('--local_rank', type=int, default=-1,
+                        help='Local rank')
 
+    args, left_argv = parser.parse_known_args()
+    ic(left_argv)
+    return args
 
 
 class CustomTrainer(Trainer):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        
+
     def get_train_dataloader(self) -> DataLoader:
         dataset = self.train_dataset
         sampler = DistributedSampler(dataset)
         return torch.utils.data.DataLoader(
             dataset, batch_size=self._train_batch_size,
             sampler=sampler,
-            num_workers=self.args.dataloader_num_workers,
+            num_workers=self.args.num_workers,
             drop_last=True,
             pin_memory=True,
-            collate_fn=batchify)
-
+            collate_fn=batchify
+        )
 
     def get_eval_dataloader(self, eval_dataset: Dataset | None = None) -> DataLoader:
         dataset = self.eval_dataset
@@ -121,15 +122,15 @@ class CustomTrainer(Trainer):
         return torch.utils.data.DataLoader(
             dataset, batch_size=self._train_batch_size,
             sampler=sampler,
-            num_workers=self.args.dataloader_num_workers,
+            num_workers=self.args.num_workers,
             drop_last=True,
             pin_memory=True,
-            collate_fn=batchify)
+            collate_fn=batchify
+        )
 
 
 def main():
-    args, left_argv = parser.parse_known_args()  
-    ic(left_argv)
+    args = parse_arguments()
     config = Config(args.mm_config)
 
     set_args(args)
@@ -140,15 +141,16 @@ def main():
     )
     tokenizer = MplugOwlTokenizer.from_pretrained(args.pretrained_ckpt)
 
+    # Model configuration based on arguments
     if args.use_lora:
         for param in model.parameters():
             # freeze base model's layers
             param.requires_grad = False
         peft_config = LoraConfig(
-            target_modules=r'.*language_model.*\.(q_proj|v_proj)', 
-            inference_mode=args.inference_mode, 
-            r=args.lora_r, 
-            lora_alpha=args.lora_alpha, 
+            target_modules=r'.*language_model.*\.(q_proj|v_proj)',
+            inference_mode=args.inference_mode,
+            r=args.lora_r,
+            lora_alpha=args.lora_alpha,
             lora_dropout=args.lora_dropout
         )
         model = get_peft_model(model, peft_config)
@@ -174,7 +176,7 @@ def main():
     model.train()
 
     train_data, valid_data = train_valid_test_datasets_provider(
-        config.data_files, config=config, 
+        config.data_files, config=config,
         tokenizer=tokenizer, seq_length=args.seq_length
     )
 
@@ -199,7 +201,7 @@ def main():
             fp16=not args.bf16,
             gradient_accumulation_steps=args.gradient_accumulation_steps,
             gradient_checkpointing=args.gradient_checkpointing,
-            logging_steps=args.eval_iters//4,
+            logging_steps=args.eval_iters // 4,
             logging_nan_inf_filter=args.logging_nan_inf_filter,
             ddp_find_unused_parameters=args.ddp_find_unused_parameters,
         ),
@@ -211,6 +213,7 @@ def main():
     trainer.train()
 
     model.save_pretrained(args.save_path)
+
 
 if __name__ == '__main__':
     main()
