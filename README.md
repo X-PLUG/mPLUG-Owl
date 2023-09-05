@@ -83,7 +83,7 @@ English | [简体中文](README_zh.md)
 
 ## Compatibility with v0 branch
 
-The code in the current main branch has been refactored in Huggingface style, and several issues with the model have been fixed. We have re-trained the models and released new checnpoints in Huggingface Hub. As a result, the old code and new checkpoints are incompatible. We have moved that code into the v0 branch.
+The code in the current main branch has been refactored in Huggingface style, and several issues with the model have been fixed. We have re-trained the models and released new checkpoints in Huggingface Hub. As a result, the old code and new checkpoints are incompatible. We have moved that code into the v0 branch.
 
 
 ![Training paradigm and model overview](assets/model.png "Training paradigm and model overview")
