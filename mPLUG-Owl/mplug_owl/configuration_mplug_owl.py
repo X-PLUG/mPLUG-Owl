@@ -256,9 +256,9 @@ class MplugOwlConfig(PretrainedConfig):
         self.initializer_factor = 1.0
         self.initializer_range = 0.02
 
-        for attr in dir(self.text_config):
+        for attr, value in self.text_config.attribute_map.items():
             if not hasattr(self, attr):
-                setattr(self, attr, getattr(self.text_config, attr))
+                setattr(self, attr, value)
 
     @classmethod
     def from_vision_visual_abstractor_text_configs(
