@@ -38,136 +38,126 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 
 ## Performance
 ### General Vision-Language Benchmark Performance
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-</style>
-<table class="tg">
+<table>
 <thead>
   <tr>
-    <th class="tg-c3ow" rowspan="3"></th>
-    <th class="tg-0pky" rowspan="3">Method</th>
-    <th class="tg-c3ow" rowspan="3">#Params</th>
-    <th class="tg-c3ow" colspan="2">Image Caption</th>
-    <th class="tg-c3ow" colspan="3">General VQA</th>
-    <th class="tg-c3ow" colspan="3">General VQA (Zero-shot)</th>
+    <th rowspan="3"></th>
+    <th rowspan="3">Method</th>
+    <th rowspan="3">#Params</th>
+    <th colspan="2">Image Caption</th>
+    <th colspan="3">General VQA</th>
+    <th colspan="3">General VQA (Zero-shot)</th>
   </tr>
   <tr>
-    <th class="tg-c3ow" rowspan="2">COCO</th>
-    <th class="tg-c3ow" rowspan="2">Flickr30K (Zero-shot)</th>
-    <th class="tg-c3ow" rowspan="2">VQAv2</th>
-    <th class="tg-c3ow" rowspan="2">OKVQA</th>
-    <th class="tg-c3ow" rowspan="2">GQA</th>
-    <th class="tg-c3ow" rowspan="2">VizWizQA</th>
-    <th class="tg-c3ow" rowspan="2">TextVQA</th>
-    <th class="tg-c3ow" rowspan="2">SciQA (IMG)</th>
+    <th rowspan="2">COCO</th>
+    <th rowspan="2">Flickr30K (Zero-shot)</th>
+    <th rowspan="2">VQAv2</th>
+    <th rowspan="2">OKVQA</th>
+    <th rowspan="2">GQA</th>
+    <th rowspan="2">VizWizQA</th>
+    <th rowspan="2">TextVQA</th>
+    <th rowspan="2">SciQA (IMG)</th>
   </tr>
   <tr>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="tg-c3ow" rowspan="8">Generalists</td>
-    <td class="tg-0pky">BLIP-2</td>
-    <td class="tg-c3ow">8.2B</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">74.9</td>
-    <td class="tg-c3ow">65.0</td>
-    <td class="tg-c3ow">45.9</td>
-    <td class="tg-c3ow">41.0</td>
-    <td class="tg-c3ow">19.6</td>
-    <td class="tg-c3ow">42.5</td>
-    <td class="tg-c3ow">61.0</td>
+    <td rowspan="8">Generalists</td>
+    <td>BLIP-2</td>
+    <td>8.2B</td>
+    <td>-</td>
+    <td>74.9</td>
+    <td>65.0</td>
+    <td>45.9</td>
+    <td>41.0</td>
+    <td>19.6</td>
+    <td>42.5</td>
+    <td>61.0</td>
   </tr>
   <tr>
-    <td class="tg-0pky">InstructBLIP</td>
-    <td class="tg-c3ow">8.2B</td>
-    <td class="tg-c3ow">102.2</td>
-    <td class="tg-c3ow">82.4</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">49.2</td>
-    <td class="tg-c3ow">34.5</td>
-    <td class="tg-c3ow">50.1*</td>
-    <td class="tg-c3ow">60.5</td>
+    <td>InstructBLIP</td>
+    <td>8.2B</td>
+    <td>102.2</td>
+    <td>82.4</td>
+    <td>-</td>
+    <td>-</td>
+    <td>49.2</td>
+    <td>34.5</td>
+    <td>50.1*</td>
+    <td>60.5</td>
   </tr>
   <tr>
-    <td class="tg-0pky">Unified-IO-XL</td>
-    <td class="tg-c3ow">2.9B</td>
-    <td class="tg-c3ow">122.3</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">77.9</td>
-    <td class="tg-c3ow">54.0</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">57.4**</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
+    <td>Unified-IO-XL</td>
+    <td>2.9B</td>
+    <td>122.3</td>
+    <td>-</td>
+    <td>77.9</td>
+    <td>54.0</td>
+    <td>-</td>
+    <td>57.4**</td>
+    <td>-</td>
+    <td>-</td>
   </tr>
   <tr>
-    <td class="tg-0pky">PaLM-E-12B</td>
-    <td class="tg-c3ow">12B</td>
-    <td class="tg-c3ow">135.0</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">76.2</td>
-    <td class="tg-c3ow">55.5</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
+    <td>PaLM-E-12B</td>
+    <td>12B</td>
+    <td>135.0</td>
+    <td>-</td>
+    <td>76.2</td>
+    <td>55.5</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
   </tr>
   <tr>
-    <td class="tg-0pky">Shikra</td>
-    <td class="tg-c3ow">7.2B</td>
-    <td class="tg-c3ow">117.5</td>
-    <td class="tg-c3ow">73.9</td>
-    <td class="tg-c3ow">77.4</td>
-    <td class="tg-c3ow">47.2</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
+    <td>Shikra</td>
+    <td>7.2B</td>
+    <td>117.5</td>
+    <td>73.9</td>
+    <td>77.4</td>
+    <td>47.2</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
   </tr>
   <tr>
-    <td class="tg-0pky">LLaVA-1.5</td>
-    <td class="tg-c3ow">7.2B</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">78.5</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-7btt">62.0</td>
-    <td class="tg-c3ow">50.0</td>
-    <td class="tg-c3ow">46.1/58.2*</td>
-    <td class="tg-c3ow">66.8</td>
+    <td>LLaVA-1.5</td>
+    <td>7.2B</td>
+    <td>-</td>
+    <td>-</td>
+    <td>78.5</td>
+    <td>-</td>
+    <td>62.0</td>
+    <td>50.0</td>
+    <td>46.1/58.2*</td>
+    <td>66.8</td>
   </tr>
   <tr>
-    <td class="tg-0pky">Qwen-VL-Chat</td>
-    <td class="tg-c3ow">9.6B</td>
-    <td class="tg-c3ow">131.9</td>
-    <td class="tg-c3ow">81.0</td>
-    <td class="tg-c3ow">78.2</td>
-    <td class="tg-c3ow">56.6</td>
-    <td class="tg-c3ow">57.5</td>
-    <td class="tg-c3ow">38.9</td>
-    <td class="tg-c3ow">61.5**</td>
-    <td class="tg-c3ow">68.2</td>
+    <td>Qwen-VL-Chat</td>
+    <td>9.6B</td>
+    <td>131.9</td>
+    <td>81.0</td>
+    <td>78.2</td>
+    <td>56.6</td>
+    <td>57.5</td>
+    <td>38.9</td>
+    <td>61.5**</td>
+    <td>68.2</td>
   </tr>
   <tr>
-    <td class="tg-0pky"><span style="font-weight:bold">mPLUG-Owl2</span></td>
-    <td class="tg-c3ow">8.2B</td>
-    <td class="tg-7btt">137.3</td>
-    <td class="tg-7btt">85.1</td>
-    <td class="tg-7btt">79.4</td>
-    <td class="tg-7btt">57.7</td>
-    <td class="tg-c3ow">56.1</td>
-    <td class="tg-7btt">54.5</td>
-    <td class="tg-7btt">54.3/58.2*</td>
-    <td class="tg-7btt">68.7</td>
+    <td>mPLUG-Owl2</td>
+    <td>8.2B</td>
+    <td>137.3</td>
+    <td>85.1</td>
+    <td>79.4</td>
+    <td>57.7</td>
+    <td>56.1</td>
+    <td>54.5</td>
+    <td>54.3/58.2*</td>
+    <td>68.7</td>
   </tr>
 </tbody>
 </table>
@@ -180,197 +170,175 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 
 
 ### MLLM Benchmark (Zero-shot)
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+<table>
 <thead>
   <tr>
-    <th class="tg-fymr">Method</th>
-    <th class="tg-7btt">Vision Encoder</th>
-    <th class="tg-7btt">Language Model</th>
-    <th class="tg-7btt">MME</th>
-    <th class="tg-7btt">MMBench</th>
-    <th class="tg-7btt">MM-Vet</th>
-    <th class="tg-7btt">SEED-Bench</th>
-    <th class="tg-7btt">Q-Bench</th>
+    <th>Method</th>
+    <th>Vision Encoder</th>
+    <th>Language Model</th>
+    <th>MME</th>
+    <th>MMBench</th>
+    <th>MM-Vet</th>
+    <th>SEED-Bench</th>
+    <th>Q-Bench</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky">BLIP-2</td>
-    <td class="tg-c3ow">ViT-g (1.3B)</td>
-    <td class="tg-c3ow">Vicuna (7B)</td>
-    <td class="tg-c3ow">1293.84</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">22.4</td>
-    <td class="tg-c3ow">46.4</td>
-    <td class="tg-c3ow">-</td>
+    <td>BLIP-2</td>
+    <td>ViT-g (1.3B)</td>
+    <td>Vicuna (7B)</td>
+    <td>1293.84</td>
+    <td>-</td>
+    <td>22.4</td>
+    <td>46.4</td>
+    <td>-</td>
   </tr>
   <tr>
-    <td class="tg-0pky">MiniGPT-4</td>
-    <td class="tg-c3ow">ViT-g (1.3B)</td>
-    <td class="tg-c3ow">Vicuna (7B)</td>
-    <td class="tg-c3ow">581.67</td>
-    <td class="tg-c3ow">23.0</td>
-    <td class="tg-c3ow">22.1</td>
-    <td class="tg-c3ow">42.8</td>
-    <td class="tg-c3ow">-</td>
+    <td>MiniGPT-4</td>
+    <td>ViT-g (1.3B)</td>
+    <td>Vicuna (7B)</td>
+    <td>581.67</td>
+    <td>23.0</td>
+    <td>22.1</td>
+    <td>42.8</td>
+    <td>-</td>
   </tr>
   <tr>
-    <td class="tg-0pky">LLaVA</td>
-    <td class="tg-c3ow">ViT-L (0.3B)</td>
-    <td class="tg-c3ow">Vicuna (7B)</td>
-    <td class="tg-c3ow">502.82</td>
-    <td class="tg-c3ow">36.2</td>
-    <td class="tg-c3ow">28.1</td>
-    <td class="tg-c3ow">33.5</td>
-    <td class="tg-c3ow">54.7</td>
+    <td>LLaVA</td>
+    <td>ViT-L (0.3B)</td>
+    <td>Vicuna (7B)</td>
+    <td>502.82</td>
+    <td>36.2</td>
+    <td>28.1</td>
+    <td>33.5</td>
+    <td>54.7</td>
   </tr>
   <tr>
-    <td class="tg-0pky">mPLUG-Owl</td>
-    <td class="tg-c3ow">ViT-L (0.3B)</td>
-    <td class="tg-c3ow">LLaMA (7B)</td>
-    <td class="tg-c3ow">967.34</td>
-    <td class="tg-c3ow">46.6</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">34.0</td>
-    <td class="tg-c3ow">58.9</td>
+    <td>mPLUG-Owl</td>
+    <td>ViT-L (0.3B)</td>
+    <td>LLaMA (7B)</td>
+    <td>967.34</td>
+    <td>46.6</td>
+    <td>-</td>
+    <td>34.0</td>
+    <td>58.9</td>
   </tr>
   <tr>
-    <td class="tg-0pky">InstructBLIP</td>
-    <td class="tg-c3ow">ViT-g (1.3B)</td>
-    <td class="tg-c3ow">Vicuna (7B)</td>
-    <td class="tg-c3ow">1212.82</td>
-    <td class="tg-c3ow">36.0</td>
-    <td class="tg-c3ow">26.2</td>
-    <td class="tg-c3ow">53.4</td>
-    <td class="tg-c3ow">55.8</td>
+    <td>InstructBLIP</td>
+    <td>ViT-g (1.3B)</td>
+    <td>Vicuna (7B)</td>
+    <td>1212.82</td>
+    <td>36.0</td>
+    <td>26.2</td>
+    <td>53.4</td>
+    <td>55.8</td>
   </tr>
   <tr>
-    <td class="tg-0pky">LLaMA-Adapter-v2</td>
-    <td class="tg-c3ow">ViT-L (0.3B)</td>
-    <td class="tg-c3ow">LLaMA (7B)</td>
-    <td class="tg-c3ow">1328.40</td>
-    <td class="tg-c3ow">39.5</td>
-    <td class="tg-c3ow">31.4</td>
-    <td class="tg-c3ow">32.7</td>
-    <td class="tg-c3ow">58.1</td>
+    <td>LLaMA-Adapter-v2</td>
+    <td>ViT-L (0.3B)</td>
+    <td>LLaMA (7B)</td>
+    <td>1328.40</td>
+    <td>39.5</td>
+    <td>31.4</td>
+    <td>32.7</td>
+    <td>58.1</td>
   </tr>
   <tr>
-    <td class="tg-0pky">Otter</td>
-    <td class="tg-c3ow">ViT-L (0.3B)</td>
-    <td class="tg-c3ow">LLaMA (7B)</td>
-    <td class="tg-c3ow">1292.26</td>
-    <td class="tg-c3ow">48.3</td>
-    <td class="tg-c3ow">24.6</td>
-    <td class="tg-c3ow">32.9</td>
-    <td class="tg-c3ow">47.2</td>
+    <td>Otter</td>
+    <td>ViT-L (0.3B)</td>
+    <td>LLaMA (7B)</td>
+    <td>1292.26</td>
+    <td>48.3</td>
+    <td>24.6</td>
+    <td>32.9</td>
+    <td>47.2</td>
   </tr>
   <tr>
-    <td class="tg-0pky">Qwen-VL-Chat</td>
-    <td class="tg-c3ow">ViT-G (1.9B)</td>
-    <td class="tg-c3ow">Qwen (7B)</td>
-    <td class="tg-c3ow">1487.58</td>
-    <td class="tg-c3ow">60.6</td>
-    <td class="tg-c3ow">-</td>
-    <td class="tg-c3ow">58.2</td>
-    <td class="tg-c3ow">61.6</td>
+    <td>Qwen-VL-Chat</td>
+    <td>ViT-G (1.9B)</td>
+    <td>Qwen (7B)</td>
+    <td>1487.58</td>
+    <td>60.6</td>
+    <td>-</td>
+    <td>58.2</td>
+    <td>61.6</td>
   </tr>
   <tr>
-    <td class="tg-0pky">LLaVA-1.5</td>
-    <td class="tg-c3ow">ViT-L (0.3B)</td>
-    <td class="tg-c3ow">Vicuna (7B)</td>
-    <td class="tg-7btt">1510.70</td>
-    <td class="tg-c3ow">64.3</td>
-    <td class="tg-c3ow">30.5</td>
-    <td class="tg-7btt">58.6</td>
-    <td class="tg-c3ow">60.7</td>
+    <td>LLaVA-1.5</td>
+    <td>ViT-L (0.3B)</td>
+    <td>Vicuna (7B)</td>
+    <td>1510.70</td>
+    <td>64.3</td>
+    <td>30.5</td>
+    <td>58.6</td>
+    <td>60.7</td>
   </tr>
   <tr>
-    <td class="tg-fymr">mPLUG-Owl2</td>
-    <td class="tg-7btt">ViT-L (0.3B)</td>
-    <td class="tg-7btt">LLaMA (7B)</td>
-    <td class="tg-c3ow">1450.19</td>
-    <td class="tg-7btt">64.5</td>
-    <td class="tg-7btt">36.2</td>
-    <td class="tg-c3ow">57.8</td>
-    <td class="tg-7btt">62.9</td>
+    <td>mPLUG-Owl2</td>
+    <td>ViT-L (0.3B)</td>
+    <td>LLaMA (7B)</td>
+    <td>1450.19</td>
+    <td>64.5</td>
+    <td>36.2</td>
+    <td>57.8</td>
+    <td>62.9</td>
   </tr>
 </tbody>
 </table>
 
 ### Text Benchmarks
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
-  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-.tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
-</style>
-<table class="tg">
+<table>
 <thead>
   <tr>
-    <th class="tg-fymr"> Method</th>
-    <th class="tg-7btt">MMLU</th>
-    <th class="tg-7btt">BBH</th>
-    <th class="tg-7btt">AGIEval</th>
-    <th class="tg-7btt">ARC-c</th>
-    <th class="tg-7btt">ARC-e</th>
+    <th> Method</th>
+    <th>MMLU</th>
+    <th>BBH</th>
+    <th>AGIEval</th>
+    <th>ARC-c</th>
+    <th>ARC-e</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0pky">LLaMA-2</td>
-    <td class="tg-c3ow">46.8</td>
-    <td class="tg-c3ow">38.2</td>
-    <td class="tg-c3ow">21.8</td>
-    <td class="tg-c3ow">40.3</td>
-    <td class="tg-c3ow">56.1</td>
+    <td>LLaMA-2</td>
+    <td>46.8</td>
+    <td>38.2</td>
+    <td>21.8</td>
+    <td>40.3</td>
+    <td>56.1</td>
   </tr>
   <tr>
-    <td class="tg-0pky">WizardLM</td>
-    <td class="tg-c3ow">38.1</td>
-    <td class="tg-c3ow">34.7</td>
-    <td class="tg-c3ow">23.2</td>
-    <td class="tg-c3ow">47.5</td>
-    <td class="tg-c3ow">59.6</td>
+    <td>WizardLM</td>
+    <td>38.1</td>
+    <td>34.7</td>
+    <td>23.2</td>
+    <td>47.5</td>
+    <td>59.6</td>
   </tr>
   <tr>
-    <td class="tg-0pky">LLaMA-2-Chat</td>
-    <td class="tg-c3ow">46.2</td>
-    <td class="tg-c3ow">35.6</td>
-    <td class="tg-c3ow">28.5</td>
-    <td class="tg-c3ow">54.9</td>
-    <td class="tg-c3ow">71.6</td>
+    <td>LLaMA-2-Chat</td>
+    <td>46.2</td>
+    <td>35.6</td>
+    <td>28.5</td>
+    <td>54.9</td>
+    <td>71.6</td>
   </tr>
   <tr>
-    <td class="tg-0pky">Vicuna-v1.5</td>
-    <td class="tg-c3ow">51.1</td>
-    <td class="tg-c3ow">41.2</td>
-    <td class="tg-c3ow">21.2</td>
-    <td class="tg-c3ow">56.6</td>
-    <td class="tg-c3ow">72.8</td>
+    <td>Vicuna-v1.5</td>
+    <td>51.1</td>
+    <td>41.2</td>
+    <td>21.2</td>
+    <td>56.6</td>
+    <td>72.8</td>
   </tr>
   <tr>
-    <td class="tg-fymr">mPLUG-Owl2</td>
-    <td class="tg-7btt">53.4</td>
-    <td class="tg-7btt">45.0</td>
-    <td class="tg-7btt">32.7</td>
-    <td class="tg-7btt">65.8</td>
-    <td class="tg-7btt">79.9</td>
+    <td>mPLUG-Owl2</td>
+    <td>53.4</td>
+    <td>45.0</td>
+    <td>32.7</td>
+    <td>65.8</td>
+    <td>79.9</td>
   </tr>
 </tbody>
 </table>
