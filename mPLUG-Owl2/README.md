@@ -130,7 +130,7 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td>-</td>
     <td>78.5</td>
     <td>-</td>
-    <td>62.0</td>
+    <td><b>62.0</b></td>
     <td>50.0</td>
     <td>46.1/58.2*</td>
     <td>66.8</td>
@@ -148,16 +148,16 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td>68.2</td>
   </tr>
   <tr>
-    <td>mPLUG-Owl2</td>
-    <td>8.2B</td>
-    <td>137.3</td>
-    <td>85.1</td>
-    <td>79.4</td>
-    <td>57.7</td>
+    <td><b>mPLUG-Owl2</b></td>
+    <td><b>8.2B</b></td>
+    <td><b>137.3</b></td>
+    <td><b>85.1</b></td>
+    <td><b>79.4</b></td>
+    <td><b>57.7</b></td>
     <td>56.1</td>
-    <td>54.5</td>
-    <td>54.3/58.2*</td>
-    <td>68.7</td>
+    <td><b>54.5</b></td>
+    <td><b>54.3/58.2*</b></td>
+    <td><b>68.7</b></td>
   </tr>
 </tbody>
 </table>
@@ -268,21 +268,21 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td>LLaVA-1.5</td>
     <td>ViT-L (0.3B)</td>
     <td>Vicuna (7B)</td>
-    <td>1510.70</td>
+    <td><b>1510.70</b></td>
     <td>64.3</td>
     <td>30.5</td>
-    <td>58.6</td>
+    <td><b>58.6</b></td>
     <td>60.7</td>
   </tr>
   <tr>
-    <td>mPLUG-Owl2</td>
-    <td>ViT-L (0.3B)</td>
-    <td>LLaMA (7B)</td>
+    <td><b>mPLUG-Owl2</b></td>
+    <td><b>ViT-L (0.3B)</b></td>
+    <td><b>LLaMA (7B)</b></td>
     <td>1450.19</td>
-    <td>64.5</td>
-    <td>36.2</td>
+    <td><b>64.5</b></td>
+    <td><b>36.2</b></td>
     <td>57.8</td>
-    <td>62.9</td>
+    <td><b>62.9</b></td>
   </tr>
 </tbody>
 </table>
@@ -291,7 +291,7 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 <table>
 <thead>
   <tr>
-    <th> Method</th>
+    <th>Method</th>
     <th>MMLU</th>
     <th>BBH</th>
     <th>AGIEval</th>
@@ -333,12 +333,12 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td>72.8</td>
   </tr>
   <tr>
-    <td>mPLUG-Owl2</td>
-    <td>53.4</td>
-    <td>45.0</td>
-    <td>32.7</td>
-    <td>65.8</td>
-    <td>79.9</td>
+    <td><b>mPLUG-Owl2</b></td>
+    <td><b>53.4</b></td>
+    <td><b>45.0</b></td>
+    <td><b>32.7</b></td>
+    <td><b>65.8</b></td>
+    <td><b>79.9</b></td>
   </tr>
 </tbody>
 </table>
@@ -545,7 +545,7 @@ If you find mPLUG-Owl2 useful for your research and applications, please cite us
 @misc{ye2023mplugowl2,
       title={mPLUG-Owl2: Revolutionizing Multi-modal Large Language Model with Modality Collaboration}, 
       author={Ye, Qinghao and Xu, Haiyang and Ye, Jiabo and Yan, Ming and Hu, Anwen and Liu, Haowei and Qian, Qi and Zhang, Ji and Huang, Fei and Jingren, Zhou},
-      publisher={arXiv:2311.xxxxx},
+      publisher={arXiv:2311.04257},
       year={2023},
 }
 
