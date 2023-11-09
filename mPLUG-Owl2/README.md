@@ -544,9 +544,11 @@ If you find mPLUG-Owl2 useful for your research and applications, please cite us
 ```bibtex
 @misc{ye2023mplugowl2,
       title={mPLUG-Owl2: Revolutionizing Multi-modal Large Language Model with Modality Collaboration}, 
-      author={Ye, Qinghao and Xu, Haiyang and Ye, Jiabo and Yan, Ming and Hu, Anwen and Liu, Haowei and Qian, Qi and Zhang, Ji and Huang, Fei and Jingren, Zhou},
-      publisher={arXiv:2311.04257},
+      author={Qinghao Ye and Haiyang Xu and Jiabo Ye and Ming Yan and Anwen Hu and Haowei Liu and Qi Qian and Ji Zhang and Fei Huang and Jingren Zhou},
       year={2023},
+      eprint={2311.04257},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 
 @misc{ye2023mplugowl,
