@@ -118,7 +118,7 @@ if __name__ == '__main__':
 
     torch.cuda.set_device(int(os.getenv('LOCAL_RANK', 0)))
 
-    prompt = 'USER: <|image|>Provide a one-sentence caption for the provided image. ASSISTANT:'
+    prompt = 'USER: <|image|>Provide a one-sentence caption for the provided image. ASSISTANT: '
 
     model_path = args.checkpoint
     model_name = get_model_name_from_path(model_path)

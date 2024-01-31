@@ -352,9 +352,9 @@ class VQADataset(torch.utils.data.Dataset):
             for i, c in enumerate(choices):
                 choice_list.append('{}. {}'.format(multiple_choices[i], c))
             choice_txt = '\n'.join(choice_list)
-            prompt = f"USER: {question}\n{choice_txt}\nAnswer with the option’s letter from the given choices directly. ASSISTANT:"
+            prompt = f"USER: {question}\n{choice_txt}\nAnswer with the option’s letter from the given choices directly. ASSISTANT: "
         else:
-            prompt = f"USER: {question}\nAnswer the question using a single word or phrase. ASSISTANT:"
+            prompt = f"USER: {question}\nAnswer the question using a single word or phrase. ASSISTANT: "
         
         image_nums = re.findall(r'<image (\d+)>', prompt)
         images = []
