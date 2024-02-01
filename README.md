@@ -11,6 +11,9 @@
 
 - [**mPLUG-Owl2**](mPLUG-Owl2) (Arxiv 2023) - mPLUG-Owl2: Revolutionizing Multi-modal Large Language Model with Modality Collaboration
 
+## News and Updates
+* ```2024.02.01``` 🔥🔥🔥 We relaese **mPLUG-Owl2.1**, a Chinese enhanced version of mPLUG-Owl2. The weight is available at [HuggingFace](https://huggingface.co/Mizukiluke/mplug_owl_2_1).
+
 ## License
 
 The content of this project itself is licensed under [LICENSE](LICENSE).

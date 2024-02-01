@@ -33,6 +33,7 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 </div>
 
 ## News and Updates
+* ```2024.02.01``` 🔥🔥🔥 We relaese **mPLUG-Owl2.1**, a Chinese enhanced version of mPLUG-Owl2. The weight is available at [HuggingFace](https://huggingface.co/Mizukiluke/mplug_owl_2_1).
 * ```2023.11.08``` 🔥🔥🔥 We relaese **mPLUG-Owl2** on both modelscope and Huggingface. The paper will be released soon for more details about the model, including training details and model performance.
 
 
