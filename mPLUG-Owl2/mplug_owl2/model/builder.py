@@ -23,9 +23,9 @@ import torch
 from mplug_owl2.model import *
 from icecream import ic
 
+def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map="auto", device="cuda", **kwargs):
+    kwargs = {"device_map": device_map, "ignore_mismatched_sizes": False, **kwargs}
 
-def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map="auto", device="cuda"):
-    kwargs = {"device_map": device_map, "ignore_mismatched_sizes": False}
 
     if device != "cuda":
         kwargs['device_map'] = {"": device}
