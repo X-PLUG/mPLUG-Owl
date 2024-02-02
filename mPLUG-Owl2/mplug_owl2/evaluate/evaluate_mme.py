@@ -300,7 +300,7 @@ if __name__ == '__main__':
     tokenizer.padding_side = 'left'
     tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    prompt = 'USER: <|image|>{}\nAnswer the question using a single word or phrase. ASSISTANT:'
+    prompt = 'USER: <|image|>{}\nAnswer the question using a single word or phrase. ASSISTANT: '
 
     random.seed(args.seed)
     dataset = VQADataset(

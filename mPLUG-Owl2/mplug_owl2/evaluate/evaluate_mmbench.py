@@ -29,6 +29,21 @@ ds_collections = {
         'annotation': 'mmbench_test_20230712.jsonl',
         'max_new_tokens': 10,
     },
+    'mmbench_test_en_20231003': {
+        'raw_file': 'mmbench_test_en_20231003.tsv',
+        'annotation': 'mmbench_test_en_20231003.jsonl',
+        'max_new_tokens': 10,
+    },
+    'mmbench_test_cn_20231003': {
+        'raw_file': 'mmbench_test_cn_20231003.tsv',
+        'annotation': 'mmbench_test_cn_20231003.jsonl',
+        'max_new_tokens': 10,
+    },
+    'ccbench_1003': {
+        'raw_file': 'ccbench_1003.tsv',
+        'annotation': 'ccbench_1003.jsonl',
+        'max_new_tokens': 10,
+    },
 }
 
 multiple_choices = ['A', 'B', 'C', 'D', 'E']
@@ -45,7 +60,7 @@ def mapping_to_annotation(results, raw_annotation):
             "answer": row_df.get('answer', None),
             "options": [y for y in [row_df.get(x, None) for x in 'ABCD'] if isinstance(y, str)],
             "prediction": prediction,
-            "l2-category": row_df['l2-category']
+            "l2-category": row_df['l2-category'] if 'l2-category' in row_df else None 
         }
         outputs.append(output)
     return outputs
@@ -163,6 +178,7 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=0)
     args = parser.parse_args()
 
+
     torch.distributed.init_process_group(
         backend='nccl',
         world_size=int(os.getenv('WORLD_SIZE', '1')),
@@ -175,11 +191,12 @@ if __name__ == '__main__':
     model_path = args.checkpoint
     model_name = get_model_name_from_path(model_path)
     
-    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map="cuda", device="cuda")
+    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map={"":f"cuda:{os.getenv('LOCAL_RANK', '0')}"}, device="cuda")
     tokenizer.padding_side = 'left'
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+    if not hasattr(tokenizer, 'pad_token_id'):
+        tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    prompt = "USER: <|image|>{}\n{}\n{}\nAnswer with the option’s letter from the given choices directly. ASSISTANT:"
+    prompt = "USER: <|image|>{}\n{}\n{}\nAnswer with the option’s letter from the given choices directly. ASSISTANT: "
 
     random.seed(args.seed)
     dataset = VQADataset(
@@ -199,7 +216,7 @@ if __name__ == '__main__':
     )
 
     outputs = []
-    for _, (image_tensor, input_ids, attention_mask, indices) in tqdm(enumerate(dataloader)):
+    for _, (image_tensor, input_ids, attention_mask, indices) in enumerate(tqdm(dataloader)):
         pred = model.generate(
             input_ids=input_ids.cuda(),
             attention_mask=attention_mask.cuda(),

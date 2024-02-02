@@ -33,6 +33,7 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 </div>
 
 ## News and Updates
+* ```2024.02.01``` 🔥🔥🔥 We relaese **mPLUG-Owl2.1**, a Chinese enhanced version of mPLUG-Owl2. The weight is available at [HuggingFace](https://huggingface.co/Mizukiluke/mplug_owl_2_1).
 * ```2023.11.08``` 🔥🔥🔥 We relaese **mPLUG-Owl2** on both modelscope and Huggingface. The paper will be released soon for more details about the model, including training details and model performance.
 
 
@@ -347,13 +348,13 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 ### Huggingface Model Hub
 |Model|Phase|Download link|
 |-|-|-|
-|mPLUG-Owl2 | Pre-training|[Download link](https://huggingface.co/MAGAer13/mplug-owl2-llama2-7b)|
+|mPLUG-Owl2 | Pre-training|-|
 |mPLUG-Owl2 |Instruction tuning|[Download link](https://huggingface.co/MAGAer13/mplug-owl2-llama2-7b)|
 
 ### Modelscope Model Hub
 |Model|Phase|Download link|
 |-|-|-|
-|mPLUG-Owl2 | Pre-training|[Download link](https://www.modelscope.cn/models/damo/mPLUG-Owl2)|
+|mPLUG-Owl2 | Pre-training|-|
 |mPLUG-Owl2 | Instruction tuning|[Download link](https://www.modelscope.cn/models/damo/mPLUG-Owl2)|
 
 *Note:* There might be some variation of the performance due to the conversion of the checkpoint. We do our model's training on [Megatron framework](https://github.com/NVIDIA/Megatron-LM/) with Model Parallism (MP=2) by parallalizing vision transformer, visual abstractor, and LLM, which is more efficient than using DeepSpeed Zero-3.

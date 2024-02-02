@@ -10,7 +10,7 @@ from transformers.configuration_utils import PretrainedConfig
 from transformers.models.auto.modeling_auto import MODEL_FOR_CAUSAL_LM_MAPPING_NAMES
 from transformers.utils import logging
 from transformers.models.auto import CONFIG_MAPPING
-
+from .configuration_qwen import QWenConfig
 
 class LlamaConfig(PretrainedConfig):
     r"""
@@ -229,9 +229,13 @@ class MplugOwlVisionConfig(PretrainedConfig):
         initializer_range=0.02,
         initializer_factor=1.0,
         use_flash_attn=False,
+        use_post_layernorm=True,
+        use_cls_token=True,
         **kwargs,
     ):
         super().__init__(**kwargs)
+        self.use_cls_token=use_cls_token
+        self.use_post_layernorm=use_post_layernorm
         self.hidden_size = hidden_size
         self.intermediate_size = intermediate_size
         self.projection_dim = projection_dim
@@ -269,6 +273,8 @@ class MplugOwlVisualAbstractorConfig(PretrainedConfig):
 
     def __init__(
         self,
+        add_v2t_pos_emb=False,
+        use_cls_token=True,
         num_learnable_queries=64,
         hidden_size=1024,
         num_hidden_layers=6,
@@ -282,6 +288,8 @@ class MplugOwlVisualAbstractorConfig(PretrainedConfig):
         **kwargs,
     ):
         super().__init__(**kwargs)
+        self.use_cls_token=use_cls_token
+        self.add_v2t_pos_emb=add_v2t_pos_emb
         self.hidden_size = hidden_size
         self.num_learnable_queries = num_learnable_queries
         self.num_hidden_layers = num_hidden_layers
@@ -327,6 +335,17 @@ class MPLUGOwl2Config(LlamaConfig):
         super().__init__(
             **kwargs,
         )
+
+class MPLUGOwl2QwenConfig(QWenConfig):
+    model_type = "mplug_owl2_1"
+    def __init__(self, visual_config=None, **kwargs):
+        if visual_config is None:
+            self.visual_config = DEFAULT_VISUAL_CONFIG
+        else:
+            self.visual_config = visual_config
         
+        super().__init__(
+            **kwargs,
+        )     
 if __name__ == "__main__":
     print(MplugOwlVisionConfig().to_dict())
