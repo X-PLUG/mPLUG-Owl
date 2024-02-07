@@ -302,7 +302,7 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td><b>ViT-G (1.9B)</b></td>
     <td><b>Qwen (7B)</b></td>
     <td><b>1545</b></td>
-    <td><b>64.5</b></td>
+    <td><b>73.7</b></td>
     <td><b>39.0</b></td>
     <td><b>60.8</b></td>
     <td><b>64.7</b></td>
