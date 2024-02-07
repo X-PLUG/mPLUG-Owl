@@ -296,9 +296,10 @@ if __name__ == '__main__':
     model_path = args.checkpoint
     model_name = get_model_name_from_path(model_path)
     
-    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map="cuda", device="cuda")
+    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map={"":f"cuda:{os.getenv('LOCAL_RANK', '0')}"}, device="cuda")
     tokenizer.padding_side = 'left'
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+    if not hasattr(tokenizer, 'pad_token_id'):
+        tokenizer.pad_token_id = tokenizer.eos_token_id
 
     prompt = 'USER: <|image|>{}\nAnswer the question using a single word or phrase. ASSISTANT: '
 

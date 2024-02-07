@@ -154,12 +154,13 @@ if __name__ == '__main__':
     model_path = args.checkpoint
     model_name = get_model_name_from_path(model_path)
     
-    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map="cuda", device="cuda")
+    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map={"":f"cuda:{os.getenv('LOCAL_RANK', '0')}"}, device="cuda")
     tokenizer.padding_side = 'left'
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+    if not hasattr(tokenizer, 'pad_token_id'):
+        tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    prompt = 'USER: <|image|>{}\nAnswer the question using a single word or phrase. ASSISTANT: '
-
+    prompt = 'USER: <|image|>{} Answer the question using a single word or phrase. ASSISTANT: '
+    answer_processor = EvalAIAnswerProcessor()
     random.seed(args.seed)
     dataset = VQADataset(
         train=ds_collections[args.dataset]['train'],
@@ -181,13 +182,13 @@ if __name__ == '__main__':
 
     outputs = []
     for _, (question_ids, image_tensor, input_ids, attention_mask,
-            annotations) in tqdm(enumerate(dataloader)):
+            annotations) in enumerate(tqdm(dataloader)):
         pred = model.generate(
             input_ids=input_ids.cuda(),
             attention_mask=attention_mask.cuda(),
             images=image_tensor.to(dtype=model.dtype).cuda(),
             do_sample=False,
-            num_beams=5,
+            num_beams=1,
             max_new_tokens=ds_collections[args.dataset]['max_new_tokens'],
             min_new_tokens=1,
             length_penalty=1,
@@ -202,10 +203,15 @@ if __name__ == '__main__':
 
         for question_id, answer, annotation in zip(question_ids, answers,
                                                    annotations):
-            if args.dataset in ['vqav2_val', 'vqav2_testdev', 'okvqa_val', 'textvqa_val']:
+            if args.dataset in ['vqav2_val', 'okvqa_val', 'textvqa_val']:
                 outputs.append({
                     'question_id': question_id,
                     'answer': answer,
+                })
+            elif args.dataset == 'vqav2_testdev':
+                outputs.append({
+                    'question_id': question_id,
+                    'answer': answer_processor(answer),
                 })
             else:
                 raise NotImplementedError
@@ -223,7 +229,7 @@ if __name__ == '__main__':
         print(f"Evaluating {args.dataset} ...")
         time_prefix = time.strftime('%y%m%d%H%M%S', time.localtime())
         results_file = f'{args.dataset}_{time_prefix}_fs{args.few_shot}_s{args.seed}.json'
-        json.dump(merged_outputs, open(results_file, 'w'), ensure_ascii=False)
+        json.dump(merged_outputs, open(results_file, 'w', encoding='utf-8'), ensure_ascii=False)
 
         if ds_collections[args.dataset]['metric'] == 'vqa_score':
             vqa = VQA(ds_collections[args.dataset]['annotation'],

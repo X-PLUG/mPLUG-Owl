@@ -13,12 +13,13 @@ from PIL import Image
 import pandas as pd
 import re
 
-from datasets import load_dataset
 
 from mplug_owl2.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
 from mplug_owl2.conversation import conv_templates, SeparatorStyle
 from mplug_owl2.model.builder import load_pretrained_model
 from mplug_owl2.mm_utils import process_images, tokenizer_image_token, get_model_name_from_path, KeywordsStoppingCriteria
+from pathlib import Path
+from datasets import load_dataset, concatenate_datasets
 
 DOMAIN_CAT2SUB_CAT = {
   'Art and Design': ['Art', 'Art_Theory', 'Design', 'Music'],
@@ -317,11 +318,9 @@ def collate_fn(batches, tokenizer):
     for input_text in questions:
         input_ids.append(tokenizer_image_token(input_text, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').tolist())
     input_tokens_max_length = max([len(x) for x in input_ids])
-    pad_token_id = tokenizer.pad_token_id
-
-    input_ids = [([pad_token_id] * (input_tokens_max_length - len(_)) + _) for _ in input_ids] # pad in the left
+    input_ids = [([tokenizer.pad_token_id] * (input_tokens_max_length - len(_)) + _) for _ in input_ids] # pad in the left
     input_ids = torch.LongTensor(input_ids)
-    attention_mask = 1 - input_ids.eq(pad_token_id).long()
+    attention_mask = 1 - input_ids.eq(tokenizer.pad_token_id).long()
     
     image_tensor = torch.cat(image_tensor, dim=0)
     return image_tensor, input_ids, attention_mask, answers, ids, origin_questions, question_types, subfields, question_splits
@@ -332,7 +331,15 @@ class VQADataset(torch.utils.data.Dataset):
     def __init__(self, split, image_processor, eval_split='dev'):
         
         self.image_processor = image_processor
-        self.data = load_dataset("MMMU/MMMU", split)[eval_split]
+        # self.data = load_dataset("/nas-alinlp/qinghao.yqh/datasets/mm_chatgpt/Evaluation/MMMU/MMMU", split)[eval_split]
+        sub_dataset_list = []
+        for subject in CAT_SHORT2LONG.values():
+            sub_dataset = load_dataset(str(Path("/nas-alinlp/qinghao.yqh/datasets/mm_chatgpt/Evaluation/MMMU/MMMU", subject)), split=eval_split)
+            sub_dataset_list.append(sub_dataset)
+
+        # merge all dataset
+        self.data = concatenate_datasets(sub_dataset_list)
+
         self.question_split = split
 
     def __len__(self):
@@ -430,9 +437,10 @@ if __name__ == '__main__':
     model_path = args.checkpoint
     model_name = get_model_name_from_path(model_path)
     
-    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map="cuda", device="cuda")
+    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map={"":f"cuda:{os.getenv('LOCAL_RANK', '0')}"}, device="cuda")
+    if not hasattr(tokenizer, 'pad_token_id'):
+        tokenizer.pad_token_id = tokenizer.eos_token_id
     tokenizer.padding_side = 'left'
-    tokenizer.pad_token_id = tokenizer.eos_token_id
 
 
     random.seed(args.seed)

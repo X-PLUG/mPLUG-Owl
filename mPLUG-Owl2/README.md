@@ -64,7 +64,7 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 </thead>
 <tbody>
   <tr>
-    <td rowspan="8">Generalists</td>
+    <td rowspan="9">Generalists</td>
     <td>BLIP-2</td>
     <td>8.2B</td>
     <td>-</td>
@@ -151,14 +151,26 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
   <tr>
     <td><b>mPLUG-Owl2</b></td>
     <td><b>8.2B</b></td>
-    <td><b>137.3</b></td>
-    <td><b>85.1</b></td>
-    <td><b>79.4</b></td>
-    <td><b>57.7</b></td>
+    <td>137.3</td>
+    <td>85.1</td>
+    <td>79.4</td>
+    <td>57.7</td>
     <td>56.1</td>
-    <td><b>54.5</b></td>
-    <td><b>54.3/58.2*</b></td>
-    <td><b>68.7</b></td>
+    <td>54.5</td>
+    <td>54.3/58.2*</td>
+    <td>68.7</td>
+  </tr>
+  <tr>
+    <td><b>mPLUG-Owl2.1</b></td>
+    <td><b>9.8B</b></td>
+    <td><b>135.3</b></td>
+    <td><b>78.5</b></td>
+    <td><b>79.9</b></td>
+    <td><b>58.1</b></td>
+    <td>60.3</td>
+    <td><b>61.82</b></td>
+    <td><b>57.4</b></td>
+    <td><b>72.3</b></td>
   </tr>
 </tbody>
 </table>
@@ -269,10 +281,10 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td>LLaVA-1.5</td>
     <td>ViT-L (0.3B)</td>
     <td>Vicuna (7B)</td>
-    <td><b>1510.70</b></td>
-    <td>64.3</td>
+    <td>1510.70</td>
+    <td>73.7</td>
     <td>30.5</td>
-    <td><b>58.6</b></td>
+    <td>58.6</td>
     <td>60.7</td>
   </tr>
   <tr>
@@ -280,10 +292,20 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td><b>ViT-L (0.3B)</b></td>
     <td><b>LLaMA (7B)</b></td>
     <td>1450.19</td>
-    <td><b>64.5</b></td>
-    <td><b>36.2</b></td>
+    <td>64.5</td>
+    <td>36.2</td>
     <td>57.8</td>
-    <td><b>62.9</b></td>
+    <td>62.9</td>
+  </tr>
+  <tr>
+    <td><b>mPLUG-Owl2.1</b></td>
+    <td><b>ViT-G (1.9B)</b></td>
+    <td><b>Qwen (7B)</b></td>
+    <td><b>1545</b></td>
+    <td><b>64.5</b></td>
+    <td><b>39.0</b></td>
+    <td><b>60.8</b></td>
+    <td><b>64.7</b></td>
   </tr>
 </tbody>
 </table>
@@ -340,7 +362,6 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
     <td><b>32.7</b></td>
     <td><b>65.8</b></td>
     <td><b>79.9</b></td>
-  </tr>
 </tbody>
 </table>
 
@@ -350,6 +371,7 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
 |-|-|-|
 |mPLUG-Owl2 | Pre-training|-|
 |mPLUG-Owl2 |Instruction tuning|[Download link](https://huggingface.co/MAGAer13/mplug-owl2-llama2-7b)|
+|mPLUG-Owl2.1 |Instruction tuning|[Download link](https://huggingface.co/Mizukiluke/mplug_owl_2_1)|
 
 ### Modelscope Model Hub
 |Model|Phase|Download link|

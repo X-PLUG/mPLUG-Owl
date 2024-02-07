@@ -122,9 +122,10 @@ if __name__ == '__main__':
 
     model_path = args.checkpoint
     model_name = get_model_name_from_path(model_path)
-    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map="cuda", device="cuda")
+    tokenizer, model, image_processor, context_len = load_pretrained_model(model_path, None, model_name, load_8bit=False, load_4bit=False, device_map={"":f"cuda:{os.getenv('LOCAL_RANK', '0')}"}, device="cuda")
     tokenizer.padding_side = 'left'
-    tokenizer.pad_token_id = tokenizer.eos_token_id
+    if not hasattr(tokenizer, 'pad_token_id'):
+        tokenizer.pad_token_id = tokenizer.eos_token_id
 
     random.seed(args.seed)
     dataset = CaptionDataset(
@@ -146,14 +147,14 @@ if __name__ == '__main__':
 
     image_ids = []
     captions = []
-    for _, (ids, image_tensor, input_ids, attention_mask) in tqdm(enumerate(coco_karpathy_test_loader)):
+    for _, (ids, image_tensor, input_ids, attention_mask) in enumerate(tqdm(coco_karpathy_test_loader)):
         pred = model.generate(
             input_ids=input_ids.cuda(),
             attention_mask=attention_mask.cuda(),
             images=image_tensor.to(dtype=model.dtype).cuda(),
             do_sample=False,
             num_beams=1,
-            max_new_tokens=30,
+            max_new_tokens=60,
             min_new_tokens=8,
             length_penalty=0,
             num_return_sequences=1,
@@ -164,7 +165,7 @@ if __name__ == '__main__':
             tokenizer.decode(_[input_ids.size(1):].cpu(),
                              skip_special_tokens=True).strip() for _ in pred
         ])
-        print(captions)
+        print(captions[-len(pred):])
 
     torch.distributed.barrier()
 

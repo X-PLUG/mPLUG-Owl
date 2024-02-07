@@ -660,7 +660,6 @@ class MplugOwlVisualAbstractorAttention(nn.Module):
         output_attentions: Optional[bool] = False,
     ) -> Tuple[torch.Tensor]:
         # HACK we apply norm on q and k
-        print(hidden_states.shape)
         hidden_states = self.norm1(hidden_states)
         encoder_hidden_states = self.normk(encoder_hidden_states)
         encoder_hidden_states = torch.cat([hidden_states, encoder_hidden_states], dim=1)
