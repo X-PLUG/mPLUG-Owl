@@ -163,8 +163,8 @@ Qinghao Ye*, Haiyang Xu*, Jiabo Ye*, Ming Yan†, Anwen Hu, Haowei Liu, Qian Qi,
   <tr>
     <td><b>mPLUG-Owl2.1</b></td>
     <td><b>9.8B</b></td>
-    <td><b>135.3</b></td>
-    <td><b>78.5</b></td>
+    <td>135.3</td>
+    <td>78.5</td>
     <td><b>79.9</b></td>
     <td><b>58.1</b></td>
     <td>60.3</td>
