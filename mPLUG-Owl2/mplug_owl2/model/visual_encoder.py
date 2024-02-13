@@ -102,7 +102,7 @@ class MplugOwlVisionEmbeddings(nn.Module):
             bias=False,
         )
 
-        if self.cls_token:
+        if self.cls_token is not None:
             self.num_patches = (self.image_size // self.patch_size) ** 2
             self.position_embedding = nn.Parameter(torch.randn(1, self.num_patches + 1, self.hidden_size))
         else:
