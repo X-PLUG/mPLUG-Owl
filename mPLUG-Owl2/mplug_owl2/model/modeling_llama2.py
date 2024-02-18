@@ -1,3 +1,4 @@
+import inspect
 import math
 import warnings
 from functools import partial
@@ -18,7 +19,17 @@ from .configuration_mplug_owl2 import LlamaConfig
 from .multiway import MultiwayNetwork
 
     
-
+def repeat_kv(hidden_states: torch.Tensor, n_rep: int) -> torch.Tensor:
+    """
+    This is the equivalent of torch.repeat_interleave(x, dim=1, repeats=n_rep). The hidden states go from (batch,
+    num_key_value_heads, seqlen, head_dim) to (batch, num_attention_heads, seqlen, head_dim)
+    """
+    batch, num_key_value_heads, slen, head_dim = hidden_states.shape
+    if n_rep == 1:
+        return hidden_states
+    hidden_states = hidden_states[:, :, None, :, :].expand(batch, num_key_value_heads, n_rep, slen, head_dim)
+    return hidden_states.reshape(batch, num_key_value_heads * n_rep, slen, head_dim)
+    
 class LlamaAttention(nn.Module):
     """Multi-headed attention from 'Attention Is All You Need' paper"""
 
@@ -158,7 +169,10 @@ class LlamaDecoderLayer(nn.Module):
         super().__init__()
         self.hidden_size = config.hidden_size
         self.self_attn = LlamaAttention(config=config)
-        self.mlp = LlamaMLP(config)
+        mlp_kwargs = {'config':config,"hidden_size":config.hidden_size,"intermediate_size":config.intermediate_size,"hidden_act":config.hidden_act}
+        valid_params = set(inspect.signature(LlamaMLP.__init__).parameters.keys()) - {'self'}
+        mlp_kwargs = {k: v for k, v in mlp_kwargs.items() if k in valid_params}
+        self.mlp = LlamaMLP(**mlp_kwargs)
         self.input_layernorm = MultiwayNetwork(module_provider=partial(
             LlamaRMSNorm, hidden_size=config.hidden_size, eps=config.rms_norm_eps
         ))

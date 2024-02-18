@@ -114,15 +114,13 @@ class MplugOwlVisionEmbeddings(nn.Module):
         batch_size = pixel_values.size(0)
         image_embeds = self.patch_embed(pixel_values)
         image_embeds = image_embeds.flatten(2).transpose(1, 2)
-        if self.cls_token:
+        if self.cls_token is not None:
             class_embeds = self.cls_token.expand(batch_size, 1, -1).to(image_embeds.dtype)
             embeddings = torch.cat([class_embeds, image_embeds], dim=1)
+            embeddings = embeddings + self.position_embedding[:, : embeddings.size(1)].to(image_embeds.dtype)
         else:
             embeddings = image_embeds
-        if embeddings.shape[1] != self.num_patches:
             embeddings = embeddings + get_abs_pos(self.position_embedding,embeddings.size(1))
-        else:
-            embeddings = embeddings + self.position_embedding[:, : embeddings.size(1)].to(image_embeds.dtype)
         embeddings = self.pre_layernorm(embeddings)
         return embeddings
 
