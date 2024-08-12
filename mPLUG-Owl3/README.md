@@ -47,6 +47,7 @@ mPLUG-Owl3 can watch long videos such as movies and remember its details.
 ![Long video understanding](./assets/movie.png)
 ## TODO List
 - [ ] Evaluation with huggingface model.
+- [ ] Training data releasing. All training data are sourced from the public datasets. We are preparing to release a compact version to facilitate easy training. Prior to this release, you have the option to manually organize the training data.
 - [ ] Training pipeline.
 
 ## Performance
