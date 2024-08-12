@@ -11,8 +11,11 @@
 
 - [**mPLUG-Owl2**](mPLUG-Owl2) (Arxiv 2023) - mPLUG-Owl2: Revolutionizing Multi-modal Large Language Model with Modality Collaboration
 
+- [**mPLUG-Owl3**](mPLUG-Owl3) (Arxiv 2024) - mPLUG-Owl3: Towards Long Image-Sequence Understanding in Multi-Modal Large Language Models
+
 ## News and Updates
-* ```2024.04.05``` 🔥🔥🔥 **mPLUG-Owl2** is accepted by CVPR 2024 as a Highlight.
+* ```2024.08.12``` 🔥🔥🔥 We release **mPLUG-Owl3**. The source code and weights are avaliable at [HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728).
+* ```2024.04.05``` **mPLUG-Owl2** is accepted by CVPR 2024 as a Highlight.
 * ```2024.02.01``` We relaese **mPLUG-Owl2.1**, a Chinese enhanced version of mPLUG-Owl2. The weight is available at [HuggingFace](https://huggingface.co/Mizukiluke/mplug_owl_2_1).
 
 ## License
