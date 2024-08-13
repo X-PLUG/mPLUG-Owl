@@ -72,6 +72,7 @@ Installing the dependencies
 pip install -r requirements.txt
 ```
 
+Execute the demo.
 ```
 python gradio_demo.py
 ```
