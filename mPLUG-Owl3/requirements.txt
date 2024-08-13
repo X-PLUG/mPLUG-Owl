@@ -1,0 +1,23 @@
+--extra-index-url https://mirrors.cloud.tencent.com/pypi/simple/
+icecream
+markdown2
+modelscope
+pydantic
+accelerate
+transformers==4.37.2
+tokenizers
+sentencepiece
+shortuuid
+bitsandbytes
+timm
+requests
+httpx==0.24.0
+uvicorn
+einops-exts
+einops
+scikit-learn
+numpy
+decord
+opencv-python
+#gradio==4.41.0
+http://thunlp.oss-cn-qingdao.aliyuncs.com/multi_modal/never_delete/modelscope_studio-0.4.0.9-py3-none-any.whl

@@ -66,6 +66,16 @@ Multi-image Benchmarks
 
 ## Usage
 
+## Gradio Demo
+Installing the dependencies
+```
+pip install -r requirements.txt
+```
+
+Execute the demo.
+```
+python gradio_demo.py
+```
 ## Quickstart
 
 Load the mPLUG-Owl3. We now only support attn_implementation in ```['sdpa', 'flash_attention_2']```.
