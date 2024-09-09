@@ -62,9 +62,13 @@ Multi-image Benchmarks
 ![MI-Bench](./assets/mibench.png)
 
 ## Evaluation
-To perform evaluation on the above benchmarks, download the datasets and organize them as follows in `./evaluation/dataset`.
+
+To perform evaluation on the above benchmarks, first download the datasets from the official or huggingface sites: [ai2d](https://huggingface.co/datasets/lmms-lab/ai2d), [gqa](https://cs.stanford.edu/people/dorarad/gqa/download.html), [LLaVA-NeXT-Interleave-Bench](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-Interleave-Bench), [LongVideoBench](https://huggingface.co/datasets/longvideobench/LongVideoBench), [mmbench](https://github.com/open-compass/MMBench), [mmvet](https://github.com/yuweihao/MM-Vet), [mvbench](https://huggingface.co/datasets/OpenGVLab/MVBench), [nextqa](https://huggingface.co/datasets/lmms-lab/NExTQA), [NLVR2](https://huggingface.co/datasets/lmms-lab/NLVR2), [okvqa](https://okvqa.allenai.org/download.html), [qbench2](https://huggingface.co/datasets/q-future/Q-Bench2-HF), [textvqa](https://textvqa.org/), [videomme](https://huggingface.co/datasets/lmms-lab/Video-MME), [vizwiz](https://vizwiz.org/tasks-and-datasets/vqa/), [vqav2](https://visualqa.org/download.html).
+Then organize them as follows in `./evaluation/dataset`.
+
 We provide the json files of some datasets [here](https://huggingface.co/datasets/StarBottle/mPLUG-Owl3-Evaluation), to help reproduce the evaluation results in our paper.
-For benchmarks such as ai2d, NLVR2 and qbench2, you can download them from [lmms-lab](https://huggingface.co/lmms-lab).
+
+<!-- For benchmarks such as ai2d, NLVR2 and qbench2, you can download them from [lmms-lab](https://huggingface.co/lmms-lab). -->
 
 <details>
 <summary>click to unfold</summary>
