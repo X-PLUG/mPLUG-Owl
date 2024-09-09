@@ -1,0 +1,78 @@
+- type: MMBenchTask
+  ds_name: mmbench_test_en_20231003
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: MMBenchTask
+  ds_name: mmbench_test_cn_20231003
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: MMVetBench
+  ds_name: mmvet
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: VQATask
+  ds_name: pope_random
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+- type: VQATask
+  ds_name: pope_popular
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+- type: VQATask
+  ds_name: pope_adversarial
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: AI2DBench
+  ds_name: ai2d
+  use_number: False
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+
+- type: VQATask
+  ds_name: okvqa_val
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: VQATask
+  ds_name: textvqa_val
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: VQATask
+  ds_name: textvqa_val_ocr_v2
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: VQATask
+  ds_name: vizwiz_test
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: VQATask
+  ds_name: vqav2_test
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+- type: VQATask
+  ds_name: gqa_testdev
+  cut_cfg: {anchors: "grid_squ_6", anchor_strategy: "docowl", cut_prompt: "v2", add_global: True, cut_prob: 1.0}
+
+
+
+
+- type: NextQATask
+  ds_name: next_qa_mc
+
+- type: VideoMMEBench
+  ds_name: videomme
+  num_frames: 128
+
+- type: LongVideoBenchTask
+  ds_name: long_video_bench_dev
+  num_frames: 64
+
+- type: MvBenchTask
+  ds_name: mvbench
+  num_frames: 16
+
+- type: NLVR2Bench
+  ds_name: nlvr2
+
+- type: QbenchTask
+  ds_name: q_bench2
+
+- type: LlavaInterleaveBenchTask
+  ds_name: out_domain

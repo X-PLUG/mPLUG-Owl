@@ -61,6 +61,99 @@ Multi-image Benchmarks
 ![Multiimage Benchmarks](./assets/multiimage_bench.png)
 ![MI-Bench](./assets/mibench.png)
 
+## Evaluation
+To perform evaluation on the above benchmarks, Download the datasets and organize them as follows in `./dataset`,
+
+<details>
+<summary>click to unfold</summary>
+
+```
+├── ai2d
+│   ├── data
+│   └── README.md
+├── gqa
+│   └── testdev_balanced.jsonl
+├── LLaVA-NeXT-Interleave-Bench
+│   ├── eval_images_fix
+│   └── multi_image_out_domain.json
+├── LongVideoBench
+│   ├── lvb_val.json
+│   └── videos
+├── mmbench
+│   ├── mmbench_test_en_20231003.jsonl
+│   └── mmbench_test_en_20231003.tsv
+├── mmvet
+│   └── mm-vet.json
+├── mvbench
+│   ├── json
+│   ├── README.md
+│   └── videos
+├── nextqa
+│   ├── MC
+│   ├── NExTVideo
+│   └── README.md
+├── NLVR2
+│   ├── data
+│   └── README.md
+├── okvqa
+│   ├── okvqa_val.json
+│   ├── mscoco_val2014_annotations.json
+│   └── OpenEnded_mscoco_val2014_questions.json
+├── pope
+│   ├── ImageQA_POPE_adversarial.jsonl
+│   ├── ImageQA_POPE_popular.jsonl
+│   └── ImageQA_POPE_random.jsonl
+├── qbench2
+│   ├── data
+│   └── README.md
+├── textvqa
+│   ├── textvqa_val_annotations.json
+│   ├── textvqa_val.json
+│   └── textvqa_val_questions_ocr.json
+├── videomme
+│   ├── data
+│   └── test-00000-of-00001.parquet
+├── vizwiz
+│   └── vizwiz_test.jsonl
+└── vqav2
+    ├── v2_mscoco_val2014_annotations.json
+    ├── v2_OpenEnded_mscoco_test2015_questions.json
+    └── vqav2_test.json
+```
+
+</details>
+
+
+Download the images of the datasets, and organize as follows in `./images`,
+
+<details>
+<summary>click to unfold</summary>
+
+```
+├── gqa
+│   └── images
+├── mmbench_test_cn_20231003
+│   └── images
+├── mmbench_test_en_20231003
+│   └── images
+├── mmvet
+│   └── images
+├── mscoco
+│   └── images
+│       ├── test2015
+│       └── val2014
+├── textvqa
+│   └── text_vqa
+└── vizwiz
+    └── test
+```
+
+</details>
+
+Once the data is ready, run `eval.sh` for evaluation.
+The datasets configuration can be modified in `./tasks_qwen/plans/all.yaml`.
+
+
 ## Checkpoints
 [HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728)
 
