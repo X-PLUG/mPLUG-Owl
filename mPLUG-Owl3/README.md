@@ -62,7 +62,9 @@ Multi-image Benchmarks
 ![MI-Bench](./assets/mibench.png)
 
 ## Evaluation
-To perform evaluation on the above benchmarks, Download the datasets and organize them as follows in `./evaluation/dataset`,
+To perform evaluation on the above benchmarks, download the datasets and organize them as follows in `./evaluation/dataset`.
+We provide the json files of some datasets [here](https://huggingface.co/datasets/StarBottle/mPLUG-Owl3-Evaluation), to help reproduce the evaluation results in our paper.
+For benchmarks such as ai2d, NLVR2 and qbench2, you can download them from [lmms-lab](https://huggingface.co/lmms-lab).
 
 <details>
 <summary>click to unfold</summary>
