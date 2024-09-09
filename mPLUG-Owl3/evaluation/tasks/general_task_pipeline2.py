@@ -28,7 +28,7 @@ from tqdm import tqdm
 import os
 import argparse
 
-from tasks_qwen.task_define.base import ResulterSaverBase, StandardData, build_evaluation_from_jsonl, build_evaluation_from_yaml
+from tasks.task_define.base import ResulterSaverBase, StandardData, build_evaluation_from_jsonl, build_evaluation_from_yaml
 from icecream import ic
 from datetime import timedelta
 

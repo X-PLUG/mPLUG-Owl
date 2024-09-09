@@ -2,7 +2,7 @@ import ast
 import copy
 import os
 
-from tasks_qwen.task_define.mmbench import MultiOptionTask
+from tasks.task_define.mmbench import MultiOptionTask
 from .base import EvalTaskBase, TASK, ResulterSaverBase, StandardData, load_jsonl
 from x.io import read_json
 from icecream import ic

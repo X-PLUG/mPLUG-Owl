@@ -62,7 +62,7 @@ Multi-image Benchmarks
 ![MI-Bench](./assets/mibench.png)
 
 ## Evaluation
-To perform evaluation on the above benchmarks, Download the datasets and organize them as follows in `./dataset`,
+To perform evaluation on the above benchmarks, Download the datasets and organize them as follows in `./evaluation/dataset`,
 
 <details>
 <summary>click to unfold</summary>
@@ -124,7 +124,7 @@ To perform evaluation on the above benchmarks, Download the datasets and organiz
 </details>
 
 
-Download the images of the datasets, and organize as follows in `./images`,
+Download the images of the datasets, and organize as follows in `./evaluation/images`,
 
 <details>
 <summary>click to unfold</summary>
@@ -150,8 +150,8 @@ Download the images of the datasets, and organize as follows in `./images`,
 
 </details>
 
-Once the data is ready, run `eval.sh` for evaluation.
-The datasets configuration can be modified in `./tasks_qwen/plans/all.yaml`.
+Once the data is ready, run `./evaluation/eval.sh` for evaluation.
+The datasets configuration can be modified in `./evaluation/tasks/plans/all.yaml`.
 
 
 ## Checkpoints
