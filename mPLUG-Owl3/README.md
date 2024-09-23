@@ -31,7 +31,9 @@ Jiabo Ye, Haiyang Xu, Haowei Liu, Anwen Hu, Ming Yan, Qi Qian, Ji Zhang, Fei Hua
 ![Performance and Efficiency](./assets/performance.png)
 
 ## News and Updates
-* ```2024.08.12``` 🔥🔥🔥 We release **mPLUG-Owl3**. The source code and weights are avaliable at [HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728).
+* ```2024.09.23``` 🔥🔥🔥 Thanks to ms-swift. The finetuning of mPLUG-Owl3 is now supported. Refer to the document at [Finetuning of mPLUG-Owl3](https://github.com/modelscope/ms-swift/issues/1969#issue-2511475059).
+* ```2024.09.23``` 🔥🔥🔥 We have released the evaluation pipeline, which can be found at [Evaluation](https://github.com/X-PLUG/mPLUG-Owl/tree/main/mPLUG-Owl3/evaluation)). Please refer to the README for more details.
+* ```2024.08.12``` We release **mPLUG-Owl3**. The source code and weights are avaliable at [HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728).
 
 ## Cases
 mPLUG-Owl3 can learn from knowledge from retrieval system.
@@ -46,9 +48,9 @@ mPLUG-Owl3 can watch long videos such as movies and remember its details.
 
 ![Long video understanding](./assets/movie.png)
 ## TODO List
-- [ ] Evaluation with huggingface model.
+- [x] Evaluation with huggingface model.
 - [ ] Training data releasing. All training data are sourced from the public datasets. We are preparing to release a compact version to facilitate easy training. Prior to this release, you have the option to manually organize the training data.
-- [ ] Training pipeline.
+- [x] Training pipeline.
 
 ## Performance
 Visual Question Answering
