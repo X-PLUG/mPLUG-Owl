@@ -180,11 +180,11 @@ python gradio_demo.py
 Load the mPLUG-Owl3. We now only support attn_implementation in ```['sdpa', 'flash_attention_2']```.
 ```Python
 import torch
+from transformers import AutoConfig, AutoModel
 model_path = 'mPLUG/mPLUG-Owl3-7B-240728'
-config = mPLUGOwl3Config.from_pretrained(model_path)
-print(config)
+config = AutoConfig.from_pretrained(model_path, trust_remote_code=True)
 # model = mPLUGOwl3Model(config).cuda().half()
-model = mPLUGOwl3Model.from_pretrained(model_path, attn_implementation='sdpa', torch_dtype=torch.half)
+model = AutoModel.from_pretrained(model_path, attn_implementation='sdpa', torch_dtype=torch.half, trust_remote_code=True)
 model.eval().cuda()
 ```
 Chat with images.
