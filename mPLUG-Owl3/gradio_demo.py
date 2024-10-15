@@ -21,7 +21,7 @@ import traceback
 import re
 import modelscope_studio as mgr
 from modelscope.hub.snapshot_download import snapshot_download
-model_dir = snapshot_download('iic/mPLUG-Owl3-7B-240728', cache_dir='./')
+# model_dir = snapshot_download('iic/mPLUG-Owl3-7B-240728', cache_dir='./')
 # README, How to run demo on different devices
 
 # For Nvidia GPUs.
@@ -158,17 +158,6 @@ def encode_image(image):
             image = Image.open(image.path).convert("RGB")
         else:
             image = Image.open(image.file.path).convert("RGB")
-    # resize to max_size
-    max_size = 448*16 
-    if max(image.size) > max_size:
-        w,h = image.size
-        if w > h:
-            new_w = max_size
-            new_h = int(h * max_size / w)
-        else:
-            new_h = max_size
-            new_w = int(w * max_size / h)
-        image = image.resize((new_w, new_h), resample=Image.BICUBIC)
     return image
     ## save by BytesIO and convert to base64
     #buffered = io.BytesIO()
