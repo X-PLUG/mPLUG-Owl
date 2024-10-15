@@ -31,8 +31,9 @@ Jiabo Ye, Haiyang Xu, Haowei Liu, Anwen Hu, Ming Yan, Qi Qian, Ji Zhang, Fei Hua
 ![Performance and Efficiency](./assets/performance.png)
 
 ## News and Updates
-* ```2024.09.23``` 🔥🔥🔥 Thanks to ms-swift. The finetuning of mPLUG-Owl3 is now supported. Refer to the document at [Finetuning of mPLUG-Owl3](https://github.com/modelscope/ms-swift/issues/1969#issue-2511475059).
-* ```2024.09.23``` 🔥🔥🔥 We have released the evaluation pipeline, which can be found at [Evaluation](https://github.com/X-PLUG/mPLUG-Owl/tree/main/mPLUG-Owl3/evaluation)). Please refer to the README for more details.
+* ```2024.10.15``` 🔥🔥🔥 We have released small-sized models of mPLUG-Owl3 based on the 0.5B and 1.5B Qwen2. [Checkpoints](#Checkpoints) are available on ModelScope and HuggingFace. Now you can experience Owl3's ultra-long visual content comprehension on edge devices.
+* ```2024.09.23``` Thanks to ms-swift. The finetuning of mPLUG-Owl3 is now supported. Refer to the document at [Finetuning of mPLUG-Owl3](https://github.com/modelscope/ms-swift/issues/1969#issue-2511475059).
+* ```2024.09.23``` We have released the evaluation pipeline, which can be found at [Evaluation](https://github.com/X-PLUG/mPLUG-Owl/tree/main/mPLUG-Owl3/evaluation). Please refer to the README for more details.
 * ```2024.08.12``` We release **mPLUG-Owl3**. The source code and weights are avaliable at [HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728).
 
 ## Cases
@@ -163,6 +164,7 @@ The datasets configuration can be modified in `./evaluation/tasks/plans/all.yaml
 
 
 ## Checkpoints
+<span id="Checkpoints"></span>
 | Model Size | ModelScope | HuggingFace |
 |------------|------------|-------------|
 | 1B         | [mPLUG-Owl3-1B-241014](https://modelscope.cn/models/iic/mPLUG-Owl3-1B-241014) | [mPLUG-Owl3-1B-241014](https://huggingface.co/mPLUG/mPLUG-Owl3-1B-241014) |
