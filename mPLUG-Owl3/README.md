@@ -31,7 +31,9 @@ Jiabo Ye, Haiyang Xu, Haowei Liu, Anwen Hu, Ming Yan, Qi Qian, Ji Zhang, Fei Hua
 ![Performance and Efficiency](./assets/performance.png)
 
 ## News and Updates
-* ```2024.08.12``` 🔥🔥🔥 We release **mPLUG-Owl3**. The source code and weights are avaliable at [HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728).
+* ```2024.09.23``` 🔥🔥🔥 Thanks to ms-swift. The finetuning of mPLUG-Owl3 is now supported. Refer to the document at [Finetuning of mPLUG-Owl3](https://github.com/modelscope/ms-swift/issues/1969#issue-2511475059).
+* ```2024.09.23``` 🔥🔥🔥 We have released the evaluation pipeline, which can be found at [Evaluation](https://github.com/X-PLUG/mPLUG-Owl/tree/main/mPLUG-Owl3/evaluation)). Please refer to the README for more details.
+* ```2024.08.12``` We release **mPLUG-Owl3**. The source code and weights are avaliable at [HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728).
 
 ## Cases
 mPLUG-Owl3 can learn from knowledge from retrieval system.
@@ -46,9 +48,9 @@ mPLUG-Owl3 can watch long videos such as movies and remember its details.
 
 ![Long video understanding](./assets/movie.png)
 ## TODO List
-- [ ] Evaluation with huggingface model.
+- [x] Evaluation with huggingface model.
 - [ ] Training data releasing. All training data are sourced from the public datasets. We are preparing to release a compact version to facilitate easy training. Prior to this release, you have the option to manually organize the training data.
-- [ ] Training pipeline.
+- [x] Training pipeline.
 
 ## Performance
 Visual Question Answering
@@ -62,7 +64,13 @@ Multi-image Benchmarks
 ![MI-Bench](./assets/mibench.png)
 
 ## Evaluation
-To perform evaluation on the above benchmarks, Download the datasets and organize them as follows in `./evaluation/dataset`,
+
+To perform evaluation on the above benchmarks, first download the datasets from the official or huggingface sites: [ai2d](https://huggingface.co/datasets/lmms-lab/ai2d), [gqa](https://cs.stanford.edu/people/dorarad/gqa/download.html), [LLaVA-NeXT-Interleave-Bench](https://huggingface.co/datasets/lmms-lab/LLaVA-NeXT-Interleave-Bench), [LongVideoBench](https://huggingface.co/datasets/longvideobench/LongVideoBench), [mmbench](https://github.com/open-compass/MMBench), [mmvet](https://github.com/yuweihao/MM-Vet), [mvbench](https://huggingface.co/datasets/OpenGVLab/MVBench), [nextqa](https://huggingface.co/datasets/lmms-lab/NExTQA), [NLVR2](https://huggingface.co/datasets/lmms-lab/NLVR2), [okvqa](https://okvqa.allenai.org/download.html), [qbench2](https://huggingface.co/datasets/q-future/Q-Bench2-HF), [textvqa](https://textvqa.org/), [videomme](https://huggingface.co/datasets/lmms-lab/Video-MME), [vizwiz](https://vizwiz.org/tasks-and-datasets/vqa/), [vqav2](https://visualqa.org/download.html).
+Then organize them as follows in `./evaluation/dataset`.
+
+We provide the json files of some datasets [here](https://huggingface.co/datasets/StarBottle/mPLUG-Owl3-Evaluation), to help reproduce the evaluation results in our paper.
+
+<!-- For benchmarks such as ai2d, NLVR2 and qbench2, you can download them from [lmms-lab](https://huggingface.co/lmms-lab). -->
 
 <details>
 <summary>click to unfold</summary>
@@ -155,7 +163,12 @@ The datasets configuration can be modified in `./evaluation/tasks/plans/all.yaml
 
 
 ## Checkpoints
-[HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728)
+| Model Size | ModelScope | HuggingFace |
+|------------|------------|-------------|
+| 1B         | [mPLUG-Owl3-1B-241014](https://modelscope.cn/models/iic/mPLUG-Owl3-1B-241014) | [mPLUG-Owl3-1B-241014](https://huggingface.co/mPLUG/mPLUG-Owl3-1B-241014) |
+| 2B         | [mPLUG-Owl3-2B-241014](https://modelscope.cn/models/iic/mPLUG-Owl3-2B-241014) | [mPLUG-Owl3-2B-241014](https://huggingface.co/mPLUG/mPLUG-Owl3-2B-241014) |
+| 7B         | [mPLUG-Owl3-7B-240728](https://modelscope.cn/models/iic/mPLUG-Owl3-7B-240728) | [mPLUG-Owl3-7B-240728](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728) |
+
 
 ## Usage
 
@@ -174,11 +187,11 @@ python gradio_demo.py
 Load the mPLUG-Owl3. We now only support attn_implementation in ```['sdpa', 'flash_attention_2']```.
 ```Python
 import torch
+from transformers import AutoConfig, AutoModel
 model_path = 'mPLUG/mPLUG-Owl3-7B-240728'
-config = mPLUGOwl3Config.from_pretrained(model_path)
-print(config)
+config = AutoConfig.from_pretrained(model_path, trust_remote_code=True)
 # model = mPLUGOwl3Model(config).cuda().half()
-model = mPLUGOwl3Model.from_pretrained(model_path, attn_implementation='sdpa', torch_dtype=torch.half)
+model = AutoModel.from_pretrained(model_path, attn_implementation='sdpa', torch_dtype=torch.half, trust_remote_code=True)
 model.eval().cuda()
 ```
 Chat with images.
