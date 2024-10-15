@@ -163,7 +163,12 @@ The datasets configuration can be modified in `./evaluation/tasks/plans/all.yaml
 
 
 ## Checkpoints
-[HuggingFace](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728)
+| Model Size | ModelScope | HuggingFace |
+|------------|------------|-------------|
+| 1B         | [mPLUG-Owl3-1B-241014](https://modelscope.cn/models/iic/mPLUG-Owl3-1B-241014) | [mPLUG-Owl3-1B-241014](https://huggingface.co/mPLUG/mPLUG-Owl3-1B-241014) |
+| 2B         | [mPLUG-Owl3-2B-241014](https://modelscope.cn/models/iic/mPLUG-Owl3-2B-241014) | [mPLUG-Owl3-2B-241014](https://huggingface.co/mPLUG/mPLUG-Owl3-2B-241014) |
+| 7B         | [mPLUG-Owl3-7B-240728](https://modelscope.cn/models/iic/mPLUG-Owl3-7B-240728) | [mPLUG-Owl3-7B-240728](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-240728) |
+
 
 ## Usage
 
