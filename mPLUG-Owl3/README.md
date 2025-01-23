@@ -31,7 +31,8 @@ Jiabo Ye, Haiyang Xu, Haowei Liu, Anwen Hu, Ming Yan, Qi Qian, Ji Zhang, Fei Hua
 ![Performance and Efficiency](./assets/performance.png)
 
 ## News and Updates
-* ```2024.11.27``` 🔥🔥🔥 We have released the latest version of [mPLUG-Owl3-7B-241101](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-241101). The performance in video and multi-image scenarios is significantly improved. It also achieves top-1 performance on [LVBench](https://lvbench.github.io/)🎉🎉🎉.
+* ```2025.01.23``` 🔥🔥🔥 **mPLUG-Owl3** has been accepted by ICLR 2025.
+* ```2024.11.27``` We have released the latest version of [mPLUG-Owl3-7B-241101](https://huggingface.co/mPLUG/mPLUG-Owl3-7B-241101). The performance in video and multi-image scenarios is significantly improved. It also achieves top-1 performance on [LVBench](https://lvbench.github.io/)🎉🎉🎉.
 * ```2024.10.15``` We have released small-sized models of mPLUG-Owl3 based on the 0.5B and 1.5B Qwen2. [Checkpoints](#Checkpoints) are available on ModelScope and HuggingFace. Now you can experience Owl3's ultra-long visual content comprehension on edge devices.
 * ```2024.09.23``` Thanks to ms-swift. The finetuning of mPLUG-Owl3 is now supported. Refer to the document at [Finetuning of mPLUG-Owl3](https://github.com/modelscope/ms-swift/issues/1969#issue-2511475059).
 * ```2024.09.23``` We have released the evaluation pipeline, which can be found at [Evaluation](https://github.com/X-PLUG/mPLUG-Owl/tree/main/mPLUG-Owl3/evaluation). Please refer to the README for more details.
