@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-<img src="assets/mplug_owl2_logo.png" width="20%">
+<img src="../mPLUG-Owl2/assets/mplug_owl2_logo.png" width="20%">
 </div>
 
 <div align="center">
@@ -17,9 +17,9 @@ Jiabo Ye, Haiyang Xu, Haowei Liu, Anwen Hu, Ming Yan, Qi Qian, Ji Zhang, Fei Hua
 
 
 <div align="center">
-    <a href="https://github.com/X-PLUG/mPLUG-Owl/blob/main/LICENSE"><img src="assets/LICENSE-Apache%20License-blue.svg" alt="License"></a>
-    <a href="https://arxiv.org/abs/2408.04840"><img src="assets/Paper-Arxiv-orange.svg" ></a>
-    <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FX-PLUG%2FmPLUG-Owl&count_bg=%23E97EBA&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false" alt="Hits"></a>
+    <a href="https://github.com/X-PLUG/mPLUG-Owl/blob/main/LICENSE"><img src="../mPLUG-Owl2/assets/LICENSE-Apache%20License-blue.svg" alt="License"></a>
+    <a href="https://arxiv.org/abs/2408.04840"><img src="../mPLUG-Owl2/assets/Paper-Arxiv-orange.svg" ></a>
+<!--     <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FX-PLUG%2FmPLUG-Owl&count_bg=%23E97EBA&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=false" alt="Hits"></a> -->
 
 </div>
 
