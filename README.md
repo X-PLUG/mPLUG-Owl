@@ -4,7 +4,9 @@
 
 </div>
 
-![summary_tab](https://z1.ax1x.com/2023/11/03/piM1rGQ.md.png)
+<!--![summary_tab](https://z1.ax1x.com/2023/11/03/piM1rGQ.md.png)!-->
+![summary_tab](https://picx.zhimg.com/70/v2-0c20dc670d9a55c03fb8d7b253ebfe1d_1440w.avis?source=172ae18b&biz_tag=Post)
+
 
 
 - [**mPLUG-Owl**](mPLUG-Owl) (Arxiv 2023) - mPLUG-Owl: Modularization Empowers Large Language Models with Multimodality
